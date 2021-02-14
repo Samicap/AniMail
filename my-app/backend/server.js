@@ -1,5 +1,6 @@
 // load .env data into process.env
 require('dotenv').config();
+const cors = require('cors');
 
 // Web server config
 const PORT       = process.env.PORT || 8080;
@@ -30,6 +31,7 @@ app.use("/styles", sass({
   outputStyle: 'expanded'
 }));
 app.use(express.static("public"));
+app.use(cors())
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
