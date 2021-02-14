@@ -47,9 +47,9 @@
 
 
 ## Messages
-/api/children/:id/messages (GET) - retrieves all the messages of a specific child (like email inbox)
-/api/children/:id/messages/:id (GET) - retrieve a specific message of a specific child
-/api/children/:id/messages/:id (DELETE) - delete a specific message of a specific child
-/api/children/:id/messages (POST) - create a new message for a specific child
+/api/messages/children/:id (GET) - retrieves all the messages of a specific child (like email inbox)
+/api/messages/:id/children/:id (GET) - retrieve a specific message of a specific child
+/api/messages/:id/children/:id (DELETE) - delete a specific message of a specific child
+/api/messages/children/:id (POST) - create a new message for a specific child
 
 
