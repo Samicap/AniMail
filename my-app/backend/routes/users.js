@@ -9,6 +9,7 @@ const express = require('express');
 const router  = express.Router();
 
 module.exports = (db) => {
+  // magic happens here.  the file knows to pull the path from the file name users. /users
   router.get("/", (req, res) => {
     db.query(`SELECT * FROM users;`)
       .then(data => {
@@ -21,5 +22,6 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+  
   return router;
 };
