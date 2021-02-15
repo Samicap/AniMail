@@ -30,20 +30,20 @@
 
 
 ## Profiles
-/api/profile/parents
 
-/api/profile/parents (POST) - create a new parent profile
-/api/profile/children (POST) - create a new child profile
-/api/profile/parents/:id (GET) - retrieve a specific parent profile and its associated children
-/api/profile/children/:id (GET) - retrieve a specific child profile
-/api/profile/parents/:id (PATCH / PUT) - update a specific parent profile
-/api/profile/children/:id (PATCH / PUT) - update a specific child profile
-/api/profile/parents/:id (DELETE) - delete a specific account
+/api/profiles/parents (POST) - create a new parent profile
+/api/profiles/children (POST) - create a new child profile
+/api/profiles/parents/:id (GET) - retrieve a specific parent profile and its associated children
+/api/profiles/children/:id (GET) - retrieve a specific child profile
+/api/profiles/parents/:id (PATCH / PUT) - update a specific parent profile
+/api/profiles/children/:id (PATCH / PUT) - update a specific child profile
+/api/profiles/parents/:id (DELETE) - delete a specific account
 
 
 ## Parent Control (??)
-/api/children/:id/controls (PATCH / PUT) - update the parent control for a specific child
-/api/children/:id/controls (GET) - retrieve the parent control setup for a specific child
+
+/api/controls/children/:id (PATCH / PUT) - update the parent control for a specific child
+/api/controls/children/:id (GET) - retrieve the parent control setup for a specific child
 
 
 ## Messages
