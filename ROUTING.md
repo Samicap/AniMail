@@ -7,10 +7,10 @@
 /delete
 
 ## Profiles
-/parents
-/children
-/parents/:id
-/children/:id
+/profiles/parents
+/profiles/children
+/profiles/parents/:id
+/profiles/children/:id
 
 ## Parent Control
 /children/:id/controls
