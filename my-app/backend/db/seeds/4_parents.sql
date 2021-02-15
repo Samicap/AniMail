@@ -1,0 +1,2 @@
+INSERT INTO parents (username, email, avatar_url, password) VALUES ('Mom', 'mom@gmail.com', 'https://www.flaticon.com/svg/vstatic/svg/3170/3170738.svg?token=exp=1613347189~hmac=72aa1453197a520799e4ff83aeece969', '123');
+INSERT INTO parents (username, email, avatar_url, password) VALUES ('Dad', 'dad@gmail.com', 'https://www.flaticon.com/svg/vstatic/svg/2716/2716238.svg?token=exp=1613347203~hmac=6390a672ce9e208dac245c695f13eb9a', '123');

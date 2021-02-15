@@ -1,0 +1,6 @@
+DROP TABLE IF EXISTS parent_childs CASCADE;
+
+CREATE TABLE parent_childs (
+  parent_id INTEGER REFERENCES parents(id) ON DELETE CASCADE,
+  child_id INTEGER REFERENCES childs(id) ON DELETE CASCADE
+);
