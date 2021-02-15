@@ -10,11 +10,13 @@ function useAppData() {
 
   useEffect(() => {
     return Promise.all([
-      axios.get("http://localhost:8080/api/users"),
+      // axios.get("http://localhost:8080/api/users"),
+      axios.get("http://localhost:8080/api/parents"),
+  
 
 
     ]).then((res) => {
-      console.log("Users", res);
+      console.log("Parents", res);
       setState((prev) => ({
         ...prev,
         users: res[0].data,
