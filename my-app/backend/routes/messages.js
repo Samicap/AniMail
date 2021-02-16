@@ -50,8 +50,17 @@ module.exports = (db) => {
       });
   });
 
-  router.get("/:id/children/:id", (req, res) => {
+  router.get("/:messageId/children/:childrenId", (req, res) => {
     console.log("req.params", req.params);
+    db.query(`SELECT * FROM messages WHERE id = $1;`, [req.params.messageId])
+      .then((data) => {
+        console.log("data", data.rows);
+        const message = data.rows;
+        res.json({ message });
+      })
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
+      });
   });
 
   return router;
