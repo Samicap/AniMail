@@ -10,6 +10,8 @@ const bodyParser = require("body-parser");
 const sass       = require("node-sass-middleware");
 const app        = express();
 const morgan     = require('morgan');
+const cookieSession = require('cookie-session')
+
 
 // PG database client/connection setup
 const { Pool } = require('pg');
@@ -32,6 +34,10 @@ app.use("/styles", sass({
 }));
 app.use(express.static("public"));
 app.use(cors())
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1', 'key2']
+}))
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
@@ -55,12 +61,24 @@ app.get("/", (req, res) => {
 });
 
 app.get("/api/private", (req, res) => {
+  //where did francis get UserId?
   if (req.session.userId) {
     res.json({err:null, data: "This is private! Don't share!"})
   } else {
     res.json({err: "Not authenticated", data: null})
   }
 })
+
+app.post("/api/login", (req, res) => {
+  res.session.userId = "42";
+  res.json({id:42, name: "Potato"})
+})
+
+// app.post("/api/logout", (req, res) => {
+  //terminalsays delete res.session isn't valid
+//   delete res.session.userId = "42";
+//   res.send("ok")
+// })
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

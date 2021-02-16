@@ -5,7 +5,8 @@ import Login from './components/Login';
 import PrivateComponent from './components/PrivateComponent';
 import Message from './components/Message';
 import useAppData from './hooks/useAppData'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 
 
@@ -15,13 +16,16 @@ function App() {
   const [state, setState] = useState({ loggedInUser: null})
   // in logged out state
   const loggedInUser = user => setState({ ...state, loggedInUser: user})
+  useEffect(() => {
+    axios.post("/api/authenticate").then(res => setTimeout(() => loggedInUser(res.data), 2000))
+  }, [])
 
   return (
     <div className="App">
       <Router>
         <Switch>
           <Route exact path='/login'>
-            <Login/>
+            <Login setUser={loggedInUser}/>
             <PrivateComponent />
           </Route>
           <Route exact path='/messages'>

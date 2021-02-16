@@ -1,0 +1,3 @@
+function getUsers(state, user) {
+
+}
