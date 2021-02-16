@@ -12,39 +12,14 @@ function App() {
   //const [user, setUser] = useState(null)
   //axios.get("/api/users").then(res => console.log(res.data));
 
-  const [user, setUser] = useState({ id: "", username: "", email: "", avatar_url: "" });
+  const [user, setUser] = useState({});
   const [error, setError] = useState("");
 
-  let history = useHistory();
-  console.log(history);
+  const getUser = userInfo => {
+    setUser(userInfo)
+  }
 
-  // const login = loginInfo => {
-  //   console.log(loginInfo);
-  //   axios.post("/api/login", {
-  //     email: loginInfo.email,
-  //     password: loginInfo.password
-  //   })
-  //   .then(function (response) {
-  //     console.log(response.data.parent[0]);
-  //     const data = response.data.parent[0];
-  //     history.push('/profiles/parents')
-  //     console.log(history);
-      
-  //     setUser({
-  //       id: data.id,
-  //       username: data.username,
-  //       email: data.email,
-  //       avatar_url: data.avatar_url
-  //     })
-
-  //     // /profiles/parents
-  //   })
-  //   .catch(function (error) {
-  //     console.log(error);
-  //   })
-  // }
-
-  useEffect(() => console.log(user), [user]);
+  useEffect(() => console.log(user.id), [user]);
 
   //client route: /api/profiles/parents/:id
 
@@ -53,11 +28,11 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" render={() => 
-            <LoginForm />
+            <LoginForm getUser={getUser} />
           } />
 
           <Route path="/profiles/parents/:id" render={() => 
-            <ParentProfile />
+            <ParentProfile userId={user.id}/>
           } />
 
         </Switch>

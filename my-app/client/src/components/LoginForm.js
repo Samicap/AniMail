@@ -2,9 +2,9 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-export default function Login() {
+export default function Login({ getUser }) {
 
-  const [user, setUser] = useState({ id: "", username: "", email: "", avatar_url: "", password: "" });
+  const [parentInfo, setParentInfo] = useState({ id: "", username: "", email: "", avatar_url: "", password: "" });
   const [loginInfo, setLoginInfo] = useState({ email: "", password: ""});
   //const [error, setError] = useState("");
 
@@ -30,16 +30,20 @@ export default function Login() {
     .then(function (response) {
       console.log(response.data.parent[0]);
       const data = response.data.parent[0];
+
+      getUser(data);
       history.push(`/profiles/parents/${data.id}`)
       //console.log(history);
       
-      setUser({
+      setParentInfo({
         id: data.id,
         username: data.username,
         email: data.email,
         avatar_url: data.avatar_url,
         password: data.password
       })
+
+      
 
       // /profiles/parents
     })
