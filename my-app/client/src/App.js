@@ -14,7 +14,9 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <Message />
+      <CreateMessage />
+      {/* <UsersListItem/> */}
+      {/* <Message /> */}
     </div>
   );
 }
