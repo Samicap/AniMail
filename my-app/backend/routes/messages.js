@@ -63,5 +63,18 @@ module.exports = (db) => {
       });
   });
 
+  router.delete("/:messageId/children/:childrenId", (req, res) => {
+    console.log("req.params", req.params);
+    db.query(`DELETE FROM messages WHERE id = $1`, [req.params.messageId])
+      .then((data) => {
+        res.status(200).json({
+          message: "Message deleted successfuly!",
+        });
+      })
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
+      });
+  });
+
   return router;
 };
