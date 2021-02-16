@@ -15,16 +15,20 @@ export default function CreateMessage(props) {
       </Col>
     </Form.Group>
     <Form.Group as={Row} controlId="selectPenPal.ControlSelect">
-      <Form.Label column sm={2}>To:</Form.Label>
-      <Col sm={10}>
-        <Form.Control as="select">
-          <option>Find a new pen pal!</option>
-          <option>Ana, 8, Montreal</option>
-          <option>Naz, 8, Istanbul</option>
-          <option>Sam, 8, Phoenix</option>
-          <option>Thomas, 8, Toronto</option>
-        </Form.Control>
-      </Col>
+      <Row>
+        <Form.Label column sm={2}>To:</Form.Label>
+        <Col>
+          <Form.Control as="select">
+            <option>Ana, 8, Montreal</option>
+            <option>Naz, 8, Istanbul</option>
+            <option>Sam, 8, Phoenix</option>
+            <option>Thomas, 8, Toronto</option>
+          </Form.Control>
+        </Col>
+        <Col>
+          <Button variant="primary">Find a new pen pal!</Button>{' '}
+        </Col>
+      </Row>
     </Form.Group>
     <Form.Group as={Row} controlId="selectAnimal.ControlSelect">
       <Form.Label column sm={2}>Delivery Animal:</Form.Label>
