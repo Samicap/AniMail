@@ -6,10 +6,8 @@ export default function Login({ getUser }) {
 
   const [parentInfo, setParentInfo] = useState({ id: "", username: "", email: "", avatar_url: "", password: "" });
   const [loginInfo, setLoginInfo] = useState({ email: "", password: ""});
-  //const [error, setError] = useState("");
 
   let history = useHistory();
-  //console.log('LoginForm history ', history);
 
   const submitHandler = event => {
     event.preventDefault();
@@ -17,12 +15,8 @@ export default function Login({ getUser }) {
     login(loginInfo);
   }
 
-  // const [user, setUser] = useState({ id: "", username: "", email: "", avatar_url: "" });
-  // const [error, setError] = useState("");
-
 
   const login = loginInfo => {
-    //console.log(loginInfo);
     axios.post("/api/login", {
       email: loginInfo.email,
       password: loginInfo.password
@@ -33,7 +27,6 @@ export default function Login({ getUser }) {
 
       getUser(data);
       history.push(`/profiles/parents/${data.id}`)
-      //console.log(history);
       
       setParentInfo({
         id: data.id,
@@ -43,9 +36,6 @@ export default function Login({ getUser }) {
         password: data.password
       })
 
-      
-
-      // /profiles/parents
     })
     .catch(function (error) {
       console.log(error);
