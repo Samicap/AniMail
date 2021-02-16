@@ -1,5 +1,12 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
+import React from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+import Message from './components/Message';
+import NavBar from "./components/NavBar";
+import CreateMessage from './components/CreateMessage';
 import { useState, useEffect } from 'react'
 import axios from 'axios';
 import { BrowserRouter as Router, Switch, Route, useHistory } from 'react-router-dom';
