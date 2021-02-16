@@ -7,10 +7,10 @@
 /delete
 
 ## Profiles
-/parents
-/children
-/parents/:id
-/children/:id
+/profiles/parents
+/profiles/children
+/profiles/parents/:id
+/profiles/children/:id
 
 ## Parent Control
 /children/:id/controls
@@ -30,26 +30,26 @@
 
 
 ## Profiles
-/api/profile/parents
 
-/api/profile/parents (POST) - create a new parent profile
-/api/profile/children (POST) - create a new child profile
-/api/profile/parents/:id (GET) - retrieve a specific parent profile and its associated children
-/api/profile/children/:id (GET) - retrieve a specific child profile
-/api/profile/parents/:id (PATCH) - update a specific parent profile
-/api/profile/children/:id (PATCH) - update a specific child profile
-/api/profile/parents/:id (DELETE) - delete a specific account
+/api/profiles/parents (POST) - create a new parent profile
+/api/profiles/children (POST) - create a new child profile
+/api/profiles/parents/:id (GET) - retrieve a specific parent profile and its associated children
+/api/profiles/children/:id (GET) - retrieve a specific child profile
+/api/profiles/parents/:id (PATCH / PUT) - update a specific parent profile
+/api/profiles/children/:id (PATCH / PUT) - update a specific child profile
+/api/profiles/parents/:id (DELETE) - delete a specific account
 
 
 ## Parent Control (??)
-/api/children/:id/controls (PATCH) - update the parent control for a specific child
-/api/children/:id/controls (GET) - retrieve the parent control setup for a specific child
+
+/api/controls/children/:id (PATCH / PUT) - update the parent control for a specific child
+/api/controls/children/:id (GET) - retrieve the parent control setup for a specific child
 
 
 ## Messages
-/api/children/:id/messages (GET) - retrieves all the messages of a specific child (like email inbox)
-/api/children/:id/messages/:id (GET) - retrieve a specific message of a specific child
-/api/children/:id/messages/:id (DELETE) - delete a specific message of a specific child
-/api/children/:id/messages (POST) - create a new message for a specific child
+/api/messages/children/:id (GET) - retrieves all the messages of a specific child (like email inbox)
+/api/messages/:id/children/:id (GET) - retrieve a specific message of a specific child
+/api/messages/:id/children/:id (DELETE) - delete a specific message of a specific child
+/api/messages/children/:id (POST) - create a new message for a specific child
 
 
