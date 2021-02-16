@@ -20,9 +20,10 @@
 
 ## Messages
 
-/children/:id/messages
-/children/:id/messages/:id
-/children/:id/messages/:id
+/messages/children/:id (GET)
+/messages/:messageId/children/:childId (GET)
+/messages/:messageId/children/:childId (DELETE)
+/messages/children/:id (POST)
 
 # Server facing routes (Fetching / Updating information)
 
@@ -50,6 +51,6 @@
 ## Messages
 
 /api/messages/children/:id (GET) - retrieves all the messages of a specific child (like email inbox)
-/api/messages/:messageId/children/:childrenId (GET) - retrieve a specific message of a specific child
-/api/messages/:messageId/children/:childrenId (DELETE) - delete a specific message of a specific child
+/api/messages/:messageId/children/:childId (GET) - retrieve a specific message of a specific child
+/api/messages/:messageId/children/:childId (DELETE) - delete a specific message of a specific child
 /api/messages/children/:id (POST) - create a new message for a specific child
