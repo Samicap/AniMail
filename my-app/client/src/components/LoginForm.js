@@ -9,10 +9,12 @@ export default function Login({ getUser }) {
 
   let history = useHistory();
 
-  const submitHandler = event => {
+  const submitHandler = async (event) => { 
     event.preventDefault();
 
-    login(loginInfo);
+    await login(loginInfo);
+    console.log("parent info", parentInfo)
+    getUser(parentInfo)
   }
 
 
@@ -27,6 +29,7 @@ export default function Login({ getUser }) {
 
       getUser(data);
       history.push(`/profiles/parents/${data.id}`)
+      // need to change /netflix
       
       setParentInfo({
         id: data.id,
