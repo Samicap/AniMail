@@ -20,7 +20,7 @@ export default function Netflix({ userId }) {
 
   return (
     <div>
-      <Link to="/inbox">Go to Inbox</Link>
+       <Link to={'/inbox'}>Go to Netflix</Link>
       <h1>Parent</h1>
       {/*<p>{JSON.stringify(parentProfile.data)}</p>*/}
       {parentProfile.data &&
