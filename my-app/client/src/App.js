@@ -36,9 +36,6 @@ function App() {
   // const [profile, setProfile] = useState({}); // delete
   // const setProfile = profileInfo => setState({...state, currentProfile: profileInfo})
   // ==========
-  const getUser = (userInfo) => {
-    setUser(userInfo);
-  };
 
   // messages should be an array of objects.
   // [{
