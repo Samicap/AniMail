@@ -1,20 +1,19 @@
-import axios from "axios";
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
-import { Link } from "react-router-dom";
 
-export default function Placeholder(props) {
+export default function Netflix({ users }) {
+  console.log("parentProfile", users);
+  const [parentProfile, setParentProfile] = useState({});
+
   return (
     <div>
-      <ul>
-        <li>
-          <Link to="/page1">Parent</Link>
-        </li>
-        <li>
-          <Link to="/page2">Children</Link>
-        </li>
-        <li></li>
-      </ul>
+      <h1>Netflix Choose User Page</h1>
+      {users.map((user) => {
+        return (
+          <div key={user.childs_username}>
+            <button>{user.childs_username}</button>
+          </div>
+        );
+      })}
     </div>
   );
 }

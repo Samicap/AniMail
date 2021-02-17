@@ -1,6 +1,11 @@
 const express = require("express");
 const router = express.Router();
 
+
+// make a route to pull up all messages
+//helper funtion to format into [{}]
+//chekc all queries that they are in the right format for the front to receive them
+
 module.exports = (db) => {
   router.get("/children/:id", (req, res) => {
     db.query(`SELECT * FROM messages WHERE child_id_to = $1;`, [req.params.id])
