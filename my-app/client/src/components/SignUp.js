@@ -5,7 +5,7 @@ export default function SignUp(props) {
   return (
     <>
       <h1>SignUp Here</h1>
-      <Form>
+      <Form className="SignUp">
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
