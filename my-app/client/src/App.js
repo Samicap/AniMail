@@ -1,7 +1,8 @@
 // import logo from './logo.svg';
-import './App.css';
+
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 
 
 import Message from './components/Message';
@@ -13,6 +14,7 @@ import { BrowserRouter as Router, Switch, Route, useHistory } from 'react-router
 
 import LoginForm from './components/LoginForm';
 import ParentProfile from './components/ParentProfile';
+import Child from './components/Child'
 
 
 function App() {
@@ -32,7 +34,15 @@ function App() {
 
   return (
     <div className="App">
-      <Router>
+      <Child></Child>
+      
+    </div>
+  );
+}
+
+export default App;
+
+{/* <Router>
         <Switch>
           <Route exact path="/" render={() => 
             <LoginForm getUser={getUser} />
@@ -44,9 +54,4 @@ function App() {
 
         </Switch>
 
-      </Router>
-    </div>
-  );
-}
-
-export default App;
+      </Router> */}

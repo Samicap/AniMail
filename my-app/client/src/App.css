@@ -36,3 +36,26 @@
     transform: rotate(360deg);
   }
 }
+
+
+.card-body {
+  border: solid grey 1px;
+  width: 50%;
+  background-color: lightpink;
+  color: purple;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: solid darkgrey 1px;
+  margin-left: 30vw;
+  margin-right: 30vw;
+}
+
+.card-img-top {
+  height: auto;
+  width: auto;
+}
