@@ -1,10 +1,21 @@
 import "./App.css";
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+
+import Message from "./components/Message";
+import NavBar from "./components/NavBar";
+import CreateMessage from "./components/CreateMessage";
 import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import axios from "axios";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useHistory,
+} from "react-router-dom";
 
 import LoginForm from "./components/LoginForm";
+import Placeholder from "./components/Placeholder";
 import Netflix from "./components/Netflix";
 
 function App() {
@@ -25,6 +36,9 @@ function App() {
   // const [profile, setProfile] = useState({}); // delete
   // const setProfile = profileInfo => setState({...state, currentProfile: profileInfo})
   // ==========
+  const getUser = (userInfo) => {
+    setUser(userInfo);
+  };
 
   // messages should be an array of objects.
   // [{
@@ -48,11 +62,14 @@ function App() {
   useEffect(() => {
     console.log(state);
   }, [state]);
+  //client route: /api/profiles/parents/:id
+  //<LoginForm getUser={getUser} />
 
   return (
     <div className="App">
       <Router>
         <Switch>
+
           <Route
             exact
             path="/"
@@ -63,6 +80,10 @@ function App() {
             path="/netflix"
             render={() => <Netflix users={state.currentUser} />}
           />
+
+
+          <Route path="/post/success" render={() => <Placeholder />} />
+
         </Switch>
       </Router>
     </div>

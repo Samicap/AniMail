@@ -21,6 +21,7 @@ module.exports = (db) => {
 
   router.post("/children/:id", (req, res) => {
     //const time_sent = Date.now();
+    //console.log("req.params ", req.body);
     const child_id = req.params.id;
     const child_id_to = req.body.child_id_to;
     const message = req.body.message;
