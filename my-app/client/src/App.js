@@ -18,6 +18,9 @@ import LoginForm from "./components/LoginForm";
 import Placeholder from "./components/Placeholder";
 import Netflix from "./components/Netflix";
 
+import ProgressBarApple from "./components/progressBar/ProgressBar";
+import IncomingMessage from "./components/incomingMessages/incomingMessages";
+
 function App() {
   //const [user, setUser] = useState(null)
   //axios.get("/api/users").then(res => console.log(res.data));
@@ -36,9 +39,6 @@ function App() {
   // const [profile, setProfile] = useState({}); // delete
   // const setProfile = profileInfo => setState({...state, currentProfile: profileInfo})
   // ==========
-  const getUser = (userInfo) => {
-    setUser(userInfo);
-  };
 
   // messages should be an array of objects.
   // [{
@@ -82,7 +82,13 @@ function App() {
           />
 
 
-          <Route path="/post/success" render={() => <Placeholder />} />
+          <Route path="/post/success"
+            render={() => <Placeholder />} />
+          //! Dummy Route Below to test components!
+          <Route
+            path="/progressBar"
+            render={() => <IncomingMessage avatar= {'https://www.flaticon.com/svg/vstatic/svg/714/714011.svg?token=exp=1613346041~hmac=87dc8721fd0a92c8b4cb0284fbcb199d'} speed={1}/>}
+          />
 
         </Switch>
       </Router>
