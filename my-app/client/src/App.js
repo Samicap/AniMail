@@ -6,20 +6,17 @@ import Message from "./components/Message";
 import NavBar from "./components/NavBar";
 import CreateMessage from "./components/CreateMessage";
 import { useState, useEffect } from "react";
-import axios from "axios";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  useHistory,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import LoginForm from "./components/LoginForm";
 import Placeholder from "./components/Placeholder";
 import Netflix from "./components/Netflix";
 
 function App() {
-  const [state, setState] = useState({ currentUser: null });
+  const [state, setState] = useState({
+    currentUser: null,
+    selectedChildId: null,
+  });
 
   const getUser = (userInfo) => {
     //! sets the state of the current user in line 24
@@ -27,6 +24,11 @@ function App() {
     //! this allows the state to be passed down to other children
     console.log("userInfo ", userInfo);
     setState({ ...state, currentUser: userInfo });
+  };
+
+  const receiveSelectedChild = (childId) => {
+    console.log("childId ", childId);
+    setState({ ...state, selectedChildId: childId });
   };
 
   useEffect(() => {
@@ -45,10 +47,18 @@ function App() {
 
           <Route
             path="/netflix"
-            render={() => <Netflix users={state.currentUser} />}
+            render={() => (
+              <Netflix
+                users={state.currentUser}
+                receiveSelectedChild={receiveSelectedChild}
+              />
+            )}
           />
 
-          <Route path="/post/success" render={() => <Placeholder />} />
+          <Route
+            path="/test/:id"
+            render={() => <Placeholder childId={state.selectedChildId} />}
+          />
         </Switch>
       </Router>
     </div>
