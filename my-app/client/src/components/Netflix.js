@@ -25,7 +25,9 @@ export default function Netflix({ users, receiveSelectedChild }) {
               key={user.childs_id}
               onClick={() => getSelectedChild(user.childs_id)}
             >
-              <Link to={{ pathname: `/message` }}>{user.childs_username}</Link>
+              <Link to={{ pathname: `/inbox/children/${user.childs_id}` }}>
+                {user.childs_username}
+              </Link>
             </li>
           );
         })}
