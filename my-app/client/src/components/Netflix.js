@@ -1,19 +1,37 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
-export default function Netflix({ users }) {
-  console.log("parentProfile", users);
-  const [parentProfile, setParentProfile] = useState({});
+export default function Netflix({ users, receiveSelectedChild }) {
+  console.log(users);
+
+  const [selectedChild, setSelectedChild] = useState(null);
+
+  const getSelectedChild = (childId) => {
+    setSelectedChild(childId);
+    receiveSelectedChild(childId);
+  };
+
+  useEffect(() => {
+    console.log(selectedChild);
+  }, [selectedChild]);
 
   return (
     <div>
       <h1>Netflix Choose User Page</h1>
-      {users.map((user) => {
-        return (
-          <div key={user.childs_username}>
-            <button>{user.childs_username}</button>
-          </div>
-        );
-      })}
+      <ul>
+        {users.map((user) => {
+          return (
+            <li
+              key={user.childs_id}
+              onClick={() => getSelectedChild(user.childs_id)}
+            >
+              <Link to={{ pathname: `/test/${user.childs_id}` }}>
+                {user.childs_username}
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 }
