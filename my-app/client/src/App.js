@@ -81,6 +81,19 @@ function App() {
           <Route
             path="/test/:id"
             render={() => <Placeholder childId={state.selectedChildId} />}
+            exact
+            path="/message"
+            render={() => <CreateMessage childId={state.selectedChildId} />}
+          />
+
+          <Route
+            path="/message/sent"
+            render={() => <Placeholder childId={state.selectedChildId} />}
+          />
+
+          <Route
+            path="/inbox/children/:id"
+            render={() => <Inbox childId={state.selectedChildId} />}
           />
         </Switch>
       </Router>
