@@ -8,7 +8,13 @@ const router = express.Router();
 
 module.exports = (db) => {
   router.get("/children/:id", (req, res) => {
-    db.query(`SELECT * FROM messages WHERE child_id_to = $1;`, [req.params.id])
+    db.query(
+      `SELECT * FROM messages
+            LEFT JOIN animals
+            ON messages.animal_id = animals.id
+            WHERE messages.child_id_to = $1;`, 
+      [req.params.id]
+      )
       .then((data) => {
         console.log("data", data.rows);
         const messages = data.rows;

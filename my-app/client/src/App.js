@@ -9,7 +9,7 @@ import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import LoginForm from "./components/LoginForm";
-import Placeholder from "./components/Placeholder";
+import Inbox from "./components/Inbox";
 import Netflix from "./components/Netflix";
 
 function App() {
@@ -56,8 +56,8 @@ function App() {
           />
 
           <Route
-            path="/test/:id"
-            render={() => <Placeholder childId={state.selectedChildId} />}
+            path="/inbox/children/:id"
+            render={() => <Inbox childId={state.selectedChildId} />}
           />
         </Switch>
       </Router>
