@@ -10,7 +10,7 @@ import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import LoginForm from "./components/LoginForm";
-import Placeholder from "./components/Placeholder";
+import Inbox from "./components/Inbox";
 import Netflix from "./components/Netflix";
 import Inbox from "./components/Inbox";
 
@@ -47,6 +47,7 @@ function App() {
   return (
     <div className="App">
       <Router>
+<<<<<<< HEAD
         <NavBar />
           <Switch>
             <Route
@@ -84,6 +85,29 @@ function App() {
               path="/test/:id"
               render={() => <Placeholder childId={state.selectedChildId} />}
             />
+=======
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={() => <LoginForm getUser={getUser} />}
+          />
+
+          <Route
+            path="/netflix"
+            render={() => (
+              <Netflix
+                users={state.currentUser}
+                receiveSelectedChild={receiveSelectedChild}
+              />
+            )}
+          />
+
+          <Route
+            path="/inbox/children/:id"
+            render={() => <Inbox childId={state.selectedChildId} />}
+          />
+>>>>>>> main
         </Switch>
       </Router>
     </div>
