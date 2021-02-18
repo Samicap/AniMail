@@ -7,6 +7,20 @@ const router = express.Router();
 //chekc all queries that they are in the right format for the front to receive them
 
 module.exports = (db) => {
+
+  //! Added get route for all messages available in App.js
+  router.get("/", (req, res) => {
+    db.query(`SELECT * FROM messages;`)
+      .then((data) => {
+        console.log("data", data.rows);
+        const messages = data.rows;
+        res.json({ messages });
+      })
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
+      });
+  });
+
   router.get("/children/:id", (req, res) => {
     db.query(`SELECT * FROM messages WHERE child_id_to = $1;`, [req.params.id])
       .then((data) => {
