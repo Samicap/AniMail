@@ -36,9 +36,7 @@ function App() {
   // const [profile, setProfile] = useState({}); // delete
   // const setProfile = profileInfo => setState({...state, currentProfile: profileInfo})
   // ==========
-  const getUser = (userInfo) => {
-    setUser(userInfo);
-  };
+  
 
   // messages should be an array of objects.
   // [{
@@ -81,6 +79,10 @@ function App() {
             render={() => <Netflix users={state.currentUser} />}
           />
 
+          <Route
+            path="/inbox"
+            render={() => <Inbox users={state.currentUser} />}
+          />
 
           <Route path="/post/success" render={() => <Placeholder />} />
 
