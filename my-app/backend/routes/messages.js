@@ -12,7 +12,7 @@ module.exports = (db) => {
       `SELECT * FROM messages
             LEFT JOIN animals
             ON messages.animal_id = animals.id
-            WHERE messages.child_id_to = 1;`, 
+            WHERE messages.child_id_to = $1;`, 
       [req.params.id]
       )
       .then((data) => {
