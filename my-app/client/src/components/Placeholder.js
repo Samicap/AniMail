@@ -1,3 +1,5 @@
+import React from "react";
+
 export default function Placeholder({ childId }) {
   console.log(childId);
 
@@ -6,5 +8,6 @@ export default function Placeholder({ childId }) {
       <h1>Placeholder</h1>
       <p>childId: {childId}</p>
     </div>
+    
   );
 }

@@ -1,6 +1,6 @@
-import "./App.css";
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
 
 import Message from "./components/Message";
 import NavBar from "./components/NavBar";
@@ -11,6 +11,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LoginForm from "./components/LoginForm";
 import Placeholder from "./components/Placeholder";
 import Netflix from "./components/Netflix";
+import Child from "./components/Child";
 
 function App() {
   const [state, setState] = useState({
@@ -42,7 +43,10 @@ function App() {
           <Route
             exact
             path="/"
-            render={() => <LoginForm getUser={getUser} />}
+            render={() => <>
+            <Child></Child>
+            <LoginForm getUser={getUser} />
+            </>}
           />
 
           <Route
