@@ -17,6 +17,7 @@ import {
 import LoginForm from "./components/LoginForm";
 import Placeholder from "./components/Placeholder";
 import Netflix from "./components/Netflix";
+import Inbox from "./components/Inbox";
 
 function App() {
   //const [user, setUser] = useState(null)
@@ -50,16 +51,17 @@ function App() {
   //Filter fucntion in js
   // All sent messages use filter to see all messages to revciever #2. can useEffect
 
-  // useEffect(() => {
-  //   axios({url: "/messages", method: "get"}).then((res) => {
-  //     console.log(res.data)
-  //     setState({...state, messages: res.data})
-  //   })
-  // }, [])
-
+  //! Returns all messages from db:
   useEffect(() => {
-    console.log(state);
-  }, [state]);
+    axios({url: "/api/messages", method: "get"}).then((res) => {
+      console.log("NEW AXIOS REQUEST >>>>> ", res.data)
+      setState({...state, messages: res.data})
+    })
+  }, [])
+
+  // useEffect(() => {
+  //   console.log(state);
+  // }, [state]);
   //client route: /api/profiles/parents/:id
   //<LoginForm getUser={getUser} />
 
@@ -81,7 +83,7 @@ function App() {
 
           <Route
             path="/inbox"
-            render={() => <Inbox users={state.currentUser} />}
+            render={() => <Inbox messages={state.messages} />}
           />
 
           <Route path="/post/success" render={() => <Placeholder />} />
