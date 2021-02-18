@@ -3,7 +3,7 @@ export default function Placeholder({ childId }) {
 
   return (
     <div>
-      <h1>Placeholder</h1>
+      <h1>Message sent!</h1>
       <p>childId: {childId}</p>
     </div>
   );
