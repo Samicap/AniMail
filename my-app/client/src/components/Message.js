@@ -4,7 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-import "components/InterviewerListItem.scss";
+import "components/Message.css";
+var classNames = require('classnames');
 
 
 export default function Message(props) {

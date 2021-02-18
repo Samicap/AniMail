@@ -1,0 +1,15 @@
+.messages {
+  &__item {
+    &-image{
+
+    }
+    
+    &--selected {
+
+    }
+
+    &--selected &-image {
+      
+    }
+  }
+}
