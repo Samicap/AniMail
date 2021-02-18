@@ -1,7 +1,7 @@
 import "./App.css";
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./components/progressBar/progressBar.css"
+import "./components/progressBar/progressBar.css";
 
 import Message from "./components/Message";
 import NavBar from "./components/NavBar";
@@ -12,11 +12,10 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LoginForm from "./components/LoginForm";
 import Inbox from "./components/Inbox";
 import Netflix from "./components/Netflix";
-import Inbox from "./components/Inbox";
+import Placeholder from "./components/Placeholder";
 
 import ProgressBarApple from "./components/progressBar/ProgressBar";
 import IncomingMessage from "./components/incomingMessages/incomingMessages";
-
 
 function App() {
   const [state, setState] = useState({
@@ -47,52 +46,13 @@ function App() {
   return (
     <div className="App">
       <Router>
-<<<<<<< HEAD
         <NavBar />
-          <Switch>
-            <Route
-              exact
-              path="/"
-              render={() => <LoginForm getUser={getUser} />}
-            />
-
-            <Route
-              path="/netflix"
-              render={() => (
-                <Netflix
-                  users={state.currentUser}
-                  receiveSelectedChild={receiveSelectedChild}
-                />
-              )}
-            />
-
-
-            <Route path="/post/success"
-              render={() => <Placeholder />} />
-            //! Dummy Route Below to test components!
-
-            <Route
-              path="/incomingMessages"
-              render={() => <IncomingMessage avatar= {"/whale.png"} speed={1}/>}
-            />
-
-            <Route
-              path="/inbox"
-              render={() => <Inbox childId={state.selectedChildId} avatar= {"/whale.png"} speed={1}/>}
-            />
-
-            <Route
-              path="/test/:id"
-              render={() => <Placeholder childId={state.selectedChildId} />}
-            />
-=======
         <Switch>
           <Route
             exact
             path="/"
             render={() => <LoginForm getUser={getUser} />}
           />
-
           <Route
             path="/netflix"
             render={() => (
@@ -102,12 +62,26 @@ function App() {
               />
             )}
           />
-
+          <Route path="/post/success" render={() => <Placeholder />} />
+          //! Dummy Route Below to test components!
           <Route
-            path="/inbox/children/:id"
-            render={() => <Inbox childId={state.selectedChildId} />}
+            path="/incomingMessages"
+            render={() => <IncomingMessage avatar={"/whale.png"} speed={1} />}
           />
->>>>>>> main
+          <Route
+            path="/inbox"
+            render={() => (
+              <Inbox
+                childId={state.selectedChildId}
+                avatar={"/whale.png"}
+                speed={1}
+              />
+            )}
+          />
+          <Route
+            path="/test/:id"
+            render={() => <Placeholder childId={state.selectedChildId} />}
+          />
         </Switch>
       </Router>
     </div>
