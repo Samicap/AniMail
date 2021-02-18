@@ -36,7 +36,7 @@ export default function CreateMessage({ childId }) {
         const data = response.data.message[0];
 
         setMessageData(data);
-        history.push("/sent");
+        history.push("/message/sent");
       })
       .catch(function (error) {
         console.log(error);
