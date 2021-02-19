@@ -13,6 +13,7 @@ export default function CreateMessage({ childId }) {
   });
 
   const [messageData, setMessageData] = useState(null);
+  //const [penPal, setPenPal] = useState(null);
 
   let history = useHistory();
 
@@ -43,6 +44,25 @@ export default function CreateMessage({ childId }) {
       });
   };
 
+  const getRandomPenPal = () => {
+    axios
+      .get(`/api/children/${childId}`)
+      .then(function (response) {
+        console.log("array childs ", response.data.childs);
+        console.log("length ", response.data.childs.length);
+        const length = response.data.childs.length;
+        const randomId = Math.floor(Math.random() * length);
+        console.log("randomId ", randomId);
+        setFormData({
+          ...formData,
+          child_id_to: response.data.childs[randomId].id,
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
   useEffect(() => console.log(messageData), [messageData]);
 
   return (
@@ -67,7 +87,6 @@ export default function CreateMessage({ childId }) {
           </Form.Label>
           <Col>
             <Form.Control
-              value={-1}
               as="select"
               value={formData.child_id_to}
               onChange={(event) =>
@@ -86,7 +105,9 @@ export default function CreateMessage({ childId }) {
           </Col>
           <Col> or </Col>
           <Col>
-            <Button variant="primary">Find a new pen pal!</Button>{" "}
+            <Button variant="primary" onClick={getRandomPenPal}>
+              Find a new pen pal!
+            </Button>{" "}
           </Col>
         </Row>
       </Form.Group>
