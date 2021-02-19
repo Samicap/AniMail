@@ -1,9 +1,9 @@
 .card-body {
-  border: solid orange 2px;
+  border: solid #f2b90c 2px;
   width: 100%;
-  background-color: beige;
+  background-color: #f2f2f2;
   opacity: 100%;
-  color: purple;
+  color: #514ea6;
 }
 
 .card {
@@ -11,11 +11,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: solid orange 3px;
-  margin: 2vw;
+  border: solid #f2b90c 3px;
+  margin: 0 auto;
+  margin-bottom: auto;
+  margin-top: 20px;
+
   width: 300px;
   padding-top: 25px;
-  background-color: purple;
+  background-color: #4bbfb4;
 }
 
 .card-img-top {

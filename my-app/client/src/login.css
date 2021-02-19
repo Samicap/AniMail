@@ -1,5 +1,13 @@
 .loginStyle {
-  border: orange solid 3px;
-  margin: 2vw;
-  margin-bottom: 300px;
+  border: #f2b90c solid 3px;
+  margin: 0 auto;
+  margin-bottom: auto;
+  margin-top: 20px;
+  background-color: #4bbfb4;
+  padding: 20px;
+  color: #514ea6;
+}
+
+.loginForm {
+  padding: 25px;
 }

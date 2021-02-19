@@ -2,6 +2,8 @@
   display: flex;
   justify-content: center;
   flex-direction: row;
-  background-color: purple;
-  width: 0 auto;
+  background-color: #f24c84;
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
 }

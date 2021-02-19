@@ -65,10 +65,14 @@ function App() {
           <Route
             path="/netflix"
             render={() => (
-              <Netflix
-                users={state.currentUser}
-                receiveSelectedChild={receiveSelectedChild}
-              />
+              <>
+                <Layout>
+                  <Netflix
+                    users={state.currentUser}
+                    receiveSelectedChild={receiveSelectedChild}
+                  />
+                </Layout>
+              </>
             )}
           />
 
