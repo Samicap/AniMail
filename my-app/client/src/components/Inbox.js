@@ -23,7 +23,7 @@ export default function Inbox({ childId }) {
     return (
       <div>
         <h1>INBOX</h1>
-        <MessageList childData={thisChildMessages}/>
+        <MessageList childMessages={thisChildMessages}/>
         {/* <IncomingMessages avatar={avatar} speed={speed}/> */}
       </div>
     )
