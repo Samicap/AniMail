@@ -6,6 +6,9 @@ import IncomingMessages from "./incomingMessages/incomingMessages";
 
 export default function Inbox({ childId }) {
   const [thisChildMessages, setThisChildMessages] = useState(null);
+  const [messageId, setMessageId] = useState(0);
+
+  // useEffect
 
   useEffect(() => {
     axios
@@ -18,7 +21,7 @@ export default function Inbox({ childId }) {
     return (
       <div>
         <h1>INBOX</h1>
-        <IncomingMessages childMessages={thisChildMessages} />
+        <IncomingMessages childMessages={thisChildMessages} setMessageId={setMessageId} />
         <MessageList childMessages={thisChildMessages}/>
       </div>
     )
