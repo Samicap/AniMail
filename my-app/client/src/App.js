@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 //import Message from "./components/Message";
 //import NavBar from "./components/NavBar";
+//import NavBar from "./components/NavBar";
 import CreateMessage from "./components/CreateMessage";
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -94,6 +95,11 @@ function App() {
             exact
             path="/message"
             render={() => <CreateMessage childId={state.selectedChildId} />}
+          />
+
+          <Route
+            path="/message/sent"
+            // render={() => <Placeholder childId={state.selectedChildId} />}
           />
 
           <Route
