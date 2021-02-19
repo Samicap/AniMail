@@ -14,39 +14,18 @@ export default function IncomingMessage({ childMessages }) {
   const [currentAnimalAvatar, setCurrentAnimalAvatar] = useState({avatar: null})
   
   const appleBABY = (childMessages) => {
-    return childMessages && childMessages.map(child => {
-      if (!child.is_recieved) {
+    return childMessages && childMessages.map(animal => {
+      if (!animal.is_recieved) {
         return {
-        avatar: child.avatar_url,
-        speed: child.speed
+        avatar: animal.avatar_url,
+        speed: animal.speed
         }
       }
     })
   }
 
   const animalData = appleBABY(childMessages);
-
-  
-  // this useEffect is what makes the progress bar update dynamically. The speed is taken from the animal speed.
-  // const [value, updateValue] = useState(0);
-
-  // useEffect(() => {
-  //   return animalData.map(animal => { 
- 
-  //     const interval = setInterval(() => {
-  //       updateValue((oldValue) => {
-  //         const newValue = oldValue + animal.speed;
-  //         if (newValue >= 100) {
-  //           clearInterval(interval);
-  //         }
-  //         return newValue;
-  //       });
-  //     }, 50);
-  //     return () => clearInterval(interval);
-  //   })
-  //   }, []);
-
-  //   //! the 1000 number is what is changes based on animal type?
+//! not sure if the key in the return in the div is the correct way to do this.
 
   return (
     <div>
@@ -54,7 +33,7 @@ export default function IncomingMessage({ childMessages }) {
       <h1>I am an Incoming Message</h1>
         {animalData && animalData.map(animal => {
           return (
-            <div>
+            <div key={animal}>
               <img src={animal.avatar} />
               <ProgressBar speed={.2} />
             </div>
