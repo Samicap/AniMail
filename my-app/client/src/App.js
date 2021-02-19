@@ -6,6 +6,7 @@ import "./Layout.css";
 import "./login.css";
 import "./inbox.css";
 import "./Netflix.css";
+import "./components/progressBar/progressBar.css";
 
 import Message from "./components/Message";
 import NavBar from "./components/NavBar";
@@ -14,12 +15,14 @@ import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import LoginForm from "./components/LoginForm";
-import Placeholder from "./components/Placeholder";
+import Inbox from "./components/Inbox";
 import Netflix from "./components/Netflix";
 import Child from "./components/Child";
 import Layout from "./components/layout";
 import HomePage from "./components/HomePage";
-import Inbox from "./components/Inbox";
+import Placeholder from "./components/Placeholder";
+import ProgressBarApple from "./components/progressBar/ProgressBar";
+import IncomingMessage from "./components/incomingMessages/incomingMessages";
 
 function App() {
   const [state, setState] = useState({
@@ -35,6 +38,9 @@ function App() {
     setState({ ...state, currentUser: userInfo });
   };
 
+  // const [profile, setProfile] = useState({}); // delete
+  // const setProfile = profileInfo => setState({...state, currentProfile: profileInfo})
+  // ==========
   const receiveSelectedChild = (childId) => {
     console.log("childId ", childId);
     setState({ ...state, selectedChildId: childId });
@@ -47,7 +53,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <NavBar></NavBar>
+        <NavBar />
         <Switch>
           <Route
             exact
@@ -60,7 +66,6 @@ function App() {
               </>
             )}
           />
-
           <Route
             path="/netflix"
             render={() => (
@@ -74,7 +79,6 @@ function App() {
               </>
             )}
           />
-
           <Route
             path="/child/:id"
             render={() => (
@@ -88,10 +92,36 @@ function App() {
               </>
             )}
           />
-
+          <Route path="/post/success" render={() => <Placeholder />} />
+          //! Dummy Route Below to test components!
+          <Route
+            path="/incomingMessages"
+            render={() => <IncomingMessage avatar={"/whale.png"} speed={1} />}
+          />
+          <Route
+            path="/inbox"
+            render={() => (
+              <Inbox
+                childId={state.selectedChildId}
+                avatar={"/whale.png"}
+                speed={1}
+              />
+            )}
+          />
           <Route
             path="/test/:id"
             render={() => <Placeholder childId={state.selectedChildId} />}
+            exact
+            path="/message"
+            render={() => <CreateMessage childId={state.selectedChildId} />}
+          />
+          <Route
+            path="/message/sent"
+            render={() => <Placeholder childId={state.selectedChildId} />}
+          />
+          <Route
+            path="/inbox/children/:id"
+            render={() => <Inbox childId={state.selectedChildId} />}
           />
         </Switch>
       </Router>

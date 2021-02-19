@@ -5,14 +5,14 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 
-export default function CreateMessage(props) {
+export default function CreateMessage({ childId }) {
   const [formData, setFormData] = useState({
     child_id_to: "",
     animal_id: "",
     text: "",
   });
 
-  const [messageData, setMessageData] = useState({});
+  const [messageData, setMessageData] = useState(null);
 
   let history = useHistory();
 
@@ -26,7 +26,7 @@ export default function CreateMessage(props) {
   // :id needs to be changed after we have the login form
   const sendMessage = (formData) => {
     axios
-      .post("/api/messages/children/1", {
+      .post(`/api/messages/children/${childId}`, {
         child_id_to: formData.child_id_to,
         message: formData.text,
         animal_id: formData.animal_id,
@@ -36,7 +36,7 @@ export default function CreateMessage(props) {
         const data = response.data.message[0];
 
         setMessageData(data);
-        history.push(`/post/success`);
+        history.push("/message/sent");
       })
       .catch(function (error) {
         console.log(error);

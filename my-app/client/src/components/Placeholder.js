@@ -8,6 +8,7 @@ export default function Placeholder({ childId, getUser }) {
   console.log(childId);
 
   return (
+<<<<<<< HEAD
     <>
       <Layout>
         <div class="container">
@@ -25,5 +26,11 @@ export default function Placeholder({ childId, getUser }) {
         </div>
       </Layout>
     </>
+=======
+    <div>
+      <h1>Message sent!</h1>
+      <p>childId: {childId}</p>
+    </div>
+>>>>>>> main
   );
 }
