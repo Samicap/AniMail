@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import MessageList from "./MessageList";
 import IncomingMessages from "./incomingMessages/incomingMessages";
+import Child from "./Child";
 
 export default function Inbox({ childId }) {
   // const { childId, avatar, speed } = props;
@@ -22,6 +23,7 @@ export default function Inbox({ childId }) {
       <p>INBOX</p>
       <IncomingMessages childMessages={thisChildMessages} />
       <MessageList />
+      <Child childId={childId} />
     </div>
   );
 }

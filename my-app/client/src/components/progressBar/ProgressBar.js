@@ -1,39 +1,36 @@
 import React from "react";
-import {useEffect, useState} from 'react';
-import "react-step-progress-bar/styles.css";
+import { useEffect, useState } from "react";
+// import "react-step-progress-bar/styles.css";
 import "./progressBar.css";
 // import { ProgressBar } from "react-step-progress-bar";
 
 export default function ProgressBar(props) {
-
   const { speed } = props;
 
- const [value, updateValue] = useState(0);
+  const [value, updateValue] = useState(0);
 
   useEffect(() => {
-  
-      const interval = setInterval(() => {
-        updateValue((oldValue) => {
-          const newValue = oldValue + speed;
-          if (newValue >= 100) {
-            clearInterval(interval);
-          }
-          return newValue;
-        });
-      }, 50);
-      return () => clearInterval(interval);
-  
-    }, []);
+    const interval = setInterval(() => {
+      updateValue((oldValue) => {
+        const newValue = oldValue + speed;
+        if (newValue >= 100) {
+          clearInterval(interval);
+        }
+        return newValue;
+      });
+    }, 50);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-      <progress value={value} max="100" />
+    <progress value={value} max="100" />
     // <div>
     //   {if (newValue === 100) {
     //     return <button onClick=""> Open MAIL</button>
-    //     } 
+    //     }
     //   }
     // </div>
-  )
+  );
 }
 
 // export default class ProgressBarApple extends React.Component {
@@ -57,4 +54,3 @@ export default function ProgressBar(props) {
 //     />
 //   )
 // }
-

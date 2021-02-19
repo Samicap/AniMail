@@ -79,7 +79,7 @@ function App() {
               </>
             )}
           />
-          <Route
+          {/* <Route
             path="/child/:id"
             render={() => (
               <>
@@ -91,10 +91,10 @@ function App() {
                 </Layout>
               </>
             )}
-          />
+          /> */}
           <Route path="/post/success" render={() => <Placeholder />} />
           //! Dummy Route Below to test components!
-          <Route
+          {/* <Route
             path="/incomingMessages"
             render={() => <IncomingMessage avatar={"/whale.png"} speed={1} />}
           />
@@ -107,7 +107,7 @@ function App() {
                 speed={1}
               />
             )}
-          />
+          /> */}
           <Route
             path="/test/:id"
             render={() => <Placeholder childId={state.selectedChildId} />}

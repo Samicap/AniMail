@@ -8,29 +8,20 @@ export default function Placeholder({ childId, getUser }) {
   console.log(childId);
 
   return (
-<<<<<<< HEAD
-    <>
-      <Layout>
-        <div class="container">
-          <div class="row">
-            <div class="col-sm">
-              <Child></Child>
-            </div>
-            <div class="col-sm">
-              <Inbox></Inbox>
-            </div>
-            <div class="col-sm">
-              <Inbox></Inbox>
-            </div>
+    <Layout>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            <Child></Child>
+          </div>
+          <div class="col-sm">
+            <Inbox></Inbox>
+          </div>
+          <div class="col-sm">
+            <Inbox></Inbox>
           </div>
         </div>
-      </Layout>
-    </>
-=======
-    <div>
-      <h1>Message sent!</h1>
-      <p>childId: {childId}</p>
-    </div>
->>>>>>> main
+      </div>
+    </Layout>
   );
 }
