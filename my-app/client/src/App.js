@@ -3,7 +3,6 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./components/progressBar/progressBar.css";
 
-import Message from "./components/Message";
 import NavBar from "./components/NavBar";
 import CreateMessage from "./components/CreateMessage";
 import { useState, useEffect } from "react";
@@ -88,7 +87,7 @@ function App() {
 
           <Route
             path="/message/sent"
-            render={() => <Placeholder childId={state.selectedChildId} />}
+            // render={() => <Placeholder childId={state.selectedChildId} />}
           />
 
           <Route

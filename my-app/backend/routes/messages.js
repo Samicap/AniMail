@@ -12,6 +12,8 @@ module.exports = (db) => {
       `SELECT * FROM messages
             LEFT JOIN animals
             ON messages.animal_id = animals.id
+            LEFT JOIN childs
+            ON messages.child_id_from = childs.id
             WHERE messages.child_id_to = $1;`, 
       [req.params.id]
       )

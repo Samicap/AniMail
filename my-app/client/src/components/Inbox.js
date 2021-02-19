@@ -1,27 +1,28 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import MessageList from "./MessageList";
 import IncomingMessages from "./incomingMessages/incomingMessages";
 
-export default function Inbox({ childId }) {
-  // const { childId, avatar, speed } = props;
-  // console.log("CHILD ID >>> ", childId);
 
+export default function Inbox({ childId }) {
   const [thisChildMessages, setThisChildMessages] = useState(null);
+  const [messageId, setMessageId] = useState(0);
+
+  // useEffect
 
   useEffect(() => {
-    axios.get(`/api/messages/children/${childId}`).then((response) => {
+    axios
+    .get(`/api/messages/children/${childId}`)
+    .then((response) => {
       setThisChildMessages(response.data["messages"]);
-      // console.log("MESSAGES >>> ", response.data["messages"]); // returns an array of message objects (containing message and animal info)
-    });
+    })
   }, [childId]);
 
-  return (
-    <div>
-      <p>INBOX</p>
-      <IncomingMessages childMessages={thisChildMessages} />
-      <MessageList />
-    </div>
-  );
-}
+    return (
+      <div>
+        <h1>INBOX</h1>
+        <IncomingMessages childMessages={thisChildMessages} setMessageId={setMessageId} />
+        <MessageList childMessages={thisChildMessages}/>
+      </div>
+    )
+};
