@@ -1,0 +1,16 @@
+.dot {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  height: 5em;
+  width: 5em;
+  background-color: #f2b90c;
+  background-image: url(https://www.shareicon.net/data/512x512/2016/06/26/786560_people_512x512.png);
+  border-radius: 50%;
+}
+
+.netflix {
+  display: flex;
+  justify-content: center;
+  justify-content: space-between;
+}

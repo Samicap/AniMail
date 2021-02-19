@@ -5,6 +5,7 @@ import "./child.css";
 import "./Layout.css";
 import "./login.css";
 import "./inbox.css";
+import "./Netflix.css";
 
 import Message from "./components/Message";
 import NavBar from "./components/NavBar";
@@ -54,9 +55,7 @@ function App() {
             render={() => (
               <>
                 <Layout>
-                  <Child></Child>
                   <LoginForm getUser={getUser} />
-                  <Inbox></Inbox>
                 </Layout>
               </>
             )}
@@ -70,6 +69,20 @@ function App() {
                   <Netflix
                     users={state.currentUser}
                     receiveSelectedChild={receiveSelectedChild}
+                  />
+                </Layout>
+              </>
+            )}
+          />
+
+          <Route
+            path="/child/:id"
+            render={() => (
+              <>
+                <Layout>
+                  <Child
+                    users={state.currentUser}
+                    childID={state.selectedChildId}
                   />
                 </Layout>
               </>

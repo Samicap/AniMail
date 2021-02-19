@@ -5,7 +5,7 @@ import { Navbar } from "react-bootstrap";
 export default function NavBar(props) {
   return (
     <>
-      <Navbar bg="dark" variant="dark">
+      <Navbar text="teal" bg="teal" fixed="top" className="NavStyles">
         <Navbar.Brand href="#home">
           <img
             alt=""
@@ -24,12 +24,17 @@ export default function NavBar(props) {
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">
-              Mailbox
+              Inbox
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">
-              New Letter
+              Outbox
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">
+              New Message
             </a>
           </li>
         </ul>

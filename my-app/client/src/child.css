@@ -11,17 +11,17 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: solid #f2b90c 3px;
+  border: solid #f2f2f2 3px;
   margin: 0 auto;
   margin-bottom: auto;
   margin-top: 20px;
-
+  padding: 30px;
   width: 300px;
   padding-top: 25px;
-  background-color: #4bbfb4;
+  background-color: #f2b90c;
 }
 
 .card-img-top {
-  height: auto;
+  height: 10em;
   width: auto;
 }

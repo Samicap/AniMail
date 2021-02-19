@@ -1,14 +1,31 @@
-export default function Child({childId}) {
+import { useState, useEffect } from "react";
 
-  return  ( <div class="card">
-  <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiMlAbzhA9a-By_ekwI66JAToCZZFkU8jTZA&usqp=CAU" alt="Card image cap"/>
-
-  <div class="card-body">
-        childs_username , childs_age
-  </div>
-  <div class="card-body">
-    childs_location_id
-  </div>
-</div>
- )
+export default function Child({ users, childID }) {
+  console.log("users, childID", users, childID);
+  // const [childstate, setChildState] = useState(null);
+  const filter = users.filter((user) => user.childs_id === childID);
+  // useEffect(() => {
+  //   setChildState(filter);
+  // }, []);
+  // useEffect(() => {
+  //   console.log("childstate", childstate);
+  // }, [childstate]);
+  return (
+    <div class="card">
+      <img
+        class="card-img-top"
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiMlAbzhA9a-By_ekwI66JAToCZZFkU8jTZA&usqp=CAU"
+        alt="Card image cap"
+      />
+      {filter.map((user) => {
+        return (
+          <div class="card-body">
+            {" "}
+            {user.childs_username} {user.childs_age}
+            <div class="card-body">{user.childs_location_id}</div>
+          </div>
+        );
+      })}
+    </div>
+  );
 }
