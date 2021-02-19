@@ -63,7 +63,7 @@ function App() {
 
           <Route
             path="/message/sent"
-            render={() => <Placeholder childId={state.selectedChildId} />}
+            // render={() => <Placeholder childId={state.selectedChildId} />}
           />
 
           <Route
