@@ -1,6 +1,10 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import "./child.css";
+import "./Layout.css";
+import "./login.css";
+import "./inbox.css";
 
 import Message from "./components/Message";
 import NavBar from "./components/NavBar";
@@ -12,6 +16,9 @@ import LoginForm from "./components/LoginForm";
 import Placeholder from "./components/Placeholder";
 import Netflix from "./components/Netflix";
 import Child from "./components/Child";
+import Layout from "./components/layout";
+import HomePage from "./components/HomePage";
+import Inbox from "./components/Inbox";
 
 function App() {
   const [state, setState] = useState({
@@ -39,14 +46,20 @@ function App() {
   return (
     <div className="App">
       <Router>
+        <NavBar></NavBar>
         <Switch>
           <Route
             exact
             path="/"
-            render={() => <>
-            <Child></Child>
-            <LoginForm getUser={getUser} />
-            </>}
+            render={() => (
+              <>
+                <Layout>
+                  <Child></Child>
+                  <LoginForm getUser={getUser} />
+                  <Inbox></Inbox>
+                </Layout>
+              </>
+            )}
           />
 
           <Route

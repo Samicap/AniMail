@@ -1,4 +1,3 @@
-export default function Layout({}) {
-
-  return <h1>I am {}</h1>
+export default function Layout(props) {
+  return <div class="contain">{props.children}</div>;
 }

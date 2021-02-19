@@ -1,0 +1,7 @@
+.contain {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  background-color: purple;
+  width: 0 auto;
+}

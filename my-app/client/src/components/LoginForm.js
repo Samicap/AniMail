@@ -36,7 +36,7 @@ export default function Login({ getUser }) {
   };
 
   return (
-    <section>
+    <section class="loginStyle">
       <h1>Login</h1>
       <form onSubmit={submitHandler}>
         <label htmlFor="name">Email</label>

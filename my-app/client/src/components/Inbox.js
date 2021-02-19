@@ -1,3 +1,13 @@
+import React from "react";
+
+export default function Inbox() {
+  return (
+    <div class="divContain">
+      <h1>Inbox</h1>
+    </div>
+  );
+}
+
 // import { useState, useEffect } from 'react'
 // import axios from 'axios';
 // import { Link } from 'react-router-dom';
@@ -6,8 +16,6 @@
 //   const [parentProfile, setParentProfile] = useState({});
 //   console.log("POPOPOPOPOPOP", userId)
 //   //userid is undefined
-
-  
 
 //   useEffect(() => {
 //     axios
