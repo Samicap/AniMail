@@ -48,6 +48,7 @@ const childrenRoutes = require("./routes/children");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
+//! This server.js allows the front end to connect to the backend DB query routes
 app.use("/api/login", loginRoutes(db));
 app.use("/api/profiles/parents", parentsRoutes(db));
 app.use("/api/users", usersRoutes(db));

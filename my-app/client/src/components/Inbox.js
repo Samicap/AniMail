@@ -30,7 +30,9 @@ export default function Inbox({ childId }) {
           const messageCopy = message;
 
           messageCopy.is_received = isMessageReceived;
+          //! this line changes the state? from false to true
           messageListCopy.splice(index, 1, messageCopy);
+          //! this takes last message from the prev.state and adds it to the array??
 
           return { ...prev, messages: [...messageListCopy] };
         }

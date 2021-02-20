@@ -63,10 +63,10 @@ function App() {
           />
           //! This route needs to change.  CreateMessage  needsits own route linked from the 📥 
           //! path="/child/:id/createMessage"
-          {/* // <Route
-          //   path="/inbox/children/:id"
-          //   render={() => <CreateMessage childId={state.selectedChildId} />}
-          // /> */}
+          // <Route
+            path="/inbox/children/:id/create-message"
+            render={() => <CreateMessage childId={state.selectedChildId} />}
+          />
 
           <Route
             path="/message/sent"

@@ -36,7 +36,7 @@ export default function ProgressBar(props) {
     } else {
       return (
         //! this should be set to true!
-        <button onClick={() => setIsMessageReceived(false, messageId)}>
+        <button onClick={() => setIsMessageReceived(true, messageId)}>
           Open MAIL
         </button>
       );
