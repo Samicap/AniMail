@@ -23,6 +23,7 @@ import Child from "./components/Child";
 import Layout from "./components/Layout";
 import HomePage from "./components/HomePage";
 import Placeholder from "./components/Placeholder";
+import NavBar from "./components/NavBar";
 
 function App() {
   const [state, setState] = useState({
@@ -53,7 +54,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        {/* <NavBar /> */}
+        <NavBar />
         <Switch>
           <Route
             exact
