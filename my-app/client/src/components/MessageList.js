@@ -3,17 +3,18 @@ import { useState, useEffect } from "react";
 import MessageListItem from "./MessageListItem";
 
 export default function MessageList({childMessages}) {
-  const messages = childMessages && childMessages.map(child => (
+  console.log("HERE >>>>> ", childMessages)
+  const messages = childMessages && childMessages.map(message => (
     <MessageListItem
-      key={child.id}
-      id={child.id}
-      senderName={child.username}
-      senderAge={child.age}
-      senderLocation={child.location}
-      dateReceived={child.datetime_receiving}
-      animalAvatar={child.avatar_url}
-      message={child.message}
-      // selected={child.id === props.interviewer}
+      key={message.message_id}
+      id={message.message_id}
+      senderName={message.sender_name}
+      senderAge={message.sender_age}
+      senderLocation={message.sender_location_name}
+      dateReceived={message.datetime_receiving}
+      animalAvatar={message.animal_avatar}
+      message={message.message}
+      // selected={message.id === props.interviewer}
       // setInterviewer={event => props.setInterviewer(interviewer.id)}
     />
   ));
