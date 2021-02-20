@@ -1,6 +1,7 @@
 import React from "react";
 import Bootstrap from "bootstrap";
 import { Navbar } from 'react-bootstrap';
+import { Link } from 'react';
 
 export default function NavBar(props) {
   return (<>
@@ -23,7 +24,7 @@ export default function NavBar(props) {
           <a class="nav-link active" aria-current="page" href="#">Mailbox</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">New Letter</a>
+          <a class="nav-link active" aria-current="page" Link to="/inbox/children/:id/create-message">New Letter</a>
         </li>
       </ul>
       <Navbar.Collapse className="justify-content-end">

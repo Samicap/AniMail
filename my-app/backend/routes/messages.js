@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 
-
 // make a route to pull up all messages
 //helper funtion to format into [{}]
 //chekc all queries that they are in the right format for the front to receive them
@@ -56,8 +55,12 @@ module.exports = (db) => {
         LEFT JOIN languages t5 ON t1.language_id = t5.id
         LEFT JOIN languages t6 ON t2.language_id = t6.id
         WHERE messages.child_id_to = $1;`, 
+      // `SELECT * FROM messages
+      //       LEFT JOIN animals
+      //       ON messages.animal_id = animals.id
+      //       WHERE messages.child_id_to = $1;`,
       [req.params.id]
-      )
+    )
       .then((data) => {
         console.log("data", data.rows);
         const messages = data.rows;
