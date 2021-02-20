@@ -1,40 +1,53 @@
 import React from "react";
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from "react";
 import "react-step-progress-bar/styles.css";
+// import Message from "./Message";
 import "./progressBar.css";
 // import { ProgressBar } from "react-step-progress-bar";
 
 export default function ProgressBar(props) {
+  const { speed, messageId, setIsMessageReceived } = props;
 
-  const { speed } = props;
+  const [value, setValue] = useState(0);
 
- const [value, updateValue] = useState(0);
+  //! newValue is value becacuse the setState is making that the new state.
 
   useEffect(() => {
-  
-      const interval = setInterval(() => {
-        updateValue((oldValue) => {
-          const newValue = oldValue + speed;
-          if (newValue >= 100) {
-            clearInterval(interval);
-          }
-          return newValue;
-        });
-      }, 50);
-      return () => clearInterval(interval);
-  
-    }, []);
+    const interval = setInterval(() => {
+      setValue((oldValue) => {
+        const newValue = oldValue + speed;
+        if (newValue >= 100) {
+          clearInterval(interval);
+        }
+        return newValue;
+      });
+    }, 50);
+    return () => clearInterval(interval);
+  }, []);
 
-  return (
-      <progress value={value} max="100" />
-    // <div>
-    //   {if (newValue === 100) {
-    //     return <button onClick=""> Open MAIL</button>
-    //     } 
-    //   }
-    // </div>
-  )
+  // console.log("CLEAR interval >>>>>>>", clearInterval(interval));
+  //! currently can't access newValue outside of the useEffect
+  //! What is another way that i can make the progress bar display if the newBalue
+  //! is less than 100.
+  //! How can I make an open button appear if newValue = 100 meaning message has arrived
+  const showButton = () => {
+    if (value < 100) {
+      return <progress value={value} max="100" />;
+    } else {
+      return (
+        //! this should be set to true!
+        <button onClick={() => setIsMessageReceived(true, messageId)}>
+          Open MAIL
+        </button>
+      );
+    }
+  };
+
+  return <div>{showButton()}</div>;
 }
+
+//!===========================================================================
+//! Old code below this line that is not in use!
 
 // export default class ProgressBarApple extends React.Component {
 //   render() {
@@ -57,4 +70,3 @@ export default function ProgressBar(props) {
 //     />
 //   )
 // }
-
