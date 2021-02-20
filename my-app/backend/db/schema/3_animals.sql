@@ -5,8 +5,5 @@ CREATE TABLE animals (
   name VARCHAR(255) NOT NULL,
   speed INTEGER NOT NULL,
   description text,
-  avatar_url text NOT NULL,
-  is_air BOOLEAN NOT NULL,
-  is_land BOOLEAN NOT NULL,
-  is_water BOOLEAN NOT NULL
+  avatar_url text NOT NULL
 );

@@ -1,7 +1,6 @@
 import React from "react";
-import { useEffect, useState } from "react";
-import "react-step-progress-bar/styles.css";
-// import Message from "./Message";
+import {useEffect, useState} from 'react';
+// import "react-step-progress-bar/styles.css";
 import "./progressBar.css";
 // import { ProgressBar } from "react-step-progress-bar";
 
