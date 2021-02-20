@@ -5,6 +5,7 @@ import MessageListItem from "./MessageListItem";
 export default function MessageList({messages}) {
   console.log("HERE >>>>> ", messages)
   const allMessages = messages && messages.map(message => (
+    message.is_received &&
     <MessageListItem
       key={message.message_id}
       id={message.message_id}
