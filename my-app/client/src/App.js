@@ -14,8 +14,6 @@ import Inbox from "./components/Inbox";
 import Netflix from "./components/Netflix";
 import Placeholder from "./components/Placeholder";
 
-import ProgressBarApple from "./components/progressBar/ProgressBar";
-import IncomingMessage from "./components/incomingMessages/incomingMessages";
 
 function App() {
   const [state, setState] = useState({
@@ -64,17 +62,13 @@ function App() {
           />
           <Route path="/post/success" render={() => <Placeholder />} />
           //! Dummy Route Below to test components!
-          <Route
-            path="/incomingMessages"
-            render={() => <IncomingMessage avatar={"/whale.png"} speed={1} />}
-          />
+          //Todo because this is cool
+
           <Route
             path="/inbox"
             render={() => (
               <Inbox
                 childId={state.selectedChildId}
-                avatar={"/whale.png"}
-                speed={1}
               />
             )}
           />
