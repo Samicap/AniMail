@@ -11,7 +11,7 @@ export default function IncomingMessage({ childMessages }) {
   //! Props need to have the animal chosen and the speed
   //! expecting this to be an object {animal}
 
-  const [currentAnimalAvatar, setCurrentAnimalAvatar] = useState({avatar: null})
+  // const [currentAnimalAvatar, setCurrentAnimalAvatar] = useState({avatar: null})
   
   const appleBABY = (childMessages) => {
     return childMessages && childMessages.map(animal => {
@@ -35,7 +35,7 @@ export default function IncomingMessage({ childMessages }) {
           return (
             <div key={animal}>
               <img src={animal.avatar} />
-              <ProgressBar speed={.2} />
+              <ProgressBar speed={.04} />
             </div>
           )
         }) }
