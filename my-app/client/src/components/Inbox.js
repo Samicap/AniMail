@@ -29,7 +29,10 @@ export default function Inbox({ childId }) {
           // if you can t mutate an array directly, it cant update because it points to same reference
           const messageCopy = message;
 
+          console.log("MESSAGE IN UPDATED INBOX", messageCopy)
+
           messageCopy.is_received = isMessageReceived;
+          messageCopy.dateTime_receiving = Date.now();
           //! this line changes the state? from false to true
           messageListCopy.splice(index, 1, messageCopy);
           //! this takes last message from the prev.state and adds it to the array??

@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import "react-step-progress-bar/styles.css";
+// import "react-step-progress-bar/styles.css";
 // import Message from "./Message";
 import "./progressBar.css";
 // import { ProgressBar } from "react-step-progress-bar";
@@ -36,7 +36,7 @@ export default function ProgressBar(props) {
     } else {
       return (
         //! this should be set to true!
-        <button onClick={() => setIsMessageReceived(true, messageId)}>
+        <button onClick={() => setIsMessageReceived(false, messageId)}>
           Open MAIL
         </button>
       );
