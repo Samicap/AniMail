@@ -39,7 +39,7 @@ module.exports = (db) => {
     console.log("child_id ", child_id);
 
     if (child_id_to === "" || message === "" || animal_id === "") {
-      res.status(401).send("There are empty fields in the form.");
+      res.status(400).send("There are empty fields in the form.");
       return;
     }
     return db

@@ -8,9 +8,13 @@ import { useHistory } from "react-router-dom";
 export default function CreateMessage({ childId }) {
   const [formData, setFormData] = useState({
     child_id_to: "",
-    animal_id: "",
+    animal_id: "1",
     text: "",
   });
+
+  useEffect(() => {
+    console.log(formData);
+  }, [formData]);
 
   const [messageData, setMessageData] = useState(null);
   //const [penPal, setPenPal] = useState(null);
@@ -41,6 +45,7 @@ export default function CreateMessage({ childId }) {
       })
       .catch(function (error) {
         console.log(error);
+        console.log(error.message);
       });
   };
 
