@@ -15,7 +15,6 @@ import Inbox from "./components/Inbox";
 import Netflix from "./components/Netflix";
 import Placeholder from "./components/Placeholder";
 
-
 function App() {
   const [state, setState] = useState({
     currentUser: null,
@@ -61,29 +60,21 @@ function App() {
               />
             )}
           />
-          //! This route needs to change.  CreateMessage  needsits own route linked from the 📥 
-          //! path="/child/:id/createMessage"
-          // <Route
+          //! This route needs to change. CreateMessage needsits own route
+          linked from the 📥 //! path="/child/:id/createMessage" //{" "}
+          <Route
             path="/inbox/children/:id/create-message"
             render={() => <CreateMessage childId={state.selectedChildId} />}
           />
-
           <Route
             path="/message/sent"
             render={() => <Placeholder childId={state.selectedChildId} />}
           />
-
           <Route path="/post/success" render={() => <Placeholder />} />
-          //! Dummy Route Below to test components!
-          //Todo because this is cool
-
+          //! Dummy Route Below to test components! //Todo because this is cool
           <Route
             path="/inbox/children/:id"
-            render={() => (
-              <Inbox
-                childId={state.selectedChildId}
-              />
-            )}
+            render={() => <Inbox childId={state.selectedChildId} />}
           />
           {/* <Route
             path="/test/:id"
@@ -92,12 +83,10 @@ function App() {
             path="/message"
             render={() => <CreateMessage childId={state.selectedChildId} />}
           /> */}
-
           <Route
             path="/message/sent"
             // render={() => <Placeholder childId={state.selectedChildId} />}
           />
-
           <Route
             path="/inbox/children/:id"
             render={() => <Inbox childId={state.selectedChildId} />}
