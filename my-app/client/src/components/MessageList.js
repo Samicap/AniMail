@@ -2,9 +2,9 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import MessageListItem from "./MessageListItem";
 
-export default function MessageList({childMessages}) {
-  console.log("HERE >>>>> ", childMessages)
-  const messages = childMessages && childMessages.map(message => (
+export default function MessageList({messages}) {
+  console.log("HERE >>>>> ", messages)
+  const allMessages = messages && messages.map(message => (
     <MessageListItem
       key={message.message_id}
       id={message.message_id}
@@ -23,7 +23,7 @@ export default function MessageList({childMessages}) {
     <section>
       <h1>I am MessageList</h1>
         <ul>
-          {messages}
+          {allMessages}
         </ul>
     </section>
   )
