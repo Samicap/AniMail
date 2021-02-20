@@ -11,7 +11,7 @@ import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import LoginForm from "./components/LoginForm";
-//import Inbox from "./components/Inbox";
+import Inbox from "./components/Inbox";
 import Netflix from "./components/Netflix";
 import Placeholder from "./components/Placeholder";
 
@@ -61,35 +61,37 @@ function App() {
               />
             )}
           />
-          <Route
-            path="/inbox/children/:id"
-            render={() => <CreateMessage childId={state.selectedChildId} />}
-          />
+          //! This route needs to change.  CreateMessage  needsits own route linked from the 📥 
+          //! path="/child/:id/createMessage"
+          {/* // <Route
+          //   path="/inbox/children/:id"
+          //   render={() => <CreateMessage childId={state.selectedChildId} />}
+          // /> */}
 
           <Route
             path="/message/sent"
             render={() => <Placeholder childId={state.selectedChildId} />}
           />
 
-          {/* <Route path="/post/success" render={() => <Placeholder />} />
+          <Route path="/post/success" render={() => <Placeholder />} />
           //! Dummy Route Below to test components!
           //Todo because this is cool
 
           <Route
-            path="/inbox"
+            path="/inbox/children/:id"
             render={() => (
               <Inbox
                 childId={state.selectedChildId}
               />
             )}
           />
-          <Route
+          {/* <Route
             path="/test/:id"
             render={() => <Placeholder childId={state.selectedChildId} />}
             exact
             path="/message"
             render={() => <CreateMessage childId={state.selectedChildId} />}
-          />
+          /> */}
 
           <Route
             path="/message/sent"
@@ -99,7 +101,7 @@ function App() {
           <Route
             path="/inbox/children/:id"
             render={() => <Inbox childId={state.selectedChildId} />}
-          /> */}
+          />
         </Switch>
       </Router>
     </div>
