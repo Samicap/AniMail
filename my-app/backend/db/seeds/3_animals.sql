@@ -1,6 +1,9 @@
-INSERT INTO animals (name, speed, avatar_url) VALUES ('Zebra', 65, 'https://www.flaticon.com/svg/vstatic/svg/714/714011.svg?token=exp=1613346041~hmac=87dc8721fd0a92c8b4cb0284fbcb199d');
-INSERT INTO animals (name, speed, avatar_url) VALUES ('Llama', 35, 'https://www.flaticon.com/svg/vstatic/svg/714/714034.svg?token=exp=1613346182~hmac=c9fa0b192305aaece2883e2490ddda7d');
-INSERT INTO animals (name, speed, avatar_url) VALUES ('Owl', 400, 'https://www.flaticon.com/svg/vstatic/svg/3528/3528292.svg?token=exp=1613346280~hmac=2b734c881b175de1b1728d0565814a4e');
-INSERT INTO animals (name, speed, avatar_url) VALUES ('Dove', 88, 'https://www.flaticon.com/svg/vstatic/svg/3770/3770392.svg?token=exp=1613346507~hmac=4c699911bc87b559ff41100d5e5562a1');
-INSERT INTO animals (name, speed, avatar_url) VALUES ('Shark', 50, 'https://www.flaticon.com/svg/vstatic/svg/4033/4033943.svg?token=exp=1613346762~hmac=30ac99d3d7804f5ad7d27ef340b22333');
-INSERT INTO animals (name, speed, avatar_url) VALUES ('Octopus', 40, 'https://www.flaticon.com/svg/vstatic/svg/4033/4033877.svg?token=exp=1613346860~hmac=4a016d24594244805672ba87feee8eed');
+INSERT INTO animals (name, speed, avatar_url) VALUES ('Zebra', 65, '/zebra.png');
+INSERT INTO animals (name, speed, avatar_url) VALUES ('Llama', 35, '/llama.png');
+INSERT INTO animals (name, speed, avatar_url) VALUES ('Owl', 400, '/owl.png');
+INSERT INTO animals (name, speed, avatar_url) VALUES ('Dove', 88, '/dove.png');
+INSERT INTO animals (name, speed, avatar_url) VALUES ('Shark', 50, '/shark.png');
+INSERT INTO animals (name, speed, avatar_url) VALUES ('Octopus', 40, '/octopus.png');
+INSERT INTO animals (name, speed, avatar_url) VALUES ('Phoenix', 800, '/phoenix.png');
+INSERT INTO animals (name, speed, avatar_url) VALUES ('Unicorn', 900, '/unicorn.png');
+INSERT INTO animals (name, speed, avatar_url) VALUES ('Dragon', 1000, '/dragon.png');
