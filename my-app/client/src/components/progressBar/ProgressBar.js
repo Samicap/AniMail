@@ -1,15 +1,16 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import "react-step-progress-bar/styles.css";
+import Message from "../Message";
 import "./progressBar.css";
 // import { ProgressBar } from "react-step-progress-bar";
 
 export default function ProgressBar(props) {
-  const { speed } = props;
+  const { speed, messageId, setIsMessageReceived } = props;
 
   const [value, setValue] = useState(0);
 
-//! newValue is value becacuse the setState is making that the new state.
+  //! newValue is value becacuse the setState is making that the new state.
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -31,17 +32,18 @@ export default function ProgressBar(props) {
   //! How can I make an open button appear if newValue = 100 meaning message has arrived
   const showButton = () => {
     if (value < 100) {
-      return (<progress value={value} max="100" />) 
+      return <progress value={value} max="100" />;
     } else {
-      return (<button> Open MAIL</button>)
+      return (
+        //! this should be set to true!
+        <button onClick={() => setIsMessageReceived(false, messageId)}>
+          Open MAIL
+        </button>
+      );
     }
-  }
+  };
 
-  return (
-    <div>
-      {showButton()}
-    </div>
-  );
+  return <div>{showButton()}</div>;
 }
 
 //!===========================================================================
