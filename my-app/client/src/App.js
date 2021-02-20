@@ -18,7 +18,7 @@ import LoginForm from "./components/LoginForm";
 import Inbox from "./components/Inbox";
 import Netflix from "./components/Netflix";
 import Child from "./components/Child";
-import Layout from "./components/layout";
+import Layout from "./components/Layout";
 import HomePage from "./components/HomePage";
 import Placeholder from "./components/Placeholder";
 import ProgressBarApple from "./components/progressBar/ProgressBar";
@@ -121,7 +121,13 @@ function App() {
           />
           <Route
             path="/inbox/children/:id"
-            render={() => <Inbox childId={state.selectedChildId} />}
+            render={() => (
+              <>
+                <Layout>
+                  <Inbox childId={state.selectedChildId} />
+                </Layout>
+              </>
+            )}
           />
         </Switch>
       </Router>

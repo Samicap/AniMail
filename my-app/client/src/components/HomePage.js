@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "./layout.js";
+import Layout from "./Layout.js";
 import Child from "./Child.js";
 import LoginForm from "./LoginForm";
 
