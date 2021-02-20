@@ -24,7 +24,7 @@ export default function MessageListItem(props) {
             </Col>
             <Col>
               <Image id="avatar"
-                // src="{props.animalAvatar}"
+              src={props.animalAvatar}
               />
             </Col>
           </Row>

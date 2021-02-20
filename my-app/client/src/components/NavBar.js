@@ -9,12 +9,12 @@ export default function NavBar(props) {
       <Navbar.Brand href="#home">
         <img
           alt=""
-          src="/whale.png"
+          src="/logo05.png"
           width="30"
           height="30"
           className="d-inline-block align-top"
         />{' '}
-        WHALE MAIL
+        ANIMAIL
       </Navbar.Brand>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
