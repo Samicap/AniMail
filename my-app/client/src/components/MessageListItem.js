@@ -12,7 +12,7 @@ export default function MessageListItem(props) {
   return (
     <Accordion>
       <Card>
-        <Accordion.Toggle as={Card.Header} eventKey="0">
+        <Accordion.Toggle as={Card.Header} eventKey="0" style={{ backgroundColor: '#F2B90C' }}>
           <Row>
             <Col>
               <Row>
