@@ -10,7 +10,7 @@ export default function MessageListItem(props) {
   console.log("PROPS >>> ", props)
 
   return (
-    <Accordion defaultActiveKey="0">
+    <Accordion>
       <Card>
         <Accordion.Toggle as={Card.Header} eventKey="0">
           <Row>
