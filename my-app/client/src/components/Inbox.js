@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import MessageList from "./MessageList";
 import IncomingMessageList from "./incomingMessages/IncomingMessageList";
 import Child from "./Child";
@@ -56,3 +55,27 @@ export default function Inbox({ childId }) {
     </div>
   );
 }
+//!==============================================================
+//! Code below this line is what Naz has for the messageList component
+// export default function Inbox({ childId }) {
+//   const [thisChildMessages, setThisChildMessages] = useState(null);
+//   const [messageId, setMessageId] = useState(0);
+
+//   // useEffect
+
+//   useEffect(() => {
+//     axios
+//     .get(`/api/messages/children/${childId}`)
+//     .then((response) => {
+//       setThisChildMessages(response.data["messages"]);
+//     })
+//   }, [childId]);
+
+//     return (
+//       <div>
+//         <h1>INBOX</h1>
+//         <IncomingMessages childMessages={thisChildMessages} setMessageId={setMessageId} />
+//         <MessageList childMessages={thisChildMessages}/>
+//       </div>
+//     )
+// };
