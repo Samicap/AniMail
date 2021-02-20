@@ -26,7 +26,6 @@ export default function Inbox({ childId }) {
         message.dateTime_receiving = Date.now();
       }
     })
-    console.log("BABYBANANA", messagesCopy)
     setMessages(messagesCopy)
     // axios.post(`/api/messages/children/${childId}`)
     //! need to make backend route to update DB
