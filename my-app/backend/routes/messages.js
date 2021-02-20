@@ -10,10 +10,9 @@ module.exports = (db) => {
   router.get("/children/:id", (req, res) => {
     db.query(
       `SELECT * FROM messages
-            LEFT JOIN animals
-            ON messages.animal_id = animals.id
-            LEFT JOIN childs
-            ON messages.child_id_from = childs.id
+            LEFT JOIN animals ON messages.animal_id = animals.id
+            LEFT JOIN childs ON messages.child_id_from = childs.id
+            LEFT JOIN locations ON childs.location_id = childs.id
             WHERE messages.child_id_to = $1;`, 
       [req.params.id]
       )
