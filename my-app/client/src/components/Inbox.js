@@ -6,54 +6,42 @@ import Child from "./Child";
 import { preventOverflow } from "@popperjs/core";
 
 export default function Inbox({ childId }) {
-  // const { childId, avatar, speed } = props;
-  console.log("CHILD ID >>> ", childId);
 
-  const [state, setState] = useState({ messages: [] });
+  const [messages, setMessages] = useState([]);
+
 
   useEffect(() => {
     axios.get(`/api/messages/children/${childId}`).then((response) => {
-      const messages = response.data["messages"];
-      setState((prev) => ({ ...prev, messages }));
-      console.log("MESSAGES >>> ", response.data["messages"]); // returns an array of message objects (containing message and animal info)
+      setMessages(response.data["messages"])
+       // returns an array of message objects (containing message and animal info)
     });
   }, [childId]);
 
-  const setIsMessageReceived = (isMessageReceived, messageId) => {
-    setState((prev) => {
-      prev.messages.forEach((message, index) => {
-        console.log("CANDY", message)
-        if (message.id === messageId) {
-          console.log("ORANGES", messageId)
-          const messageListCopy = prev.messages;
-          // if you can t mutate an array directly, it cant update because it points to same reference
-          const messageCopy = message;
-
-          console.log("MESSAGE IN UPDATED INBOX", messageCopy)
-
-          messageCopy.is_received = isMessageReceived;
-          messageCopy.dateTime_receiving = Date.now();
-          //! this line changes the state? from false to true
-          messageListCopy.splice(index, 1, messageCopy);
-          //! this takes last message from the prev.state and adds it to the array??
-
-          return { ...prev, messages: [...messageListCopy] };
-        }
-      });
-      return {...prev}
-    });
+  const setIsMessageReceived = (messageId) => {
+    const messagesCopy = [...messages]
+    //! copy of current messages
+    messagesCopy.forEach(message => {
+      if (message.message_id === messageId) {
+        message.is_received = true;
+        message.dateTime_receiving = Date.now();
+      }
+    })
+    console.log("BABYBANANA", messagesCopy)
+    setMessages(messagesCopy)
+    // axios.post(`/api/messages/children/${childId}`)
+    //! need to make backend route to update DB
   };
 
   return (
     <div>
       <p>INBOX</p>
-      {state && (
+      {messages.length && (
         <>
           <IncomingMessageList
             setIsMessageReceived={setIsMessageReceived}
-            messages={state.messages}
+            messages={messages}
           />
-          <MessageList messages={state.messages} />
+          <MessageList messages={messages} />
         </>
       )}
       <Child childId={childId} />

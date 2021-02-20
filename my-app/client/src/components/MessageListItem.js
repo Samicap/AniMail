@@ -7,8 +7,6 @@ import { Row, Col, Image } from "react-bootstrap";
 
 export default function MessageListItem(props) {
 
-  console.log("PROPS >>> ", props)
-
   return (
     <Accordion defaultActiveKey="0">
       <Card>
