@@ -7,9 +7,11 @@ import "./login.css";
 import "./inbox.css";
 import "./Netflix.css";
 import "./components/progressBar/progressBar.css";
+//import "./components/progressBar/progressBar.css";
 
-import Message from "./components/Message";
-import NavBar from "./components/NavBar";
+//import Message from "./components/Message";
+//import NavBar from "./components/NavBar";
+//import NavBar from "./components/NavBar";
 import CreateMessage from "./components/CreateMessage";
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -21,8 +23,6 @@ import Child from "./components/Child";
 import Layout from "./components/Layout";
 import HomePage from "./components/HomePage";
 import Placeholder from "./components/Placeholder";
-import ProgressBarApple from "./components/progressBar/ProgressBar";
-import IncomingMessage from "./components/incomingMessages/incomingMessages";
 
 function App() {
   const [state, setState] = useState({
@@ -53,7 +53,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <NavBar />
+        {/* <NavBar /> */}
         <Switch>
           <Route
             exact
@@ -79,45 +79,35 @@ function App() {
               </>
             )}
           />
-          {/* <Route
-            path="/child/:id"
-            render={() => (
-              <>
-                <Layout>
-                  <Child
-                    users={state.currentUser}
-                    childID={state.selectedChildId}
-                  />
-                </Layout>
-              </>
-            )}
-          /> */}
-          <Route path="/post/success" render={() => <Placeholder />} />
-          //! Dummy Route Below to test components!
-          {/* <Route
-            path="/incomingMessages"
-            render={() => <IncomingMessage avatar={"/whale.png"} speed={1} />}
-          />
+          //! This route needs to change. CreateMessage needsits own route
+          linked from the 📥 //! path="/child/:id/createMessage" //{" "}
           <Route
-            path="/inbox"
-            render={() => (
-              <Inbox
-                childId={state.selectedChildId}
-                avatar={"/whale.png"}
-                speed={1}
-              />
-            )}
-          /> */}
-          <Route
-            path="/test/:id"
-            render={() => <Placeholder childId={state.selectedChildId} />}
-            exact
-            path="/message"
+            path="/inbox/children/:id/create-message"
             render={() => <CreateMessage childId={state.selectedChildId} />}
           />
           <Route
             path="/message/sent"
             render={() => <Placeholder childId={state.selectedChildId} />}
+          />
+          <Route path="/post/success" render={() => <Placeholder />} />
+          //! Dummy Route Below to test components! //Todo because this is cool
+          <Route
+            path="/inbox/children/:id"
+            render={() => <Inbox childId={state.selectedChildId} />}
+          />
+          {/* <Route
+            path="/test/:id"
+            render={() => <Placeholder childId={state.selectedChildId} />}
+            exact
+            path="/message"
+            render={() => <CreateMessage childId={state.selectedChildId} />}
+<<<<<<< HEAD
+          />
+=======
+          /> */}
+          <Route
+            path="/message/sent"
+            // render={() => <Placeholder childId={state.selectedChildId} />}
           />
           <Route
             path="/inbox/children/:id"

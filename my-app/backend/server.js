@@ -43,15 +43,20 @@ const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
 const messagesRoutes = require("./routes/messages");
 const profilesRoutes = require("./routes/profiles");
+const childrenRoutes = require("./routes/children");
+//! children Route and routes/children.js do nearly the same thing, but profiles routes fetches specific data to populate the child profile in the inbox that has location name.
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
+//! This server.js allows the front end to connect to the backend DB query routes
 app.use("/api/login", loginRoutes(db));
 app.use("/api/profiles/parents", parentsRoutes(db));
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 app.use("/api/messages", messagesRoutes(db));
 app.use("/api/profiles", profilesRoutes(db));
+app.use("/api/children", childrenRoutes(db));
+//! /api/children is nearly a duplicate of /api/profiles but data fetches is less specific
 // Note: mount other resources here, using the same pattern above
 
 // Home page
