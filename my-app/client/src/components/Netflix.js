@@ -24,6 +24,7 @@ export default function Netflix({ users, onSelectChild }) {
           return (
             <div class="dot">
               <li
+              //! this isnt being used?
                 key={user.childs_id}
                 onClick={() => getSelectedChild(user.childs_id)}
               >
