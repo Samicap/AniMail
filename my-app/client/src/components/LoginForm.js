@@ -38,10 +38,13 @@ export default function Login({ getUser }) {
   return (
     <section class="loginStyle">
       <h1>Welcome to Animail!</h1>
-      <h1>Login</h1>
+      <h1>Parent Login</h1>
       <form class="loginForm" onSubmit={submitHandler}>
-        <label htmlFor="name">Email</label>
+        <label class="logLabel" htmlFor="name">
+          Email:
+        </label>
         <input
+          class="logInput"
           type="text"
           name="email"
           onChange={(event) =>
@@ -49,8 +52,11 @@ export default function Login({ getUser }) {
           }
           value={loginInfo.email}
         />
-        <label htmlFor="password">Password</label>
+        <label class="logLabel" htmlFor="password">
+          Password:
+        </label>
         <input
+          class="logInput"
           type="password"
           name="email"
           onChange={(event) =>
@@ -58,7 +64,7 @@ export default function Login({ getUser }) {
           }
           value={loginInfo.password}
         />
-        <input type="submit" value="Login" />
+        <input class="logButton" type="submit" value="Login" />
       </form>
     </section>
   );

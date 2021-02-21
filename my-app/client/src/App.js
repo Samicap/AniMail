@@ -5,7 +5,7 @@ import "./child.css";
 import "./Layout.css";
 import "./login.css";
 import "./inbox.css";
-import "./Netflix.css";
+import "./Netflix.scss";
 import "./components/progressBar/progressBar.css";
 //import "./components/progressBar/progressBar.css";
 
