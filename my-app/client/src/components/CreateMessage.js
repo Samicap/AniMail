@@ -9,7 +9,7 @@ export default function CreateMessage({ childId }) {
   const [formData, setFormData] = useState({
     child_id_to: "",
     animal_id: "1",
-    text: "",
+    text: ""
   });
 
   const [messageData, setMessageData] = useState(null);
