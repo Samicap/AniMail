@@ -10,7 +10,7 @@ module.exports = (db) => {
               LEFT JOIN childs ON parent_childs.child_id = childs.id
               WHERE parents.id = $1;`, [req.params.id])
       .then(data => {
-        console.log('data', data.rows);
+        // console.log('data', data.rows);
         const parents = data.rows;
         res.json({ parents });
       })

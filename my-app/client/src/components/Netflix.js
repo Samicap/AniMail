@@ -2,13 +2,17 @@ import { useState, useEffect } from "react";
 // import { localStorage } from "reactjs-localstorage";
 import { Link } from "react-router-dom";
 
+<<<<<<< HEAD
 export default function Netflix({ users, receiveSelectedChild }) {
+=======
+export default function Netflix({ users, onSelectChild }) {
+>>>>>>> main
 
   const [selectedChild, setSelectedChild] = useState(null);
 
   const getSelectedChild = (childId) => {
     setSelectedChild(childId);
-    receiveSelectedChild(childId);
+    onSelectChild(childId);
   };
 
   // useEffect(() => {
@@ -23,6 +27,7 @@ export default function Netflix({ users, receiveSelectedChild }) {
           return (
             <div class="dot">
               <li
+              //! this isnt being used?
                 key={user.childs_id}
                 onClick={() => getSelectedChild(user.childs_id)}
               >

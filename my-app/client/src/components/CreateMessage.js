@@ -6,9 +6,11 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 
 export default function CreateMessage({ childId }) {
+
+  console.log("INCOMING CHILD ID FROM APP BABY", childId)
   const [formData, setFormData] = useState({
     child_id_to: "",
-    animal_id: "",
+    animal_id: "1",
     text: "",
   });
 
@@ -33,7 +35,7 @@ export default function CreateMessage({ childId }) {
         animal_id: formData.animal_id,
       })
       .then(function (response) {
-        //console.log(response.data.message[0]);
+        console.log("BOOM CHICKA POP", response.data.message[0]);
         const data = response.data.message[0];
 
         setMessageData(data);
@@ -43,7 +45,7 @@ export default function CreateMessage({ childId }) {
         console.log(error);
       });
   };
-
+  //! Routes in children file
   const getRandomPenPal = () => {
     axios
       .get(`/api/children/${childId}`)
@@ -132,6 +134,9 @@ export default function CreateMessage({ childId }) {
             <option value="4">Dove</option>
             <option value="5">Shark</option>
             <option value="6">Octopus</option>
+            <option value="7">Phoenix</option>
+            <option value="8">Unicorn</option>
+            <option value="9">Dragon</option>
           </Form.Control>
         </Col>
       </Form.Group>

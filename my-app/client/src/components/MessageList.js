@@ -1,10 +1,12 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
+
 import MessageListItem from "./MessageListItem";
 
-export default function MessageList({childMessages}) {
-  console.log("HERE >>>>> ", childMessages)
-  const messages = childMessages && childMessages.map(message => (
+export default function MessageList({ messages }) {
+  const allMessages = messages && messages.map(message => {
+    if (message && !message.is_received) {
+      return null
+    }
+    return (
     <MessageListItem
       key={message.message_id}
       id={message.message_id}
@@ -17,13 +19,13 @@ export default function MessageList({childMessages}) {
       // selected={message.id === props.interviewer}
       // setInterviewer={event => props.setInterviewer(interviewer.id)}
     />
-  ));
+  )});
   
   return (
     <section>
       <h1>I am MessageList</h1>
         <ul>
-          {messages}
+          {allMessages}
         </ul>
     </section>
   )
