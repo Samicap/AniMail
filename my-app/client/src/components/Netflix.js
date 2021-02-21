@@ -2,11 +2,7 @@ import { useState, useEffect } from "react";
 // import { localStorage } from "reactjs-localstorage";
 import { Link } from "react-router-dom";
 
-<<<<<<< HEAD
-export default function Netflix({ users, receiveSelectedChild }) {
-=======
 export default function Netflix({ users, onSelectChild }) {
->>>>>>> main
 
   const [selectedChild, setSelectedChild] = useState(null);
 

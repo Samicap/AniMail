@@ -24,13 +24,15 @@ export default function Inbox({ childId }) {
     //! copy of current messages
     messagesCopy.forEach((message) => {
       if (message.message_id === messageId) {
+        // console.log("BUUUUGG", message.message_id)
+        // console.log("FUUUUUUUUUCK", messageId)
         message.is_received = true;
         message.dateTime_receiving = currentDateTime;
       }
     });
     setMessages(messagesCopy);
     axios.put(`/api/messages/children/${childId}/received-message/${messageId}`, { time : currentDateTime}).then((response) => {
-        console.log("BUGABOOOOOO", response.data)
+        // console.log("BUGABOOOOOO", response.data)
     })
     //! need to make backend route to update DB
     //! look in backend terminal for console log!

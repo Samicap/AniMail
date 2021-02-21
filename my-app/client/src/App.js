@@ -30,20 +30,10 @@ function App() {
     //! sets the state of the current user in line 24
     //! getUser passes the new state to the parent component (app.js) from the child(parentprofile)
     //! this allows the state to be passed down to other children
-<<<<<<< HEAD
-    // console.log("userInfo ", userInfo);
-    setState({ ...state, currentUser: userInfo });
-  };
-
-
-  const receiveSelectedChild = (childId) => {
-    // console.log("childId ", childId);
-=======
     setState({ ...state, currentUser: userInfo });
   };
 
   const handleOnSelectChild = (childId) => {
->>>>>>> main
     setState({ ...state, selectedChildId: childId });
     // console.log("UUUGABOOGA", state.selectedChildId)
     // localStorage.setItem('selectedChildId', childId)
