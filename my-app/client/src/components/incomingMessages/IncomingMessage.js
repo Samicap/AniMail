@@ -1,6 +1,3 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-
 import ProgressBar from "../progressBar/ProgressBar";
 
 export default function IncomingMessage({
@@ -18,7 +15,7 @@ export default function IncomingMessage({
       <img src={avatar} />
       <ProgressBar
         messageId={messageId}
-        speed={0.4}
+        speed={speed}
         setIsMessageReceived={setIsMessageReceived}
       />
     </div>

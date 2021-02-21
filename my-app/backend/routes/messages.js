@@ -108,6 +108,39 @@ module.exports = (db) => {
       });
   });
 
+  router.put("/children/:id/received-message/:message_id", (req, res) => {
+    //const time_sent = Date.now();
+    //console.log("req.params ", req.body);
+
+    const messageId = req.body.message.message_id;
+    console.log("BABY MESSAGE", messageId)
+  
+
+    if (messageId === "") {
+      res.status(401).send("There are empty fields in the form.");
+      return;
+    }
+    return db
+      .query(
+        `
+        UPDATE messages (is_received, dateTime_received)
+        SET is_received = $1
+            dateTime_received = $2
+        RETURNING *;
+      `,
+        [true, NOW()]
+        //!check names!
+      )
+      .then((data) => {
+        console.log("data", data.rows);
+        const message = data.rows;
+        res.json({ message });
+      })
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
+      });
+  });
+
   router.get("/:messageId/children/:childId", (req, res) => {
     console.log("req.params", req.params);
     db.query(`SELECT * FROM messages WHERE id = $1;`, [req.params.messageId])
