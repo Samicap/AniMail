@@ -32,9 +32,7 @@ export default function Inbox({ childId }) {
     });
     setMessages(messagesCopy);
     axios.put(`/api/messages/children/${childId}/received-message/${messageId}`, { time : currentDateTime}).then((response) => {
-        // console.log("BUGABOOOOOO", response.data)
     })
-    //! need to make backend route to update DB
     //! look in backend terminal for console log!
   };
 
