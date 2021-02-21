@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-const express = require('express');
-const router  = express.Router();
-=======
 const express = require("express");
 const router = express.Router();
->>>>>>> main
 //! these are anon functions that we call in server.js!
 
 module.exports = (db) => {
