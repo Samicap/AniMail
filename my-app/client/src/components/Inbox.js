@@ -22,9 +22,9 @@ export default function Inbox({ childId }) {
   const setIsMessageReceived = (isMessageReceived, messageId) => {
     setState((prev) => {
       prev.messages.forEach((message, index) => {
-        console.log("CANDY", message)
+        console.log("CANDY", message);
         if (message.id === messageId) {
-          console.log("ORANGES", messageId)
+          console.log("ORANGES", messageId);
           const messageListCopy = prev.messages;
           // if you can t mutate an array directly, it cant update because it points to same reference
           const messageCopy = message;
@@ -37,7 +37,7 @@ export default function Inbox({ childId }) {
           return { ...prev, messages: [...messageListCopy] };
         }
       });
-      return {...prev}
+      return { ...prev };
     });
   };
 

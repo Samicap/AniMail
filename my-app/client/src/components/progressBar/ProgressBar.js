@@ -1,5 +1,5 @@
 import React from "react";
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from "react";
 // import "react-step-progress-bar/styles.css";
 import "./progressBar.css";
 // import { ProgressBar } from "react-step-progress-bar";

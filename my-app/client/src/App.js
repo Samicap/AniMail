@@ -1,6 +1,12 @@
-import "./App.css";
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+import "./child.css";
+import "./Layout.css";
+import "./login.css";
+import "./inbox.css";
+import "./Netflix.css";
+import "./components/progressBar/progressBar.css";
 //import "./components/progressBar/progressBar.css";
 
 //import Message from "./components/Message";
@@ -13,8 +19,11 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LoginForm from "./components/LoginForm";
 import Inbox from "./components/Inbox";
 import Netflix from "./components/Netflix";
+import Child from "./components/Child";
+import Layout from "./components/Layout";
+import HomePage from "./components/HomePage";
 import Placeholder from "./components/Placeholder";
-
+import NavBar from "./components/NavBar";
 
 function App() {
   const [state, setState] = useState({
@@ -45,45 +54,47 @@ function App() {
   return (
     <div className="App">
       <Router>
-        {/* <NavBar /> */}
+        <NavBar />
         <Switch>
           <Route
             exact
             path="/"
-            render={() => <LoginForm getUser={getUser} />}
+            render={() => (
+              <>
+                <Layout>
+                  <LoginForm getUser={getUser} />
+                </Layout>
+              </>
+            )}
           />
           <Route
             path="/netflix"
             render={() => (
-              <Netflix
-                users={state.currentUser}
-                receiveSelectedChild={receiveSelectedChild}
-              />
+              <>
+                <Layout>
+                  <Netflix
+                    users={state.currentUser}
+                    receiveSelectedChild={receiveSelectedChild}
+                  />
+                </Layout>
+              </>
             )}
           />
-          //! This route needs to change.  CreateMessage  needsits own route linked from the 📥 
-          //! path="/child/:id/createMessage"
-          // <Route
+          //! This route needs to change. CreateMessage needsits own route
+          linked from the 📥 //! path="/child/:id/createMessage" //{" "}
+          <Route
             path="/inbox/children/:id/create-message"
             render={() => <CreateMessage childId={state.selectedChildId} />}
           />
-
           <Route
             path="/message/sent"
             render={() => <Placeholder childId={state.selectedChildId} />}
           />
-
           <Route path="/post/success" render={() => <Placeholder />} />
-          //! Dummy Route Below to test components!
-          //Todo because this is cool
-
+          //! Dummy Route Below to test components! //Todo because this is cool
           <Route
             path="/inbox/children/:id"
-            render={() => (
-              <Inbox
-                childId={state.selectedChildId}
-              />
-            )}
+            render={() => <Inbox childId={state.selectedChildId} />}
           />
           {/* <Route
             path="/test/:id"
@@ -91,16 +102,23 @@ function App() {
             exact
             path="/message"
             render={() => <CreateMessage childId={state.selectedChildId} />}
+<<<<<<< HEAD
+          />
+=======
           /> */}
-
           <Route
             path="/message/sent"
             // render={() => <Placeholder childId={state.selectedChildId} />}
           />
-
           <Route
             path="/inbox/children/:id"
-            render={() => <Inbox childId={state.selectedChildId} />}
+            render={() => (
+              <>
+                <Layout>
+                  <Inbox childId={state.selectedChildId} />
+                </Layout>
+              </>
+            )}
           />
         </Switch>
       </Router>
