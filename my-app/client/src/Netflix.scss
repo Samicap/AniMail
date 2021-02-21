@@ -15,6 +15,12 @@ $timing: 10s;
   list-style: none;
 }
 
+.netAv {
+  height: auto;
+  width: 100px;
+  padding: 10px;
+}
+
 .netLink {
   color: rgba(252, 176, 69, 1);
   text-decoration: none;
@@ -38,7 +44,7 @@ $timing: 10s;
   }
   width: 150px;
   height: 150px;
-  border: 6px solid #1f1f1f;
+  border: 6px solid rgba(34, 193, 195, 1);
   transition: all 300ms ease;
   box-shadow: 0px 15px 26px rgba(0, 0, 0, 0.5);
   background: rgb(81, 78, 166);
@@ -64,10 +70,10 @@ $timing: 10s;
 }
 
 .profile:hover {
-  border: 6px solid $white;
+  border: 6px solid #f2b90c;
 }
 .profile:hover .profile-name {
-  color: $white;
+  color: #f2b90c;
 }
 
 /* 

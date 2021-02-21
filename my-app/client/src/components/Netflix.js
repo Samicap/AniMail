@@ -30,10 +30,12 @@ export default function Netflix({ users, receiveSelectedChild }) {
                   key={user.childs_id}
                   onClick={() => getSelectedChild(user.childs_id)}
                 >
+                  <img scr={user.childs_avatar_url} />
                   <Link
                     class="netLink"
                     to={{ pathname: `/inbox/children/${user.childs_id}` }}
                   >
+                    <img class="netAv" src={user.childs_avatar_url} />
                     {user.childs_username}
                   </Link>
                 </li>
