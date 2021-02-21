@@ -1,0 +1,24 @@
+.loginStyle {
+  border: #f2b90c solid 3px;
+  margin: 0 auto;
+  margin-bottom: auto;
+  margin-top: 20px;
+  background-image: url(https://static.vecteezy.com/system/resources/previews/000/096/013/original/vector-cute-animal-avatars.jpg);
+  background-blend-mode: screen;
+  background-color: rgb(81, 78, 166);
+  background: linear-gradient(
+    90deg,
+    rgba(81, 78, 166, 1) 0%,
+    rgba(34, 193, 195, 1) 50%,
+    rgba(252, 176, 69, 1) 100%
+  );
+
+  color: #514ea6;
+  border-radius: 25px;
+  padding: 2em;
+}
+
+.loginForm {
+  padding: 1em;
+  color: white;
+}

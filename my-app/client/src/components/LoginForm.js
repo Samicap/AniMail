@@ -36,9 +36,10 @@ export default function Login({ getUser }) {
   };
 
   return (
-    <section>
+    <section class="loginStyle">
+      <h1>Welcome to Animail!</h1>
       <h1>Login</h1>
-      <form onSubmit={submitHandler}>
+      <form class="loginForm" onSubmit={submitHandler}>
         <label htmlFor="name">Email</label>
         <input
           type="text"

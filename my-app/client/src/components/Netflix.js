@@ -17,17 +17,19 @@ export default function Netflix({ users, onSelectChild }) {
   return (
     <div>
       <h1>Netflix Choose User Page</h1>
-      <ul>
+      <ul class="netflix">
         {users.map((user) => {
           return (
-            <li
-              key={user.childs_id}
-              onClick={() => getSelectedChild(user.childs_id)}
-            >
-              <Link to={{ pathname: `/inbox/children/${user.childs_id}` }}>
-                {user.childs_username}
-              </Link>
-            </li>
+            <div class="dot">
+              <li
+                key={user.childs_id}
+                onClick={() => getSelectedChild(user.childs_id)}
+              >
+                <Link to={{ pathname: `/inbox/children/${user.childs_id}` }}>
+                  {user.childs_username}
+                </Link>
+              </li>
+            </div>
           );
         })}
       </ul>

@@ -1,0 +1,12 @@
+.divContain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid orange 2px;
+  margin: 0 auto;
+  background-color: #4bbfb4;
+  padding: 15em;
+  color: #514ea6;
+  margin-bottom: auto;
+  margin-top: 20px;
+}

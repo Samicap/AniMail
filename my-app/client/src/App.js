@@ -1,22 +1,23 @@
-import "./App.css";
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-//import "./components/progressBar/progressBar.css";
+import "./App.css";
+import "./child.css";
+import "./Layout.css";
+import "./login.css";
+import "./inbox.css";
+import "./Netflix.css";
+import "./components/progressBar/progressBar.css";
 
-//import Message from "./components/Message";
-//import NavBar from "./components/NavBar";
-//import NavBar from "./components/NavBar";
-import CreateMessage from "./components/CreateMessage";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import LoginForm from "./components/LoginForm";
 import Inbox from "./components/Inbox";
 import Outbox from "./components/outbox/OutBox";
 import Netflix from "./components/Netflix";
+import Layout from "./components/Layout";
 import Placeholder from "./components/Placeholder";
-
-
+import NavBar from "./components/NavBar";
 
 function App() {
   const [state, setState] = useState({
@@ -31,9 +32,6 @@ function App() {
     setState({ ...state, currentUser: userInfo });
   };
 
-  // const [profile, setProfile] = useState({}); // delete
-  // const setProfile = profileInfo => setState({...state, currentProfile: profileInfo})
-  // ==========
   const handleOnSelectChild = (childId) => {
     setState({ ...state, selectedChildId: childId });
   };
@@ -44,66 +42,63 @@ function App() {
   return (
     <div className="App">
       <Router>
-        {/* <NavBar /> */}
+        <NavBar />
         <Switch>
           <Route
             exact
             path="/"
-            render={() => <LoginForm getUser={getUser} />}
+            render={() => (
+              <>
+                <Layout>
+                  <LoginForm getUser={getUser} />
+                </Layout>
+              </>
+            )}
           />
           <Route
             path="/netflix"
             render={() => (
-              <Netflix
-                users={state.currentUser}
-                onSelectChild={handleOnSelectChild}
-              />
+              <Layout>
+                <Netflix
+                  users={state.currentUser}
+                  onSelectChild={handleOnSelectChild}
+                />
+              </Layout>
             )}
           />
-          //! This route needs to change.  CreateMessage  needsits own route linked from the 📥 
-          //! path="/child/:id/createMessage"
           <Route
             path="/outbox"
             render={() => (
-              <Outbox
-                childId={state.selectedChildId}
-              />
+              <Layout>
+                <Outbox childId={state.selectedChildId} />
+              </Layout>
             )}
           />
-
-          <Route
-            path="/message/sent"
-            render={() => <Placeholder childId={state.selectedChildId} />}
-          />
-
-          <Route path="/post/success" render={() => <Placeholder />} />
-          //! Dummy Route Below to test components!
-          //Todo because this is cool
-
           <Route
             path="/inbox/children/:id"
             render={() => (
-              <Inbox
-                childId={state.selectedChildId}
-              />
+              <Layout>
+                <Inbox childId={state.selectedChildId} />
+              </Layout>
             )}
           />
-          {/* <Route
-            path="/test/:id"
-            render={() => <Placeholder childId={state.selectedChildId} />}
-            exact
-            path="/message"
-            render={() => <CreateMessage childId={state.selectedChildId} />}
-          /> */}
-
           <Route
             path="/message/sent"
-            // render={() => <Placeholder childId={state.selectedChildId} />}
+            render={() => (
+              <Layout>
+                <Placeholder childId={state.selectedChildId} />
+              </Layout>
+            )}
           />
-
           <Route
             path="/inbox/children/:id"
-            render={() => <Inbox childId={state.selectedChildId} />}
+            render={() => (
+              <>
+                <Layout>
+                  <Inbox childId={state.selectedChildId} />
+                </Layout>
+              </>
+            )}
           />
         </Switch>
       </Router>
