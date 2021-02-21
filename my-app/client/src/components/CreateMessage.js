@@ -8,7 +8,7 @@ import { useHistory } from "react-router-dom";
 export default function CreateMessage({ childId }) {
   const [formData, setFormData] = useState({
     child_id_to: "",
-    animal_id: "",
+    animal_id: "1",
     text: "",
   });
 
