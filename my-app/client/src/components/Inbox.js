@@ -8,6 +8,7 @@ import { preventOverflow } from "@popperjs/core";
 
 export default function Inbox({ childId }) {
   const [messages, setMessages] = useState([]);
+  console.log("COOKIE MAN BROKE IT", childId)
 
   useEffect(() => {
     axios.get(`/api/messages/children/${childId}`).then((response) => {

@@ -86,11 +86,12 @@ function App() {
             path="/message/sent"
             render={() => (
               <Layout>
-                <Placeholder childId={state.selectedChildId} />
+                <Inbox childId={state.selectedChildId} />
               </Layout>
             )}
           />
-          <Route
+          //! Double route?
+          {/* <Route
             path="/inbox/children/:id"
             render={() => (
               <>
@@ -99,7 +100,7 @@ function App() {
                 </Layout>
               </>
             )}
-          />
+          /> */}
         </Switch>
       </Router>
     </div>

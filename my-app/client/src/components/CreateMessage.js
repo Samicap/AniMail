@@ -6,6 +6,8 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 
 export default function CreateMessage({ childId }) {
+
+  console.log("INCOMING CHILD ID FROM APP BABY", childId)
   const [formData, setFormData] = useState({
     child_id_to: "",
     animal_id: "1",
@@ -33,7 +35,7 @@ export default function CreateMessage({ childId }) {
         animal_id: formData.animal_id,
       })
       .then(function (response) {
-        //console.log(response.data.message[0]);
+        console.log("BOOM CHICKA POP", response.data.message[0]);
         const data = response.data.message[0];
 
         setMessageData(data);

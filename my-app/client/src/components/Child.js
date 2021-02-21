@@ -3,9 +3,12 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 export default function Child({ childId }) {
+
+  console.log("BROKEN BABANA CHILD", childId)
   //*child id is just a number
   //*childMessages is an array of objects
   const [childProfile, setChildProfile] = useState(null);
+
 
   useEffect(() => {
     axios.get(`/api/profiles/child/${childId}`).then((response) => {
