@@ -15,13 +15,12 @@ import "./components/progressBar/progressBar.css";
 import CreateMessage from "./components/CreateMessage";
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { localStorage } from "reactjs-localstorage";
 
 import LoginForm from "./components/LoginForm";
 import Inbox from "./components/Inbox";
 import Netflix from "./components/Netflix";
-import Child from "./components/Child";
 import Layout from "./components/Layout";
-import HomePage from "./components/HomePage";
 import Placeholder from "./components/Placeholder";
 import NavBar from "./components/NavBar";
 
@@ -35,16 +34,16 @@ function App() {
     //! sets the state of the current user in line 24
     //! getUser passes the new state to the parent component (app.js) from the child(parentprofile)
     //! this allows the state to be passed down to other children
-    console.log("userInfo ", userInfo);
+    // console.log("userInfo ", userInfo);
     setState({ ...state, currentUser: userInfo });
   };
 
-  // const [profile, setProfile] = useState({}); // delete
-  // const setProfile = profileInfo => setState({...state, currentProfile: profileInfo})
-  // ==========
+
   const receiveSelectedChild = (childId) => {
-    console.log("childId ", childId);
+    // console.log("childId ", childId);
     setState({ ...state, selectedChildId: childId });
+    // console.log("UUUGABOOGA", state.selectedChildId)
+    // localStorage.setItem('selectedChildId', childId)
   };
 
   useEffect(() => {

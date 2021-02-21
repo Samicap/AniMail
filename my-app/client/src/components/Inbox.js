@@ -1,4 +1,5 @@
 import axios from "axios";
+import { localStorage } from "reactjs-localstorage";
 import { useState, useEffect } from "react";
 import MessageList from "./MessageList";
 import IncomingMessageList from "./incomingMessages/IncomingMessageList";
@@ -7,7 +8,7 @@ import { preventOverflow } from "@popperjs/core";
 
 export default function Inbox({ childId }) {
   // const { childId, avatar, speed } = props;
-  console.log("CHILD ID >>> ", childId);
+  // console.log("CHILD ID >>> ", childId);
 
   const [state, setState] = useState({ messages: [] });
 
@@ -15,10 +16,14 @@ export default function Inbox({ childId }) {
     axios.get(`/api/messages/children/${childId}`).then((response) => {
       const messages = response.data["messages"];
       setState((prev) => ({ ...prev, messages }));
-      console.log("MESSAGES >>> ", response.data["messages"]); // returns an array of message objects (containing message and animal info)
+      // console.log("MESSAGES >>> ", response.data["messages"]); // returns an array of message objects (containing message and animal info)
     });
   }, [childId]);
 
+  useEffect(() => {
+    localStorage.setItem('')
+  })
+  
   const setIsMessageReceived = (isMessageReceived, messageId) => {
     setState((prev) => {
       prev.messages.forEach((message, index) => {
