@@ -14,6 +14,8 @@ export default function Netflix({ users, onSelectChild }) {
   //   console.log(selectedChild);
   // }, [selectedChild]);
 
+  console.log("USERS >>>", users)
+
   return (
     <div>
       <h1>Netflix Choose User Page</h1>
@@ -28,6 +30,7 @@ export default function Netflix({ users, onSelectChild }) {
                 <Link to={{ pathname: `/inbox/children/${user.childs_id}` }}>
                   {user.childs_username}
                 </Link>
+                  <img src={user.childs_avatar_url}/>
               </li>
             </div>
           );

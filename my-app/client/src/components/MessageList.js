@@ -1,5 +1,5 @@
-
 import MessageListItem from "./MessageListItem";
+import { Container, Row, Col } from "react-bootstrap";
 
 export default function MessageList({ messages }) {
   const allMessages = messages && messages.map(message => {

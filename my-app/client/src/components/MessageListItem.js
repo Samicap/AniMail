@@ -8,7 +8,7 @@ import { Row, Col, Image } from "react-bootstrap";
 export default function MessageListItem(props) {
 
   return (
-    <Accordion defaultActiveKey="0">
+    <Accordion>
       <Card>
         <Accordion.Toggle as={Card.Header} eventKey="0">
           <Row>
@@ -23,6 +23,9 @@ export default function MessageListItem(props) {
             <Col>
               <Image id="avatar"
               src={props.animalAvatar}
+              height="60"
+              width="60"
+              alt="60x60"
               />
             </Col>
           </Row>
