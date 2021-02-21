@@ -14,7 +14,6 @@ module.exports = (db) => {
       [req.params.id]
     )
       .then((data) => {
-        console.log("data", data.rows);
         const parents = data.rows;
         res.json({ parents });
       })
@@ -23,24 +22,6 @@ module.exports = (db) => {
       });
   });
 
-  router.get("/child/:id", (req, res) => {
-    db.query(
-      `SELECT childs.username as username, childs.avatar_url as child_avatar, childs.age as age, locations.name as location, languages.name as language 
-       FROM childs
-       LEFT JOIN locations ON childs.location_id = locations.id
-       LEFT JOIN languages ON childs.language_id = languages.id
-       WHERE childs.id = $1;`,
-      [req.params.id]
-    )
-      .then((data) => {
-        console.log("data", data.rows);
-        const childs = data.rows;
-        res.json({ childs });
-      })
-      .catch((err) => {
-        res.status(500).json({ error: err.message });
-      });
-  });
 
   router.get("/child/:id", (req, res) => {
     db.query(
@@ -52,7 +33,6 @@ module.exports = (db) => {
       [req.params.id]
     )
       .then((data) => {
-        console.log("data", data.rows);
         const childs = data.rows;
         res.json({ childs });
       })
