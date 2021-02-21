@@ -10,10 +10,10 @@ export default function IncomingMessageList({
       //! if you want to see this render the bang needs to be removed
       !message.is_received && (
         <IncomingMessage
-          key={message.id}
-          avatar={message.avatar_url}
+          key={message.message_id}
+          avatar={message.animal_avatar}
           speed={message.speed}
-          messageId={message.id}
+          messageId={message.message_id}
           setIsMessageReceived={setIsMessageReceived}
         />
       )
