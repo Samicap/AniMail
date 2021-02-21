@@ -14,7 +14,6 @@ module.exports = (db) => {
       [req.params.id]
     )
       .then((data) => {
-        console.log("data", data.rows);
         const parents = data.rows;
         res.json({ parents });
       })
@@ -34,7 +33,6 @@ module.exports = (db) => {
       [req.params.id]
     )
       .then((data) => {
-        console.log("data", data.rows);
         const childs = data.rows;
         res.json({ childs });
       })

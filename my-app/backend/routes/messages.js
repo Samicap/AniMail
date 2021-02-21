@@ -62,7 +62,7 @@ module.exports = (db) => {
       [req.params.id]
     )
       .then((data) => {
-        console.log("data", data.rows);
+        // console.log("data", data.rows);
         const messages = data.rows;
         res.json({ messages });
       })
@@ -79,11 +79,11 @@ module.exports = (db) => {
     const message = req.body.message;
     const animal_id = req.body.animal_id;
 
-    console.log("child_id_to ", child_id_to);
-    console.log("message ", message);
-    console.log("animal_id ", animal_id);
-    //console.log("time_sent ", time_sent);
-    console.log("child_id ", child_id);
+    // console.log("child_id_to ", child_id_to);
+    // console.log("message ", message);
+    // console.log("animal_id ", animal_id);
+    // //console.log("time_sent ", time_sent);
+    // console.log("child_id ", child_id);
 
     if (child_id_to === "" || message === "" || animal_id === "") {
       res.status(401).send("There are empty fields in the form.");
@@ -99,7 +99,7 @@ module.exports = (db) => {
         [message, true, child_id_to, child_id, animal_id]
       )
       .then((data) => {
-        console.log("data", data.rows);
+        // console.log("data", data.rows);
         const message = data.rows;
         res.json({ message });
       })
@@ -107,33 +107,35 @@ module.exports = (db) => {
         res.status(500).json({ error: err.message });
       });
   });
-
-  router.put("/children/:id/received-message/:message_id", (req, res) => {
+///!=================================================================
+  router.put("/children/:id/received-message/:messageId", (req, res) => {
     //const time_sent = Date.now();
     //console.log("req.params ", req.body);
 
-    const messageId = req.body.message.message_id;
-    console.log("BABY MESSAGE", messageId)
+    const messageId = req.params["messageId"];
+    const time = req.body["time"]
+    const baby = time.toString()
+    console.log("BABY MESSAGE", baby)
   
 
-    if (messageId === "") {
-      res.status(401).send("There are empty fields in the form.");
+    if (!messageId) {
+      res.status(401).send("The messageId is empty!");
       return;
     }
     return db
       .query(
         `
-        UPDATE messages (is_received, dateTime_received)
-        SET is_received = $1
-            dateTime_received = $2
+        UPDATE messages
+        SET 
+            is_received = $1
         RETURNING *;
       `,
-        [true, NOW()]
+        [true]
         //!check names!
       )
       .then((data) => {
-        console.log("data", data.rows);
-        const message = data.rows;
+        // console.log("data", data);
+        const message = data;
         res.json({ message });
       })
       .catch((err) => {
@@ -141,11 +143,12 @@ module.exports = (db) => {
       });
   });
 
+  //!=======================================================================
   router.get("/:messageId/children/:childId", (req, res) => {
     console.log("req.params", req.params);
     db.query(`SELECT * FROM messages WHERE id = $1;`, [req.params.messageId])
       .then((data) => {
-        console.log("data", data.rows);
+        // console.log("data", data.rows);
         const message = data.rows;
         res.json({ message });
       })

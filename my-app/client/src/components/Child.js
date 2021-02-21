@@ -3,12 +3,10 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 export default function Child({ childId }) {
-
-  console.log("BROKEN BABANA CHILD", childId)
+  console.log("BROKEN BABANA CHILD", childId);
   //*child id is just a number
   //*childMessages is an array of objects
   const [childProfile, setChildProfile] = useState(null);
-
 
   useEffect(() => {
     axios.get(`/api/profiles/child/${childId}`).then((response) => {
@@ -22,11 +20,15 @@ export default function Child({ childId }) {
 
   return (
     <div>
-      {childProfile && <>
-      <p>{childProfile.username}</p>
-      <p>{childProfile.age}</p>
-      <p>{childProfile.location}</p>
-      <img src={childProfile.child_avatar} />
-      </>}
-    </div>);
+      {childProfile && (
+        <>
+          <p>{childProfile.username}</p>
+          <p>{childProfile.age}</p>
+          <p>{childProfile.location}</p>
+          //! image is broken
+          <img src={childProfile.child_avatar_url} />
+        </>
+      )}
+    </div>
+  );
 }
