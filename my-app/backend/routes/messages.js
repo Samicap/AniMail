@@ -54,15 +54,10 @@ module.exports = (db) => {
         LEFT JOIN locations t4 ON t2.location_id = t4.id
         LEFT JOIN languages t5 ON t1.language_id = t5.id
         LEFT JOIN languages t6 ON t2.language_id = t6.id
-        WHERE messages.child_id_to = $1;`, 
-      // `SELECT * FROM messages
-      //       LEFT JOIN animals
-      //       ON messages.animal_id = animals.id
-      //       WHERE messages.child_id_to = $1;`,
+        WHERE messages.child_id_to = $1;`,
       [req.params.id]
     )
       .then((data) => {
-        // console.log("data", data.rows);
         const messages = data.rows;
         res.json({ messages });
       })
@@ -72,18 +67,10 @@ module.exports = (db) => {
   });
 
   router.post("/children/:id", (req, res) => {
-    //const time_sent = Date.now();
-    //console.log("req.params ", req.body);
     const child_id = req.params.id;
     const child_id_to = req.body.child_id_to;
     const message = req.body.message;
     const animal_id = req.body.animal_id;
-
-    // console.log("child_id_to ", child_id_to);
-    // console.log("message ", message);
-    // console.log("animal_id ", animal_id);
-    // //console.log("time_sent ", time_sent);
-    // console.log("child_id ", child_id);
 
     if (child_id_to === "" || message === "" || animal_id === "") {
       res.status(401).send("There are empty fields in the form.");
@@ -99,7 +86,6 @@ module.exports = (db) => {
         [message, true, child_id_to, child_id, animal_id]
       )
       .then((data) => {
-        // console.log("data", data.rows);
         const message = data.rows;
         res.json({ message });
       })
@@ -107,18 +93,12 @@ module.exports = (db) => {
         res.status(500).json({ error: err.message });
       });
   });
-///!=================================================================
+
   router.put("/children/:id/received-message/:messageId", (req, res) => {
-    //const time_sent = Date.now();
-    //console.log("req.params ", req.body);
-
     const messageId = req.params["messageId"];
-    const time = req.body["time"]
-    const baby = time.toString()
-    console.log("BABY MESSAGE", baby)
-  
+    const time = req.body["time"];
 
-    if (!messageId) {
+    if (!messageId || !time) {
       res.status(401).send("The messageId is empty!");
       return;
     }
@@ -127,11 +107,11 @@ module.exports = (db) => {
         `
         UPDATE messages
         SET 
-            is_received = $1
+            is_received = $1,
+            dateTime_receiving = $2
         RETURNING *;
       `,
-        [true]
-        //!check names!
+        [true, time]
       )
       .then((data) => {
         // console.log("data", data);
@@ -143,7 +123,6 @@ module.exports = (db) => {
       });
   });
 
-  //!=======================================================================
   router.get("/:messageId/children/:childId", (req, res) => {
     console.log("req.params", req.params);
     db.query(`SELECT * FROM messages WHERE id = $1;`, [req.params.messageId])

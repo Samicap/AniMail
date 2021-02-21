@@ -19,15 +19,16 @@ export default function Inbox({ childId }) {
 
   const setIsMessageReceived = (messageId) => {
     const messagesCopy = [...messages];
+    const currentDateTime = new Date();
     //! copy of current messages
     messagesCopy.forEach((message) => {
       if (message.message_id === messageId) {
         message.is_received = true;
-        message.dateTime_receiving = Date.now();
+        message.dateTime_receiving = currentDateTime;
       }
     });
     setMessages(messagesCopy);
-    axios.put(`/api/messages/children/${childId}/received-message/${messageId}`, { time : Date.now()}).then((response) => {
+    axios.put(`/api/messages/children/${childId}/received-message/${messageId}`, { time : currentDateTime}).then((response) => {
         console.log("BUGABOOOOOO", response.data)
     })
     //! need to make backend route to update DB
