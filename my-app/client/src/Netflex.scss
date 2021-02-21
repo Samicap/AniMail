@@ -1,0 +1,28 @@
+.profile {
+  &-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 800px;
+    margin: 50px auto;
+  }
+  width: 150px;
+  &-icon {
+    width: 150px;
+    height: 150px;
+    border: 6px solid #1f1f1f;
+    transition: all 300ms ease;
+  }
+  &-name {
+    margin: 20px 0;
+    line-height: 1.25em;
+    transition: all 300ms ease;
+  }
+}
+
+.profile:hover .profile-icon {
+  border: 6px solid $white;
+}
+.profile:hover .profile-name {
+  color: $white;
+}
