@@ -24,7 +24,6 @@ export default function ProgressBar(props) {
     return () => clearInterval(interval);
   }, []);
 
-  // console.log("CLEAR interval >>>>>>>", clearInterval(interval));
   //! currently can't access newValue outside of the useEffect
   //! What is another way that i can make the progress bar display if the newBalue
   //! is less than 100.

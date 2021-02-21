@@ -1,11 +1,13 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import MessageList from "./MessageList";
 import IncomingMessageList from "./incomingMessages/IncomingMessageList";
 import Child from "./Child";
 import { preventOverflow } from "@popperjs/core";
 
 export default function Inbox({ childId }) {
+  console.log("InBOX DHILD ID", childId)
 
   const [messages, setMessages] = useState([]);
 
@@ -27,13 +29,16 @@ export default function Inbox({ childId }) {
       }
     })
     setMessages(messagesCopy)
-    // axios.post(`/api/messages/children/${childId}`)
+    // axios.put(`/api/messages/children/${childId}/received-message/${setIsMessageReceived}`).then((response) => {
+
+    // })
     //! need to make backend route to update DB
   };
 
   return (
     <div>
       <p>INBOX</p>
+      <Link to="/outbox">Create A New Message!</Link>
       {messages.length && (
         <>
           <IncomingMessageList

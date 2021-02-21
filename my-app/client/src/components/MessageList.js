@@ -13,7 +13,7 @@ export default function MessageList({ messages }) {
       senderName={message.sender_name}
       senderAge={message.sender_age}
       senderLocation={message.sender_location_name}
-      dateReceived={message.dateTime_receiving}
+      dateReceived={message.datetime_receiving}
       animalAvatar={message.animal_avatar}
       message={message.message}
       // selected={message.id === props.interviewer}

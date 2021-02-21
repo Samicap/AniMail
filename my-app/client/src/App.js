@@ -12,8 +12,10 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import LoginForm from "./components/LoginForm";
 import Inbox from "./components/Inbox";
+import Outbox from "./components/outbox/OutBox";
 import Netflix from "./components/Netflix";
 import Placeholder from "./components/Placeholder";
+
 
 
 function App() {
@@ -60,9 +62,13 @@ function App() {
           />
           //! This route needs to change.  CreateMessage  needsits own route linked from the 📥 
           //! path="/child/:id/createMessage"
-          // <Route
-            path="/inbox/children/:id/create-message"
-            render={() => <CreateMessage childId={state.selectedChildId} />}
+          <Route
+            path="/outbox"
+            render={() => (
+              <Outbox
+                childId={state.selectedChildId}
+              />
+            )}
           />
 
           <Route
