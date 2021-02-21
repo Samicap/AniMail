@@ -43,65 +43,41 @@ function App() {
     <div className="App">
       <Router>
         <NavBar />
-        <Switch>
-          <Route
-            exact
-            path="/"
-            render={() => (
-              <>
-                <Layout>
+        <Layout>
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={() => (
+                <>
                   <LoginForm getUser={getUser} />
-                </Layout>
-              </>
-            )}
-          />
-          <Route
-            path="/netflix"
-            render={() => (
-              <Layout>
+                </>
+              )}
+            />
+            <Route
+              path="/netflix"
+              render={() => (
                 <Netflix
                   users={state.currentUser}
                   onSelectChild={handleOnSelectChild}
                 />
-              </Layout>
-            )}
-          />
-          <Route
-            path="/outbox"
-            render={() => (
-              <Layout>
-                <Outbox childId={state.selectedChildId} />
-              </Layout>
-            )}
-          />
-          <Route
-            path="/inbox/children/:id"
-            render={() => (
-              <Layout>
-                <Inbox childId={state.selectedChildId} />
-              </Layout>
-            )}
-          />
-          <Route
-            path="/message/sent"
-            render={() => (
-              <Layout>
-                <Inbox childId={state.selectedChildId} />
-              </Layout>
-            )}
-          />
-          //! Double route?
-          {/* <Route
-            path="/inbox/children/:id"
-            render={() => (
-              <>
-                <Layout>
-                  <Inbox childId={state.selectedChildId} />
-                </Layout>
-              </>
-            )}
-          /> */}
-        </Switch>
+              )}
+            />
+            <Route
+              path="/outbox"
+              render={() => <Outbox childId={state.selectedChildId} />}
+            />
+            <Route
+              path="/inbox/children/:id"
+              render={() => <Inbox childId={state.selectedChildId} />}
+            />
+            <Route
+              path="/message/sent"
+              render={() => <Inbox childId={state.selectedChildId} />}
+            />
+            //! Double route?
+          </Switch>
+        </Layout>
       </Router>
     </div>
   );
