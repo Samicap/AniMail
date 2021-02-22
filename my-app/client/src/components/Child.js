@@ -3,13 +3,26 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 export default function Child({ childId }) {
-  console.log("BROKEN BABANA CHILD", childId);
+  // console.log("BROKEN BABANA CHILD", childId);
   //*child id is just a number
   //*childMessages is an array of objects
   const [childProfile, setChildProfile] = useState(null);
 
+  const [ userId, setUserId] = useState(
+    window.localStorage.getItem('childId')
+  )
+
   useEffect(() => {
-    axios.get(`/api/profiles/child/${childId}`).then((response) => {
+    if (childId) {
+      setUserId(childId);
+      window.localStorage.setItem('childId', childId)
+    } else {
+      setUserId(window.localStorage.getItem('childId'));
+    }
+  }, [childId]);
+
+  useEffect(() => {
+    axios.get(`/api/profiles/child/${userId}`).then((response) => {
       // returns an object of arrays of message objects (containing message and animal info)
       const childData = response.data.childs[0];
       setChildProfile(childData);

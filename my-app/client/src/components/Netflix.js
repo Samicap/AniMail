@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { localStorage } from "reactjs-localstorage";
 import { Link } from "react-router-dom";
 
 export default function Netflix({ users, onSelectChild }) {
