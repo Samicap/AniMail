@@ -64,6 +64,7 @@ export default function Inbox({ childId }) {
         </>
       )}
       <Child childId={userId} />
+      {/* <Badges childId={userId} /> */}
     </div>
   );
 }

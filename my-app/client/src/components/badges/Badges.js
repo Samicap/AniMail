@@ -2,11 +2,11 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-export default function Child({ childId }) {
+export default function Badge({ childId }) {
   // console.log("BROKEN BABANA CHILD", childId);
   //*child id is just a number
   //*childMessages is an array of objects
-  const [childProfile, setChildProfile] = useState(null);
+  const [childProfileBadges, setChildProfileBadges] = useState(null);
 
   const [ userId, setUserId] = useState(
     window.localStorage.getItem('childId')
@@ -22,10 +22,10 @@ export default function Child({ childId }) {
   }, [childId]);
 
   useEffect(() => {
-    axios.get(`/api/profiles/child/${userId}`).then((response) => {
+    axios.get(`/api/badges/child/${userId}/badges`).then((response) => {
       // returns an object of arrays of message objects (containing message and animal info)
-      const childData = response.data.childs[0];
-      setChildProfile(childData);
+      const badgesData = response.data.childs[0];
+      setChildProfileBadges(badgesData);
     });
   }, []);
 
@@ -33,12 +33,9 @@ export default function Child({ childId }) {
 
   return (
     <div>
-      {childProfile && (
+      {childProfileBadges && (
         <>
-          <p>{childProfile.username}</p>
-          <p>{childProfile.age}</p>
-          <p>{childProfile.location}</p>
-          <img src={childProfile.child_avatar_url} />
+          <img src={childProfileBadges.badges_avatar_url} />
         </>
       )}
     </div>
