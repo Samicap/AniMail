@@ -1,15 +1,21 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
-import "./child.css";
-import "./Layout.css";
-import "./login.css";
-import "./inbox.css";
-import "./Netflix.css";
+import "./styles/App.css";
+import "./styles/child.css";
+import "./styles/Layout.css";
+import "./styles/login.css";
+import "./styles/inbox.css";
+import "./styles/index.css";
+import "./styles/NavBar.css";
+import "./styles/Netflix.scss";
 import "./components/progressBar/progressBar.css";
+import "./styles/about.css";
+
+import CreateMessage from "./components/CreateMessage";
 
 import { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+// import { localStorage } from "reactjs-localstorage";
 
 import LoginForm from "./components/LoginForm";
 import Inbox from "./components/Inbox";
@@ -18,6 +24,7 @@ import Netflix from "./components/Netflix";
 import Layout from "./components/Layout";
 import Placeholder from "./components/Placeholder";
 import NavBar from "./components/NavBar";
+import About from "./components/About";
 
 function App() {
   const [state, setState] = useState({
@@ -34,6 +41,8 @@ function App() {
 
   const handleOnSelectChild = (childId) => {
     setState({ ...state, selectedChildId: childId });
+    // console.log("UUUGABOOGA", state.selectedChildId)
+    // localStorage.setItem('selectedChildId', childId)
   };
 
   // useEffect(() => {
@@ -43,65 +52,42 @@ function App() {
     <div className="App">
       <Router>
         <NavBar />
-        <Switch>
-          <Route
-            exact
-            path="/"
-            render={() => (
-              <>
-                <Layout>
+        <Layout>
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={() => (
+                <>
                   <LoginForm getUser={getUser} />
-                </Layout>
-              </>
-            )}
-          />
-          <Route
-            path="/netflix"
-            render={() => (
-              <Layout>
+                </>
+              )}
+            />
+            <Route
+              path="/netflix"
+              render={() => (
                 <Netflix
                   users={state.currentUser}
                   onSelectChild={handleOnSelectChild}
                 />
-              </Layout>
-            )}
-          />
-          <Route
-            path="/outbox"
-            render={() => (
-              <Layout>
-                <Outbox childId={state.selectedChildId} />
-              </Layout>
-            )}
-          />
-          <Route
-            path="/inbox/children/:id"
-            render={() => (
-              <Layout>
-                <Inbox childId={state.selectedChildId} />
-              </Layout>
-            )}
-          />
-          <Route
-            path="/message/sent"
-            render={() => (
-              <Layout>
-                <Inbox childId={state.selectedChildId} />
-              </Layout>
-            )}
-          />
-          //! Double route?
-          {/* <Route
-            path="/inbox/children/:id"
-            render={() => (
-              <>
-                <Layout>
-                  <Inbox childId={state.selectedChildId} />
-                </Layout>
-              </>
-            )}
-          /> */}
-        </Switch>
+              )}
+            />
+            <Route path="/about" render={() => <About></About>} />
+            <Route
+              path="/outbox"
+              render={() => <Outbox childId={state.selectedChildId} />}
+            />
+            <Route
+              path="/inbox/children/:id"
+              render={() => <Inbox childId={state.selectedChildId} />}
+            />
+            <Route
+              path="/message/sent"
+              render={() => <Inbox childId={state.selectedChildId} />}
+            />
+            //! Double route?
+          </Switch>
+        </Layout>
       </Router>
     </div>
   );
