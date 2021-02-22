@@ -5,7 +5,7 @@ module.exports = (db) => {
   router.get("/:id", (req, res) => {
     db.query(`SELECT * FROM childs WHERE id != $1`, [req.params.id])
       .then((data) => {
-        console.log("data", data.rows);
+        // console.log("data", data.rows);
         const childs = data.rows;
         res.json({ childs });
       })

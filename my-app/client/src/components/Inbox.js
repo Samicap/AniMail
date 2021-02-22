@@ -1,83 +1,69 @@
 import axios from "axios";
+// import { localStorage } from "reactjs-localstorage";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import MessageList from "./MessageList";
 import IncomingMessageList from "./incomingMessages/IncomingMessageList";
 import Child from "./Child";
 import { preventOverflow } from "@popperjs/core";
 
 export default function Inbox({ childId }) {
-  // const { childId, avatar, speed } = props;
-  console.log("CHILD ID >>> ", childId);
+  const [messages, setMessages] = useState([]);
 
-  const [state, setState] = useState({ messages: [] });
+  const [userId, setUserId] = useState(window.localStorage.getItem("childId"));
 
   useEffect(() => {
-    axios.get(`/api/messages/children/${childId}`).then((response) => {
-      const messages = response.data["messages"];
-      setState((prev) => ({ ...prev, messages }));
-      console.log("MESSAGES >>> ", response.data["messages"]); // returns an array of message objects (containing message and animal info)
-    });
+    if (childId) {
+      setUserId(childId);
+      window.localStorage.setItem("childId", childId);
+    } else {
+      setUserId(window.localStorage.getItem("childId"));
+    }
   }, [childId]);
 
-  const setIsMessageReceived = (isMessageReceived, messageId) => {
-    setState((prev) => {
-      prev.messages.forEach((message, index) => {
-        console.log("CANDY", message);
-        if (message.id === messageId) {
-          console.log("ORANGES", messageId);
-          const messageListCopy = prev.messages;
-          // if you can t mutate an array directly, it cant update because it points to same reference
-          const messageCopy = message;
-
-          messageCopy.is_received = isMessageReceived;
-          //! this line changes the state? from false to true
-          messageListCopy.splice(index, 1, messageCopy);
-          //! this takes last message from the prev.state and adds it to the array??
-
-          return { ...prev, messages: [...messageListCopy] };
-        }
-      });
-      return { ...prev };
+  useEffect(() => {
+    axios.get(`/api/messages/children/${userId}`).then((response) => {
+      setMessages(response.data["messages"]);
     });
+  }, [userId]);
+
+  // useEffect(() => {
+  // }, [messages])
+
+  const setIsMessageReceived = (messageId) => {
+    const messagesCopy = [...messages];
+    //! copy of current messages
+    const currentDateTime = new Date();
+    messagesCopy.forEach((message) => {
+      if (message.message_id === messageId) {
+        message.is_received = true;
+        message.dateTime_receiving = currentDateTime;
+      }
+    });
+    setMessages(messagesCopy);
+    // localStorage.setItem('userInboxLocalStorage', setMessages);
+    axios
+      .put(`/api/messages/children/${userId}/received-message/${messageId}`, {
+        time: currentDateTime,
+      })
+      .then((response) => {});
+    //! look in backend terminal for console log!
   };
 
   return (
     <div>
       <p>INBOX</p>
-      {state && (
+      <Link to="/outbox">Create A New Message!</Link>
+      {messages.length && (
         <>
           <IncomingMessageList
             setIsMessageReceived={setIsMessageReceived}
-            messages={state.messages}
+            messages={messages}
           />
-          <MessageList messages={state.messages} />
+          <MessageList messages={messages} />
         </>
       )}
-      <Child childId={childId} />
+      <Child childId={userId} />
     </div>
   );
 }
-//!==============================================================
-//! Code below this line is what Naz has for the messageList component
-// export default function Inbox({ childId }) {
-//   const [thisChildMessages, setThisChildMessages] = useState(null);
-//   const [messageId, setMessageId] = useState(0);
-
-//   // useEffect
-
-//   useEffect(() => {
-//     axios
-//     .get(`/api/messages/children/${childId}`)
-//     .then((response) => {
-//       setThisChildMessages(response.data["messages"]);
-//     })
-//   }, [childId]);
-
-//     return (
-//       <div>
-//         <h1>INBOX</h1>
-//         <IncomingMessages childMessages={thisChildMessages} setMessageId={setMessageId} />
-//         <MessageList childMessages={thisChildMessages}/>
-//       </div>
-//     )
-// };
