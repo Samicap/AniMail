@@ -31,7 +31,11 @@ export default function Netflix({ users, onSelectChild }) {
                 <Link to={{ pathname: `/inbox/children/${user.childs_id}` }}>
                   {user.childs_username}
                 </Link>
-                  <img src={user.childs_avatar_url}/>
+                  <img 
+                    src={user.childs_avatar_url}
+                    width='60'
+                    height='60'
+                  />
               </li>
             </div>
           );

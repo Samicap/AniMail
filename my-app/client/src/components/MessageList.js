@@ -16,6 +16,7 @@ export default function MessageList({ messages }) {
       dateReceived={message.datetime_receiving}
       animalAvatar={message.animal_avatar}
       message={message.message}
+      senderAvatar={message.sender_avatar}
       // selected={message.id === props.interviewer}
       // setInterviewer={event => props.setInterviewer(interviewer.id)}
     />
