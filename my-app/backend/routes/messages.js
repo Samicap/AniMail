@@ -9,52 +9,53 @@ module.exports = (db) => {
   router.get("/children/:id", (req, res) => {
     db.query(
       `SELECT 
-          messages.id as message_id,
-          messages.message as message,
-          messages.is_sent as is_sent,
-          messages.is_received as is_received,
-          messages.is_read as is_read,
-          messages.duration as duration,
-          messages.dateTime_sending as dateTime_sending,
-          messages.dateTime_delivering as dateTime_delivering,
-          messages.dateTime_receiving as dateTime_receiving,
-          messages.child_id_to as child_id_to,
-          messages.child_id_from as child_id_from,
-          messages.animal_id as animal_id,
-          t1.id as receiver_id,
-          t2.id as sender_id,
-          t1.username as receiver_name,
-          t2.username as sender_name,
-          t1.avatar_url as receiver_avatar,
-          t2.avatar_url as sender_avatar,
-          t1.age as receiver_age,
-          t2.age as sender_age,
-          t1.language_id as receiver_language_id,
-          t2.language_id as sender_language_id,
-          t1.location_id as receiver_location_id,
-          t2.location_id as sender_location_id,
-          animals.id as animal_id,
-          animals.name as animal_name,
-          animals.speed as speed,
-          animals.description as animal_description,
-          animals.avatar_url as animal_avatar,
-          t1.location_id as receiver_location_id,
-          t2.location_id as sender_location_id,
-          t3.name as receiver_location_name,
-          t4.name as sender_location_name,
-          t1.language_id as receiver_language_id,
-          t2.language_id as sender_language_id,
-          t5.name as receiver_language_name,
-          t6.name as sender_language_name	 
-        FROM messages
-        LEFT JOIN childs t1 ON messages.child_id_to = t1.id
-        LEFT JOIN childs t2 ON messages.child_id_from = t2.id
-        LEFT JOIN animals ON messages.animal_id = animals.id
-        LEFT JOIN locations t3 ON t1.location_id = t3.id
-        LEFT JOIN locations t4 ON t2.location_id = t4.id
-        LEFT JOIN languages t5 ON t1.language_id = t5.id
-        LEFT JOIN languages t6 ON t2.language_id = t6.id
-        WHERE messages.child_id_to = $1;`,
+      messages.id as message_id,
+      messages.message as message,
+      messages.is_sent as is_sent,
+      messages.is_received as is_received,
+      messages.is_read as is_read,
+      messages.duration as duration,
+      messages.dateTime_sending as dateTime_sending,
+      messages.dateTime_delivering as dateTime_delivering,
+      messages.dateTime_receiving as dateTime_receiving,
+      messages.child_id_to as child_id_to,
+      messages.child_id_from as child_id_from,
+      messages.animal_id as animal_id,
+      t1.id as receiver_id,
+      t2.id as sender_id,
+      t1.username as receiver_name,
+      t2.username as sender_name,
+      t1.avatar_url as receiver_avatar,
+      t2.avatar_url as sender_avatar,
+      t1.age as receiver_age,
+      t2.age as sender_age,
+      t1.language_id as receiver_language_id,
+      t2.language_id as sender_language_id,
+      t1.location_id as receiver_location_id,
+      t2.location_id as sender_location_id,
+      animals.id as animal_id,
+      animals.name as animal_name,
+      animals.speed as speed,
+      animals.description as animal_description,
+      animals.avatar_url as animal_avatar,
+      t1.location_id as receiver_location_id,
+      t2.location_id as sender_location_id,
+      t3.name as receiver_location_name,
+      t4.name as sender_location_name,
+      t1.language_id as receiver_language_id,
+      t2.language_id as sender_language_id,
+      t5.name as receiver_language_name,
+      t6.name as sender_language_name  
+    FROM messages
+    LEFT JOIN childs t1 ON messages.child_id_to = t1.id
+    LEFT JOIN childs t2 ON messages.child_id_from = t2.id
+    LEFT JOIN animals ON messages.animal_id = animals.id
+    LEFT JOIN locations t3 ON t1.location_id = t3.id
+    LEFT JOIN locations t4 ON t2.location_id = t4.id
+    LEFT JOIN languages t5 ON t1.language_id = t5.id
+    LEFT JOIN languages t6 ON t2.language_id = t6.id
+    WHERE messages.child_id_to = 1
+    ORDER BY dateTime_receiving DESC;`,
       [req.params.id]
     )
       .then((data) => {
