@@ -25,12 +25,14 @@ $timing: 10s;
   color: rgba(252, 176, 69, 1);
   text-decoration: none;
   text-transform: uppercase;
+  font-weight: 800;
 }
 
 .netLink:hover {
-  color: wheat;
+  color: rgba(34, 193, 195, 1);
   text-decoration: none;
   text-transform: uppercase;
+  font-weight: 1000;
 }
 
 .profile {

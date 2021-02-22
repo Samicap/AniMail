@@ -37,8 +37,13 @@ export default function Login({ getUser }) {
 
   return (
     <section class="loginStyle">
-      <h1>Welcome to Animail!</h1>
-      <h1>Parent Login</h1>
+      <h1 class="welcome">Animail</h1>
+      <div>
+        <img class="loginLogo" src="owl.png"></img>
+        <img class="loginLogo" src="logo05.png"></img>
+        <img class="loginLogo" src="shark.png"></img>
+      </div>
+
       <form class="loginForm" onSubmit={submitHandler}>
         <label class="logLabel" htmlFor="name">
           Email:

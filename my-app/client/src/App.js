@@ -1,17 +1,15 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
-import "./child.css";
-import "./Layout.css";
-import "./login.css";
-import "./inbox.css";
-import "./Netflix.scss";
+import "./styles/App.css";
+import "./styles/child.css";
+import "./styles/Layout.css";
+import "./styles/login.css";
+import "./styles/inbox.css";
+import "./styles/index.css";
+import "./styles/NavBar.css";
+import "./styles/Netflix.scss";
 import "./components/progressBar/progressBar.css";
-//import "./components/progressBar/progressBar.css";
 
-//import Message from "./components/Message";
-//import NavBar from "./components/NavBar";
-//import NavBar from "./components/NavBar";
 import CreateMessage from "./components/CreateMessage";
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -21,7 +19,6 @@ import Inbox from "./components/Inbox";
 import Netflix from "./components/Netflix";
 import Child from "./components/Child";
 import Layout from "./components/Layout";
-import HomePage from "./components/HomePage";
 import Placeholder from "./components/Placeholder";
 import NavBar from "./components/NavBar";
 
