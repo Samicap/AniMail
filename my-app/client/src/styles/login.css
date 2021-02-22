@@ -24,6 +24,7 @@
   font-weight: 1000;
   text-shadow: 2px 2px 5px black;
   text-transform: uppercase;
+  color: rgba(252, 176, 69, 1);
 }
 
 .loginLogo {
