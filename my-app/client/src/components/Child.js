@@ -3,21 +3,18 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 export default function Child({ childId }) {
-  // console.log("BROKEN BABANA CHILD", childId);
   //*child id is just a number
   //*childMessages is an array of objects
   const [childProfile, setChildProfile] = useState(null);
 
-  const [ userId, setUserId] = useState(
-    window.localStorage.getItem('childId')
-  )
+  const [userId, setUserId] = useState(window.localStorage.getItem("childId"));
 
   useEffect(() => {
     if (childId) {
       setUserId(childId);
-      window.localStorage.setItem('childId', childId)
+      window.localStorage.setItem("childId", childId);
     } else {
-      setUserId(window.localStorage.getItem('childId'));
+      setUserId(window.localStorage.getItem("childId"));
     }
   }, [childId]);
 
@@ -40,7 +37,7 @@ export default function Child({ childId }) {
           <p>{childProfile.username}</p>
           <p>{childProfile.age}</p>
           <p>{childProfile.location}</p>
-          <img src={childProfile.child_avatar} />
+          <img src={childProfile.child_avatar} height="60" width="60" alt="60*60" />
         </>
       )}
     </div>
