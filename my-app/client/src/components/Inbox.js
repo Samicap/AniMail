@@ -1,5 +1,5 @@
 import axios from "axios";
-import { localStorage } from "reactjs-localstorage";
+// import { localStorage } from "reactjs-localstorage";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import MessageList from "./MessageList";
@@ -9,30 +9,27 @@ import { preventOverflow } from "@popperjs/core";
 
 export default function Inbox({ childId }) {
   const [messages, setMessages] = useState([]);
-  
-  const [ userId, setUserId] = useState(
-    window.localStorage.getItem('childId')
-  )
+
+  const [userId, setUserId] = useState(window.localStorage.getItem("childId"));
 
   useEffect(() => {
     if (childId) {
       setUserId(childId);
-      window.localStorage.setItem('childId', childId)
+      window.localStorage.setItem("childId", childId);
     } else {
-      setUserId(window.localStorage.getItem('childId'));
+      setUserId(window.localStorage.getItem("childId"));
     }
   }, [childId]);
 
-  
   useEffect(() => {
     axios.get(`/api/messages/children/${userId}`).then((response) => {
       setMessages(response.data["messages"]);
     });
   }, [userId]);
-  
+
   // useEffect(() => {
   // }, [messages])
-  
+
   const setIsMessageReceived = (messageId) => {
     const messagesCopy = [...messages];
     //! copy of current messages
@@ -45,11 +42,13 @@ export default function Inbox({ childId }) {
     });
     setMessages(messagesCopy);
     // localStorage.setItem('userInboxLocalStorage', setMessages);
-    axios.put(`/api/messages/children/${userId}/received-message/${messageId}`, { time : currentDateTime}).then((response) => {
-    })
+    axios
+      .put(`/api/messages/children/${userId}/received-message/${messageId}`, {
+        time: currentDateTime,
+      })
+      .then((response) => {});
     //! look in backend terminal for console log!
   };
-  
 
   return (
     <div>

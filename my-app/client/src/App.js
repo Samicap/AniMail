@@ -10,7 +10,7 @@ import "./components/progressBar/progressBar.css";
 
 import { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { localStorage } from "reactjs-localstorage";
+// import { localStorage } from "reactjs-localstorage";
 
 import LoginForm from "./components/LoginForm";
 import Inbox from "./components/Inbox";
