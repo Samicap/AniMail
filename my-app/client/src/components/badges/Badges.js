@@ -23,27 +23,39 @@ export default function Badge({ childId }) {
   }, [childId]);
 
   //! below should be a put request to add badges depedning on messages length
+  //! new db query to get the messages sent by userId
 
   useEffect(() => {
-    axios.get(`/api/messages/children/${userId}`).then((response) => {
+    axios.get(`/api/messages/child/sentby/${userId}`).then((response) => {
       // returns an object of arrays of message objects (containing message and animal info)
-      const messagesSent = response.data.messages;
+      const messagesSent = response.data.message;
       setHowManyMessagesSent(messagesSent);
     });
   }, []);
   console.log("HOW MANY MESSAGES SENT", howManyMessagesSent.length)
-  // useEffect(() => {
-  //   axios.get(`/api/badges/child/${userId}/badges`).then((response) => {
-  //     // returns an object of arrays of message objects (containing message and animal info)
-  //     const badgesData = response.data.childs[0];
-  //     setChildProfileBadges(badgesData);
-  //   });
-  // }, []);
 
-  const addBadgeToChildProfile = (messageArray, badges) => {
+  useEffect(() => {
+    axios.put(`/api/badges/child/${userId}/badges`).then((response) => {
+      // returns an object of arrays of message objects (containing message and animal info)
+      const badgesData = response.data.childs[0];
+      setChildProfileBadges(badgesData);
+    });
+  }, [userId]);
+
+  useEffect(() => {
+    axios.get(`/api/badges/child/${userId}/badges`).then((response) => {
+      // returns an object of arrays of message objects (containing message and animal info)
+      const badgesData = response.data.childs[0];
+      setChildProfileBadges(badgesData);
+    });
+  }, [userId]);
+
+  const addBadgeToChildProfile = (messageArray) => {
     // check how many messages a child has sent.
     
-    if (howManyMessagesSent.length === 5) {
+    if (howManyMessagesSent.length = 1) {
+      badgeArray.push("Apple")
+      return badgeArray
       //shoudl this be an axio.put call to add a badge to the childs_badge?
 
     // if a child has sent 5 messages display badge # 1
@@ -67,11 +79,12 @@ export default function Badge({ childId }) {
 
   return (
     <div>
-      {childProfileBadges && (
+      {addBadgeToChildProfile(howManyMessagesSent)}
+      {/* {childProfileBadges && (
         <>
           <img src={childProfileBadges.badges_avatar_url} />
         </>
-      )}
+      )} */}
     </div>
   );
 }

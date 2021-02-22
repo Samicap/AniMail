@@ -25,7 +25,7 @@ module.exports = (db) => {
 
   router.get("/child/:id", (req, res) => {
     db.query(
-      `SELECT childs.username as username, childs.avatar_url as child_avatar, childs.age as age, locations.name as location, languages.name as language, childs.messages
+      `SELECT childs.username as username, childs.avatar_url as child_avatar, childs.age as age, locations.name as location, languages.name as language
        FROM childs
        LEFT JOIN locations ON childs.location_id = locations.id
        LEFT JOIN languages ON childs.language_id = languages.id

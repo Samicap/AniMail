@@ -1,0 +1,6 @@
+DROP TABLE IF EXISTS childs_badges CASCADE;
+
+CREATE TABLE childs_badges (
+  child_id INTEGER REFERENCES childs(id) ON DELETE CASCADE,
+  badge_id INTEGER REFERENCES badges(id) ON DELETE CASCADE
+);

@@ -8,5 +8,3 @@ CREATE TABLE childs (
   language_id INTEGER REFERENCES languages(id) ON DELETE CASCADE,
   location_id INTEGER REFERENCES locations(id) ON DELETE CASCADE
 );
-
--- //! needs to add badges

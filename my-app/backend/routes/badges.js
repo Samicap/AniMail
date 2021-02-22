@@ -3,7 +3,7 @@ const router = express.Router();
 
 module.exports = (db) => {
   router.get("child/:id/badges", (req, res) => {
-    db.query(`SELECT * FROM badges WHERE id != $1`, [req.params.id])
+    db.query(`SELECT * FROM childs_badges WHERE id != $1`, [req.params.id])
       .then((data) => {
         // console.log("data", data.rows);
         const badges = data.rows;
@@ -14,7 +14,7 @@ module.exports = (db) => {
       });
   });
 
-  router.put("/child/:id/badges", (req, res) => {
+  router.put("/child/:id/child_badges", (req, res) => {
     const childId = req.params["childId"];
     //! need to send a back id to DB so it know which one to add to child DB
     const badgeId = req.body["badge"]

@@ -123,9 +123,21 @@ module.exports = (db) => {
         res.status(500).json({ error: err.message });
       });
   });
+//!=====================
+  router.get("/child/sentby/:childId", (req, res) => {
+    const childId = Math.floor(req.params.childId)
+    db.query(`SELECT messages.message FROM messages WHERE child_id_from = $1;`, [childId])
+      .then((data) => {
+        const message = data.rows;
+        res.json({ message });
+      })
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
+      });
+  });
+  //!============================
 
   router.get("/:messageId/children/:childId", (req, res) => {
-    console.log("req.params", req.params);
     db.query(`SELECT * FROM messages WHERE id = $1;`, [req.params.messageId])
       .then((data) => {
         // console.log("data", data.rows);
@@ -138,7 +150,6 @@ module.exports = (db) => {
   });
 
   router.delete("/:messageId/children/:childId", (req, res) => {
-    console.log("req.params", req.params);
     db.query(`DELETE FROM messages WHERE id = $1`, [req.params.messageId])
       .then((data) => {
         res.status(200).json({
