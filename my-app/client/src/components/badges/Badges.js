@@ -6,24 +6,29 @@ export default function Badge({ childId }) {
   console.log("BROKEN BABANA CHILD", childId);
   //*child id is just a number
   //*childMessages is an array of objects
-  const [childProfileBadges, setChildProfileBadges] = useState(null);
-  const [howManyMessagesSent, setHowManyMessagesSent] = useState(0)
+  const [childProfileBadges, setChildProfileBadges] = useState([]);
+  const [howManyMessagesSent, setHowManyMessagesSent] = useState(0);
 
-  const [ userId, setUserId] = useState(
-    window.localStorage.getItem('childId')
-  )
+  const [userId, setUserId] = useState(window.localStorage.getItem("childId"));
 
   useEffect(() => {
     if (childId) {
       setUserId(childId);
-      window.localStorage.setItem('childId', childId)
+      window.localStorage.setItem("childId", childId);
     } else {
-      setUserId(window.localStorage.getItem('childId'));
+      setUserId(window.localStorage.getItem("childId"));
     }
   }, [childId]);
 
   //! below should be a put request to add badges depedning on messages length
   //! new db query to get the messages sent by userId
+  useEffect(() => {
+    axios.get(`/api/badges/child/${userId}/badges`).then((response) => {
+      // returns an object of arrays of message objects (containing message and animal info)
+      const badgesData = response.data.badges;
+      setChildProfileBadges(badgesData);
+    });
+  }, [userId]);
 
   useEffect(() => {
     axios.get(`/api/messages/child/sentby/${userId}`).then((response) => {
@@ -31,38 +36,39 @@ export default function Badge({ childId }) {
       const messagesSent = response.data.message;
       setHowManyMessagesSent(messagesSent);
     });
-  }, []);
-  console.log("HOW MANY MESSAGES SENT", howManyMessagesSent.length)
-
-  useEffect(() => {
-    axios.put(`/api/badges/child/${userId}/badges`).then((response) => {
-      // returns an object of arrays of message objects (containing message and animal info)
-      const badgesData = response.data.childs[0];
-      setChildProfileBadges(badgesData);
-    });
   }, [userId]);
+  // console.log("HOW MANY MESSAGES SENT", howManyMessagesSent.length)
+  //! i want to fetch all badges a child has
 
-  useEffect(() => {
-    axios.get(`/api/badges/child/${userId}/badges`).then((response) => {
-      // returns an object of arrays of message objects (containing message and animal info)
-      const badgesData = response.data.childs[0];
-      setChildProfileBadges(badgesData);
+  const allChildsBadges =
+    childProfileBadges &&
+    childProfileBadges.map((badge) => {
+      return (
+        <img src={badge.badge_avatar} height="60" width="60" alt="60*60" />
+      );
     });
-  }, [userId]);
+  //! i want to add badges to a child
+  // useEffect(() => {
+  //   axios.post(`/child/${userId}/child_badges`).then((response) => {
+  //     // returns an object of arrays of message objects (containing message and animal info)
+  //     const badgesData = response.data.childs[0];
+  //     setChildProfileBadges(badgesData);
+  //   });
+  // }, [userId]);
 
-  const addBadgeToChildProfile = (messageArray) => {
-    // check how many messages a child has sent.
-    
-    if (howManyMessagesSent.length = 1) {
-      badgeArray.push("Apple")
-      return badgeArray
-      //shoudl this be an axio.put call to add a badge to the childs_badge?
+  // const addBadgeToChildProfile = (messageArray, ) => {
+  //   // check how many messages a child has sent.
 
-    // if a child has sent 5 messages display badge # 1
-    // if a child has sent 10 messages add badge # 2 to thier profile
-    // if a child has sent 15 messages add badge #3 to their profile.  this should be held in childs DB as child_badges
-    }
-  }
+  //   if (howManyMessagesSent.length = 1) {
+  //     badgeArray.push("Apple")
+  //     return badgeArray
+  //     //shoudl this be an axio.put call to add a badge to the childs_badge?
+
+  //   // if a child has sent 5 messages display badge # 1
+  //   // if a child has sent 10 messages add badge # 2 to thier profile
+  //   // if a child has sent 15 messages add badge #3 to their profile.  this should be held in childs DB as child_badges
+  //   }
+  // }
   //! code logic the probs doesnt go here
   //! have code in create messages that adds +=1 to badges array in childs DB
 
@@ -79,12 +85,8 @@ export default function Badge({ childId }) {
 
   return (
     <div>
-      {addBadgeToChildProfile(howManyMessagesSent)}
-      {/* {childProfileBadges && (
-        <>
-          <img src={childProfileBadges.badges_avatar_url} />
-        </>
-      )} */}
+      {allChildsBadges}
+      {/* {addBadgeToChildProfile(howManyMessagesSent)} */}
     </div>
   );
 }

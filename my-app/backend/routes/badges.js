@@ -2,10 +2,17 @@ const express = require("express");
 const router = express.Router();
 
 module.exports = (db) => {
-  router.get("child/:id/badges", (req, res) => {
-    db.query(`SELECT * FROM childs_badges WHERE id != $1`, [req.params.id])
+  router.get("/child/:id/badges", (req, res) => {
+    const childId = Math.floor(req.params.id);
+    db.query(
+      `
+      SELECT badges.badge_avatar, badges.badge_description
+      FROM badges
+      LEFT JOIN childs_badges ON
+      childs_badges.badge_id = badges.id
+      WHERE child_id = $1;
+      `, [childId])
       .then((data) => {
-        // console.log("data", data.rows);
         const badges = data.rows;
         res.json({ badges });
       })
@@ -14,35 +21,35 @@ module.exports = (db) => {
       });
   });
 
-  router.put("/child/:id/child_badges", (req, res) => {
-    const childId = req.params["childId"];
-    //! need to send a back id to DB so it know which one to add to child DB
-    const badgeId = req.body["badge"]
-    // const time = req.body["time"];
-    // const baby = Math.floor(messageId);
+  router.post("/child/:id/child_badges", (req, res) => {
 
-    if (!childId) {
-      res.status(401).send("The messageId is empty!");
-      return;
-    }
-    return db
-      .query(
-        `
-        UPDATE childs
-        SET 
-            badges_received = $1,
-        WHERE childs.id = $2
-        RETURNING *;
-      `,
-        [badgeId, childId]
-      )
-      .then((data) => {
-        const message = data;
-        res.json({ message });
-      })
-      .catch((err) => {
-        res.status(500).json({ error: err.message });
-      });
+    console.log("BADGE ID SENT TO DB", req)
+    // console.log("IS BADGE ID IN THE RE>BODY", req.body)
+
+    // const childId = req.params["childId"];
+    // //! need to send a back id to DB so it know which one to add to child DB
+    // const badgeId = req.body["badge"]
+
+    // if (!childId) {
+    //   res.status(401).send("The messageId is empty!");
+    //   return;
+    // }
+    // return db
+    //   .query(
+    //     `
+    //     INSERT INTO childs_badges (badge_id, child_id)
+    //     VALUES ($1, $2)
+    //     RETURNING *;
+    //   `,
+    //     [badgeId, childId]
+    //   )
+    //   .then((data) => {
+    //     const message = data;
+    //     res.json({ message });
+    //   })
+    //   .catch((err) => {
+    //     res.status(500).json({ error: err.message });
+    //   });
   });
 
 
