@@ -6,6 +6,7 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 
 export default function CreateMessage({ childId }) {
+//!on submit will need to call multiple functions.  one needs to call on the badges to update thec count of messaged a child has.
 
   const [formData, setFormData] = useState({
     child_id_to: "",

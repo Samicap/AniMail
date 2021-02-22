@@ -3,10 +3,11 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 export default function Badge({ childId }) {
-  // console.log("BROKEN BABANA CHILD", childId);
+  console.log("BROKEN BABANA CHILD", childId);
   //*child id is just a number
   //*childMessages is an array of objects
   const [childProfileBadges, setChildProfileBadges] = useState(null);
+  const [howManyMessagesSent, setHowManyMessagesSent] = useState(0)
 
   const [ userId, setUserId] = useState(
     window.localStorage.getItem('childId')
@@ -21,13 +22,46 @@ export default function Badge({ childId }) {
     }
   }, [childId]);
 
+  //! below should be a put request to add badges depedning on messages length
+
   useEffect(() => {
-    axios.get(`/api/badges/child/${userId}/badges`).then((response) => {
+    axios.get(`/api/messages/children/${userId}`).then((response) => {
       // returns an object of arrays of message objects (containing message and animal info)
-      const badgesData = response.data.childs[0];
-      setChildProfileBadges(badgesData);
+      const messagesSent = response.data.messages;
+      setHowManyMessagesSent(messagesSent);
     });
   }, []);
+  console.log("HOW MANY MESSAGES SENT", howManyMessagesSent.length)
+  // useEffect(() => {
+  //   axios.get(`/api/badges/child/${userId}/badges`).then((response) => {
+  //     // returns an object of arrays of message objects (containing message and animal info)
+  //     const badgesData = response.data.childs[0];
+  //     setChildProfileBadges(badgesData);
+  //   });
+  // }, []);
+
+  const addBadgeToChildProfile = (messageArray, badges) => {
+    // check how many messages a child has sent.
+    
+    if (howManyMessagesSent.length === 5) {
+      //shoudl this be an axio.put call to add a badge to the childs_badge?
+
+    // if a child has sent 5 messages display badge # 1
+    // if a child has sent 10 messages add badge # 2 to thier profile
+    // if a child has sent 15 messages add badge #3 to their profile.  this should be held in childs DB as child_badges
+    }
+  }
+  //! code logic the probs doesnt go here
+  //! have code in create messages that adds +=1 to badges array in childs DB
+
+  // if (userId) {
+  //   if (userId.messages.length < 5) {
+  //     return badges.id === 1
+  //   }
+  //   if (userId.messages.length < 10) {
+  //     return badges.id === 1 & 2
+  //   }
+  // }
 
   //! this useEffect is run everythime the component mounts.Meaning it runs the axios call again to update the childProfile. By leaving the [] empty in the end of the useEffect we are telling it to only run once when the component mounts. this is what we want because the childId and profile stay the same on this page as they are the logged in user and this is their inbox.  If we put the childProfile in the [childProfile] then the useEffect would call the axios request everytime the state change
 
