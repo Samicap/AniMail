@@ -29,8 +29,6 @@ export default function CreateMessage({ childId }) {
     });
   }, []);
 
-  useEffect(() => console.log("profile ", userProfile), [userProfile]);
-
   useEffect(() => {
     if (childId) {
       setUserId(childId);
@@ -85,6 +83,7 @@ export default function CreateMessage({ childId }) {
         console.log(error);
       });
   };
+
   //! Routes in children file
   const getRandomPenPal = () => {
     axios
@@ -113,8 +112,6 @@ export default function CreateMessage({ childId }) {
   };
 
   useEffect(() => console.log(showPopup), [showPopup]);
-
-  // useEffect(() => console.log(messageData), [messageData]);
 
   return (
     <>
@@ -215,6 +212,7 @@ export default function CreateMessage({ childId }) {
           <input type="submit" value="Send Message" />
         </Form>
       )}
+      <h3>Character counter: {formData.text.length}</h3>
     </>
   );
 }
