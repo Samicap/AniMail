@@ -10,6 +10,7 @@ import "./styles/NavBar.css";
 import "./styles/Netflix.scss";
 import "./components/progressBar/progressBar.css";
 import "./styles/about.css";
+import "./components/incomingMessages/incomingMessages.css";
 
 import CreateMessage from "./components/CreateMessage";
 

@@ -10,3 +10,22 @@
   margin-bottom: auto;
   margin-top: 20px;
 }
+
+.NewMess {
+  height: 30px;
+  width: auto;
+  color: rgba(81, 78, 166, 1);
+  background: linear-gradient(
+    90deg,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(252, 176, 69, 1) 100%
+  );
+  box-shadow: 0px 15px 26px rgba(0, 0, 0, 0.5);
+  transition: all 300ms ease;
+  font-weight: 1000;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: solid rgba(81, 78, 166, 1) 5px;
+  padding: 25px;
+  margin-top: 25px;
+}

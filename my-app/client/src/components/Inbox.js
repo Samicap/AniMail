@@ -55,16 +55,20 @@ export default function Inbox({ childId }) {
       <div class="row">
         <div class="col">
           <h1 class="welcome">INBOX</h1>
-          <div class="col">
-            <Link to="/outbox">Create A New Message!</Link>
-          </div>
+
           <div class="col">
             <Child childId={userId} />
+          </div>
+          <div class="col">
+            <Link class="NewMess" to="/outbox">
+              Create A New Message!
+            </Link>
           </div>
         </div>
       </div>
       {messages.length && (
         <>
+          <MessageList messages={messages} />
           <div class="col">
             <h1 class="welcome">Incoming Messages</h1>
             <IncomingMessageList
@@ -72,8 +76,6 @@ export default function Inbox({ childId }) {
               messages={messages}
             />
           </div>
-
-          <MessageList messages={messages} />
         </>
       )}
     </div>

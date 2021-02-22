@@ -19,5 +19,5 @@ export default function IncomingMessageList({
       )
   );
 
-  return <div>{myList}</div>;
+  return <div class="messList">{myList}</div>;
 }
