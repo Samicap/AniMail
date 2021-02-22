@@ -22,13 +22,12 @@ export default function Inbox({ childId }) {
   }, [childId]);
 
   useEffect(() => {
-    axios.get(`/api/messages/children/${userId}`).then((response) => {
-      setMessages(response.data["messages"]);
-    });
+    if (userId) {
+      axios.get(`/api/messages/children/${userId}`).then((response) => {
+        setMessages(response.data["messages"]);
+      });
+    }
   }, [userId]);
-
-  // useEffect(() => {
-  // }, [messages])
 
   const setIsMessageReceived = (messageId) => {
     const messagesCopy = [...messages];
