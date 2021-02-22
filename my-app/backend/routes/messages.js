@@ -54,7 +54,7 @@ module.exports = (db) => {
     LEFT JOIN locations t4 ON t2.location_id = t4.id
     LEFT JOIN languages t5 ON t1.language_id = t5.id
     LEFT JOIN languages t6 ON t2.language_id = t6.id
-    WHERE messages.child_id_to = 1
+    WHERE messages.child_id_to = $1
     ORDER BY dateTime_receiving DESC;`,
       [req.params.id]
     )
