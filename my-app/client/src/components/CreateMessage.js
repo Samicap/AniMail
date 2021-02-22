@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 
+import Popup from "./popup/Popup";
+
 export default function CreateMessage({ childId }) {
   const [formData, setFormData] = useState({
     child_id_to: "",
@@ -17,6 +19,7 @@ export default function CreateMessage({ childId }) {
   const [messageData, setMessageData] = useState(null);
   const [userProfile, setUserProfile] = useState(null);
   const [userId, setUserId] = useState(window.localStorage.getItem("childId"));
+  const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
     axios.get(`/api/profiles/child/${userId}`).then((response) => {
@@ -37,15 +40,31 @@ export default function CreateMessage({ childId }) {
     }
   }, [childId]);
 
+  const validateForm = () => {
+    console.log("child_id_to ", formData.child_id_to);
+    console.log("formData.text.length ", formData.text.length);
+    if (
+      !formData.child_id_to ||
+      formData.child_id_to === "Pick a contact" ||
+      !formData.text
+    ) {
+      console.log("form validation FALSE");
+      return false;
+    } else {
+      console.log("form validation TRUE");
+      return true;
+    }
+  };
+
   const submitHandler = (event) => {
     event.preventDefault();
-    //! character counter attempt. doesnt work atm
-    // if (formData.text){
-    //   console.log("ARE WE HEEREE")
-    //   window.alert("Can't send an empty message!!!")
-    // }
-    //console.log(formData);
-    sendMessage(formData);
+
+    if (!validateForm()) {
+      setShowPopup(true);
+      console.log("inside validation form if ");
+    } else {
+      sendMessage(formData);
+    }
   };
 
   // :id needs to be changed after we have the login form
@@ -86,6 +105,15 @@ export default function CreateMessage({ childId }) {
       });
   };
 
+  const togglePopup = () => {
+    console.log("inside togglePopup func");
+    if (showPopup === true) {
+      setShowPopup(false);
+    } else setShowPopup(true);
+  };
+
+  useEffect(() => console.log(showPopup), [showPopup]);
+
   // useEffect(() => console.log(messageData), [messageData]);
 
   return (
@@ -98,99 +126,95 @@ export default function CreateMessage({ childId }) {
         </p>
       )}
 
-      <Form onSubmit={submitHandler}>
-        <Form.Group as={Row} controlId="formPlaintextFrom">
-          {/* <Form.Label column sm="2">
-            From:
-          </Form.Label>
-          <Col sm="10">
-            <Form.Control
-              plaintext
-              readOnly
-              defaultValue="current user"
-              defaultValue={`${userProfile.username}, ${userProfile.age}, ${userProfile.location}`}
-            />
-          </Col> */}
-        </Form.Group>
-        <Form.Group as={Row} controlId="selectPenPal.ControlSelect">
-          <Row>
+      {showPopup && (
+        <Popup
+          text="Please fill out all the fields in the form"
+          closePopup={togglePopup}
+        />
+      )}
+
+      {!showPopup && (
+        <Form onSubmit={submitHandler}>
+          <Form.Group as={Row} controlId="selectPenPal.ControlSelect">
+            <Row>
+              <Form.Label column sm={2}>
+                To:
+              </Form.Label>
+              <Col>
+                <Form.Control
+                  as="select"
+                  value={formData.child_id_to}
+                  onChange={(event) =>
+                    setFormData({
+                      ...formData,
+                      child_id_to: event.target.value,
+                    })
+                  }
+                >
+                  <option placeholder="Pick a contact">Pick a contact</option>
+                  <option value="4">Ana, 8, Montreal</option>
+                  <option value="1">Naz, 8, Istanbul</option>
+                  <option value="2">Sam, 8, Phoenix</option>
+                  <option value="3">Thomas, 8, Toronto</option>
+                </Form.Control>
+              </Col>
+              <Col> or </Col>
+              <Col>
+                <Button variant="primary" onClick={getRandomPenPal}>
+                  Find a new pen pal!
+                </Button>{" "}
+              </Col>
+            </Row>
+          </Form.Group>
+          <Form.Group as={Row} controlId="selectAnimal.ControlSelect">
             <Form.Label column sm={2}>
-              To:
+              Delivery Animal:
             </Form.Label>
-            <Col>
+            <Col sm={10}>
               <Form.Control
                 as="select"
-                value={formData.child_id_to}
+                value={formData.animal_id}
                 onChange={(event) =>
                   setFormData({
                     ...formData,
-                    child_id_to: event.target.value,
+                    animal_id: event.target.value,
                   })
                 }
               >
-                <option placeholder="Pick a contact">Pick a contact</option>
-                <option value="4">Ana, 8, Montreal</option>
-                <option value="1">Naz, 8, Istanbul</option>
-                <option value="2">Sam, 8, Phoenix</option>
-                <option value="3">Thomas, 8, Toronto</option>
+                <option value="1">Zebra</option>
+                <option value="2">Llama</option>
+                <option value="3">Owl</option>
+                <option value="4">Dove</option>
+                <option value="5">Shark</option>
+                <option value="6">Octopus</option>
+                <option value="7">Phoenix</option>
+                <option value="8">Unicorn</option>
+                <option value="9">Dragon</option>
               </Form.Control>
             </Col>
-            <Col> or </Col>
-            <Col>
-              <Button variant="primary" onClick={getRandomPenPal}>
-                Find a new pen pal!
-              </Button>{" "}
+          </Form.Group>
+          <Form.Group as={Row} controlId="createMessage.ControlTextarea">
+            <Form.Label column sm={2}>
+              Your Message:
+            </Form.Label>
+            <Col sm={10}>
+              <Form.Control
+                as="textarea"
+                rows={10}
+                value={formData.text}
+                onChange={(event) =>
+                  setFormData({
+                    ...formData,
+                    text: event.target.value,
+                  })
+                }
+              />
             </Col>
-          </Row>
-        </Form.Group>
-        <Form.Group as={Row} controlId="selectAnimal.ControlSelect">
-          <Form.Label column sm={2}>
-            Delivery Animal:
-          </Form.Label>
-          <Col sm={10}>
-            <Form.Control
-              as="select"
-              value={formData.animal_id}
-              onChange={(event) =>
-                setFormData({
-                  ...formData,
-                  animal_id: event.target.value,
-                })
-              }
-            >
-              <option value="1">Zebra</option>
-              <option value="2">Llama</option>
-              <option value="3">Owl</option>
-              <option value="4">Dove</option>
-              <option value="5">Shark</option>
-              <option value="6">Octopus</option>
-              <option value="7">Phoenix</option>
-              <option value="8">Unicorn</option>
-              <option value="9">Dragon</option>
-            </Form.Control>
-          </Col>
-        </Form.Group>
-        <Form.Group as={Row} controlId="createMessage.ControlTextarea">
-          <Form.Label column sm={2}>
-            Your Message:
-          </Form.Label>
-          <Col sm={10}>
-            <Form.Control
-              as="textarea"
-              rows={10}
-              value={formData.text}
-              onChange={(event) =>
-                setFormData({
-                  ...formData,
-                  text: event.target.value,
-                })
-              }
-            />
-          </Col>
-        </Form.Group>
-        {/* <Button variant="primary">Send Message</Button>{" "} */}
-        <input type="submit" value="Send Message" />
-      </Form>
+          </Form.Group>
+          {/* <Button variant="primary">Send Message</Button>{" "} */}
+          <input type="submit" value="Send Message" />
+        </Form>
+      )}
     </>
   );
 }
