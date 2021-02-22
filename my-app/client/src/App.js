@@ -9,6 +9,7 @@ import "./styles/index.css";
 import "./styles/NavBar.css";
 import "./styles/Netflix.scss";
 import "./components/progressBar/progressBar.css";
+import "./styles/about.css";
 
 import CreateMessage from "./components/CreateMessage";
 import { useState, useEffect } from "react";
@@ -21,6 +22,7 @@ import Child from "./components/Child";
 import Layout from "./components/Layout";
 import Placeholder from "./components/Placeholder";
 import NavBar from "./components/NavBar";
+import About from "./components/About";
 
 function App() {
   const [state, setState] = useState({
@@ -71,6 +73,14 @@ function App() {
                     users={state.currentUser}
                     receiveSelectedChild={receiveSelectedChild}
                   />
+                </>
+              )}
+            />
+            <Route
+              path="/about"
+              render={() => (
+                <>
+                  <About />
                 </>
               )}
             />
