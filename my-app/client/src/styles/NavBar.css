@@ -19,3 +19,19 @@
   color: #f2b90c;
   text-shadow: 2px 2px 5px hotpink;
 }
+
+.bg-teal {
+  background: linear-gradient(
+    90deg,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(252, 176, 69, 1) 100%
+  );
+}
+
+.text-yellow {
+  color: #22c1c3 !important;
+}
+
+.NavStyle {
+  height: 5vh;
+}

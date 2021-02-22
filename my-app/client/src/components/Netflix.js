@@ -19,7 +19,7 @@ export default function Netflix({ users, receiveSelectedChild }) {
 
   return (
     <div class="wrapper">
-      <h1>Netflix Choose User Page</h1>
+      <h1 class="netTitle"> Netflix Choose User Page </h1>
       <ul class="netflix">
         {users.map((user) => {
           return (
