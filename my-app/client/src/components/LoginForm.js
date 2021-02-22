@@ -37,11 +37,19 @@ export default function Login({ getUser }) {
 
   return (
     <section class="loginStyle">
-      <h1>Welcome to Animail!</h1>
-      <h1>Login</h1>
+      <h1 class="welcome">Animail</h1>
+      <div>
+        <img class="loginLogo" src="owl.png"></img>
+        <img class="loginLogo" src="logo05.png"></img>
+        <img class="loginLogo" src="shark.png"></img>
+      </div>
+
       <form class="loginForm" onSubmit={submitHandler}>
-        <label htmlFor="name">Email</label>
+        <label class="logLabel" htmlFor="name">
+          Email:
+        </label>
         <input
+          class="logInput"
           type="text"
           name="email"
           onChange={(event) =>
@@ -49,8 +57,11 @@ export default function Login({ getUser }) {
           }
           value={loginInfo.email}
         />
-        <label htmlFor="password">Password</label>
+        <label class="logLabel" htmlFor="password">
+          Password:
+        </label>
         <input
+          class="logInput"
           type="password"
           name="email"
           onChange={(event) =>
@@ -58,7 +69,7 @@ export default function Login({ getUser }) {
           }
           value={loginInfo.password}
         />
-        <input type="submit" value="Login" />
+        <input class="logButton" type="submit" value="Login" />
       </form>
     </section>
   );

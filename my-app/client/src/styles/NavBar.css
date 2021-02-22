@@ -1,0 +1,37 @@
+.navbar-light .navbar-nav .nav-link.active {
+  color: rgb(81, 78, 166);
+  font-weight: 750;
+}
+
+.navbar-light .navbar-nav .nav-link.active:hover {
+  color: #f2b90c;
+  font-weight: 750;
+  text-shadow: 2px 2px 5px hotpink;
+}
+
+.navbar-light .navbar-brand {
+  color: rgb(81, 78, 166);
+  font-weight: 1000;
+  margin-left: 1em;
+}
+
+.navbar-light .navbar-brand:hover {
+  color: #f2b90c;
+  text-shadow: 2px 2px 5px hotpink;
+}
+
+.bg-teal {
+  background: linear-gradient(
+    90deg,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(252, 176, 69, 1) 100%
+  );
+}
+
+.text-yellow {
+  color: #22c1c3 !important;
+}
+
+.NavStyle {
+  height: 5vh;
+}
