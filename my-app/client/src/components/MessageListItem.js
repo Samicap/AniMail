@@ -11,7 +11,7 @@ import { OverlayTrigger, Popover, Button } from 'react-bootstrap';
 export default function MessageListItem(props) {
 
   const popover = (
-    <Popover class="align-self-center" id="popover-basic">
+    <Popover id="popover-basic">
       <Popover.Title as="h3">
         <Image
           src={props.senderAvatar}
