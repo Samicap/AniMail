@@ -1,6 +1,7 @@
 import MessageListItem from "./MessageListItem";
 
 export default function MessageList({ messages }) {
+  const enUSFormatter = new Intl.DateTimeFormat('en-US')
   const allMessages = messages && messages.map(message => {
     if (message && !message.is_received) {
       return null
@@ -12,7 +13,7 @@ export default function MessageList({ messages }) {
       senderName={message.sender_name}
       senderAge={message.sender_age}
       senderLocation={message.sender_location_name}
-      dateReceived={message.datetime_receiving}
+      dateReceived={Date(message.datetime_receiving).toLocaleString()}
       animalAvatar={message.animal_avatar}
       message={message.message}
       senderAvatar={message.sender_avatar}

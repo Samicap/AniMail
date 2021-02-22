@@ -34,10 +34,10 @@ export default function Child({ childId }) {
     <div>
       {childProfile && (
         <>
+          <img src={childProfile.child_avatar} height="60" width="60" alt="60*60" />
           <p>{childProfile.username}</p>
           <p>{childProfile.age}</p>
           <p>{childProfile.location}</p>
-          <img src={childProfile.child_avatar} height="60" width="60" alt="60*60" />
         </>
       )}
     </div>

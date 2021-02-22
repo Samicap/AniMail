@@ -40,7 +40,6 @@ export default function Inbox({ childId }) {
       }
     });
     setMessages(messagesCopy);
-    // localStorage.setItem('userInboxLocalStorage', setMessages);
     axios
       .put(`/api/messages/children/${userId}/received-message/${messageId}`, {
         time: currentDateTime,
