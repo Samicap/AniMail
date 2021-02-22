@@ -1,5 +1,4 @@
 import MessageListItem from "./MessageListItem";
-import { Container, Row, Col } from "react-bootstrap";
 
 export default function MessageList({ messages }) {
   const allMessages = messages && messages.map(message => {
@@ -17,8 +16,6 @@ export default function MessageList({ messages }) {
       animalAvatar={message.animal_avatar}
       message={message.message}
       senderAvatar={message.sender_avatar}
-      // selected={message.id === props.interviewer}
-      // setInterviewer={event => props.setInterviewer(interviewer.id)}
     />
   )});
   
