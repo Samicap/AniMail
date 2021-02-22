@@ -21,7 +21,6 @@ export default function Login({ getUser }) {
         password: loginInfo.password,
       })
       .then(function (response) {
-        console.log(response.data.parent);
         const data = response.data.parent;
 
         getUser(data);
