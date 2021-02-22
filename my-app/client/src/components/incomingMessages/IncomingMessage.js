@@ -11,7 +11,7 @@ export default function IncomingMessage({
 
   return (
     <div>
-      <h1>I am an Incoming MEssage</h1>
+      <h1>I am an Incoming Message</h1>
       <img src={avatar} height="60" width="60" alt="60*60" />
       <ProgressBar
         messageId={messageId}

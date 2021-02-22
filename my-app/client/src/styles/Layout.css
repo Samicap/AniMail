@@ -21,17 +21,3 @@
   display: flex;
   justify-content: space-between;
 }
-
-.NavStyle {
-  height: 5vh;
-  background: rgb(242, 92, 132);
-  color: aliceblue;
-}
-
-.bg-teal {
-  background-color: #22c1c3 !important;
-}
-
-.text-yellow {
-  color: #22c1c3 !important;
-}

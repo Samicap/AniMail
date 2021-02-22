@@ -51,19 +51,31 @@ export default function Inbox({ childId }) {
   };
 
   return (
-    <div>
-      <p>INBOX</p>
-      <Link to="/outbox">Create A New Message!</Link>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h1 class="welcome">INBOX</h1>
+          <div class="col">
+            <Link to="/outbox">Create A New Message!</Link>
+          </div>
+          <div class="col">
+            <Child childId={userId} />
+          </div>
+        </div>
+      </div>
       {messages.length && (
         <>
-          <IncomingMessageList
-            setIsMessageReceived={setIsMessageReceived}
-            messages={messages}
-          />
+          <div class="col">
+            <h1 class="welcome">Incoming Messages</h1>
+            <IncomingMessageList
+              setIsMessageReceived={setIsMessageReceived}
+              messages={messages}
+            />
+          </div>
+
           <MessageList messages={messages} />
         </>
       )}
-      <Child childId={userId} />
     </div>
   );
 }
