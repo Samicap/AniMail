@@ -1,4 +1,3 @@
-
 import MessageListItem from "./MessageListItem";
 
 export default function MessageList({ messages }) {
@@ -16,8 +15,7 @@ export default function MessageList({ messages }) {
       dateReceived={message.datetime_receiving}
       animalAvatar={message.animal_avatar}
       message={message.message}
-      // selected={message.id === props.interviewer}
-      // setInterviewer={event => props.setInterviewer(interviewer.id)}
+      senderAvatar={message.sender_avatar}
     />
   )});
   
