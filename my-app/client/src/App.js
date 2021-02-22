@@ -72,6 +72,7 @@ function App() {
                 />
               )}
             />
+            <Route path="/about" render={() => <About></About>} />
             <Route
               path="/outbox"
               render={() => <Outbox childId={state.selectedChildId} />}
