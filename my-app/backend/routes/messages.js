@@ -97,6 +97,7 @@ module.exports = (db) => {
   router.put("/children/:id/received-message/:messageId", (req, res) => {
     const messageId = req.params["messageId"];
     const time = req.body["time"];
+    const baby = Math.floor(messageId);
 
     if (!messageId || !time) {
       res.status(401).send("The messageId is empty!");
@@ -109,12 +110,12 @@ module.exports = (db) => {
         SET 
             is_received = $1,
             dateTime_receiving = $2
+        WHERE messages.id = $3
         RETURNING *;
       `,
-        [true, time]
+        [true, time, baby]
       )
       .then((data) => {
-        // console.log("data", data);
         const message = data;
         res.json({ message });
       })

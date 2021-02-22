@@ -7,21 +7,35 @@ import { useHistory } from "react-router-dom";
 
 export default function CreateMessage({ childId }) {
 
-  console.log("INCOMING CHILD ID FROM APP BABY", childId)
   const [formData, setFormData] = useState({
     child_id_to: "",
     animal_id: "1",
     text: "",
   });
-
+  
   const [messageData, setMessageData] = useState(null);
-  //const [penPal, setPenPal] = useState(null);
+  const [ userId, setUserId] = useState(
+    window.localStorage.getItem('childId')
+  )
+
+  useEffect(() => {
+    if (childId) {
+      setUserId(childId);
+      window.localStorage.setItem('childId', childId)
+    } else {
+      setUserId(window.localStorage.getItem('childId'));
+    }
+  }, [childId]);
 
   let history = useHistory();
 
   const submitHandler = (event) => {
     event.preventDefault();
-
+    //! character counter attempt. doesnt work atm
+    // if (formData.text){
+    //   console.log("ARE WE HEEREE")
+    //   window.alert("Can't send an empty message!!!")
+    // }
     //console.log(formData);
     sendMessage(formData);
   };
@@ -29,13 +43,13 @@ export default function CreateMessage({ childId }) {
   // :id needs to be changed after we have the login form
   const sendMessage = (formData) => {
     axios
-      .post(`/api/messages/children/${childId}`, {
+      .post(`/api/messages/children/${userId}`, {
         child_id_to: formData.child_id_to,
         message: formData.text,
         animal_id: formData.animal_id,
       })
       .then(function (response) {
-        console.log("BOOM CHICKA POP", response.data.message[0]);
+        // console.log("BOOM CHICKA POP", response.data.message[0]);
         const data = response.data.message[0];
 
         setMessageData(data);
@@ -48,13 +62,13 @@ export default function CreateMessage({ childId }) {
   //! Routes in children file
   const getRandomPenPal = () => {
     axios
-      .get(`/api/children/${childId}`)
+      .get(`/api/children/${userId}`)
       .then(function (response) {
-        console.log("array childs ", response.data.childs);
-        console.log("length ", response.data.childs.length);
+        // console.log("array childs ", response.data.childs);
+        // console.log("length ", response.data.childs.length);
         const length = response.data.childs.length;
         const randomId = Math.floor(Math.random() * length);
-        console.log("randomId ", randomId);
+        // console.log("randomId ", randomId);
         setFormData({
           ...formData,
           child_id_to: response.data.childs[randomId].id,
@@ -65,7 +79,7 @@ export default function CreateMessage({ childId }) {
       });
   };
 
-  useEffect(() => console.log(messageData), [messageData]);
+  // useEffect(() => console.log(messageData), [messageData]);
 
   return (
     <Form onSubmit={submitHandler}>
