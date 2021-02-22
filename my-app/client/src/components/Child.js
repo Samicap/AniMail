@@ -40,8 +40,7 @@ export default function Child({ childId }) {
           <p>{childProfile.username}</p>
           <p>{childProfile.age}</p>
           <p>{childProfile.location}</p>
-          //! image is broken
-          <img src={childProfile.child_avatar_url} />
+          <img src={childProfile.child_avatar} />
         </>
       )}
     </div>
