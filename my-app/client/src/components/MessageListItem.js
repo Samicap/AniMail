@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import Accordion from 'react-bootstrap/Accordion';
-import Card from 'react-bootstrap/Card';
+import Accordion from "react-bootstrap/Accordion";
+import Card from "react-bootstrap/Card";
 import { Row, Col, Image } from "react-bootstrap";
 
 import { OverlayTrigger, Popover, Button } from 'react-bootstrap';
@@ -57,5 +57,5 @@ export default function MessageListItem(props) {
         </Accordion.Collapse>
       </Card>
     </Accordion>
-  )
-} 
+  );
+}

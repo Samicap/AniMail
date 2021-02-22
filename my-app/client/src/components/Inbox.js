@@ -1,4 +1,5 @@
 import axios from "axios";
+// import { localStorage } from "reactjs-localstorage";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import MessageList from "./MessageList";
@@ -8,19 +9,31 @@ import { preventOverflow } from "@popperjs/core";
 
 export default function Inbox({ childId }) {
   const [messages, setMessages] = useState([]);
-  console.log("COOKIE MAN BROKE IT", childId)
+
+  const [userId, setUserId] = useState(window.localStorage.getItem("childId"));
 
   useEffect(() => {
-    axios.get(`/api/messages/children/${childId}`).then((response) => {
-      setMessages(response.data["messages"]);
-      // returns an array of message objects (containing message and animal info)
-    });
+    if (childId) {
+      setUserId(childId);
+      window.localStorage.setItem("childId", childId);
+    } else {
+      setUserId(window.localStorage.getItem("childId"));
+    }
   }, [childId]);
+
+  useEffect(() => {
+    axios.get(`/api/messages/children/${userId}`).then((response) => {
+      setMessages(response.data["messages"]);
+    });
+  }, [userId]);
+
+  // useEffect(() => {
+  // }, [messages])
 
   const setIsMessageReceived = (messageId) => {
     const messagesCopy = [...messages];
-    const currentDateTime = new Date();
     //! copy of current messages
+    const currentDateTime = new Date();
     messagesCopy.forEach((message) => {
       if (message.message_id === messageId) {
         message.is_received = true;
@@ -28,10 +41,12 @@ export default function Inbox({ childId }) {
       }
     });
     setMessages(messagesCopy);
-    axios.put(`/api/messages/children/${childId}/received-message/${messageId}`, { time : currentDateTime}).then((response) => {
-        console.log("BUGABOOOOOO", response.data)
-    })
-    //! need to make backend route to update DB
+    // localStorage.setItem('userInboxLocalStorage', setMessages);
+    axios
+      .put(`/api/messages/children/${userId}/received-message/${messageId}`, {
+        time: currentDateTime,
+      })
+      .then((response) => {});
     //! look in backend terminal for console log!
   };
 
@@ -48,7 +63,7 @@ export default function Inbox({ childId }) {
           <MessageList messages={messages} />
         </>
       )}
-      <Child childId={childId} />
+      <Child childId={userId} />
     </div>
   );
 }
