@@ -128,6 +128,7 @@ module.exports = (db) => {
     const childId = Math.floor(req.params.childId)
     db.query(`SELECT messages.message FROM messages WHERE child_id_from = $1;`, [childId])
       .then((data) => {
+        console.log("SENDBY CHILD RESPNSE", data)
         const message = data.rows;
         res.json({ message });
       })

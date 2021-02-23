@@ -38,6 +38,7 @@ export default function CreateMessage({ childId }) {
     //   window.alert("Can't send an empty message!!!")
     // }
     //console.log(formData);
+    //! calls funciton to add Badge to DB
     sendMessage(formData);
   };
 
