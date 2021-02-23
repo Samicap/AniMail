@@ -31,25 +31,35 @@ export default function MessageListItem(props) {
     <Accordion>
       <Card>
         <Accordion.Toggle as={Card.Header} eventKey="0">
-          <Row>
-              <Col>
-              <OverlayTrigger trigger="hover" placement="top" overlay={popover}>
+          <Row>  
+              <Col> 
+                <OverlayTrigger trigger="hover" placement="top" overlay={popover}>
+                    <Row>
+                      FROM: {props.senderName}, {props.senderAge}, {props.senderLocation}
+                    </Row>
+                </OverlayTrigger>
                   <Row>
-                    FROM: {props.senderName}, {props.senderAge}, {props.senderLocation}
+                    DATE: {props.dateReceived}
                   </Row>
-              </OverlayTrigger>
+              </Col>
+              <Col>
                 <Row>
-                  DATE: {props.dateReceived}
+                  <Image id="avatar"
+                    src={props.animalAvatar}
+                    height="60"
+                    width="60"
+                    alt="60x60"
+                  />
                 </Row>
               </Col>
               <Col>
-                <Image id="avatar"
-                  src={props.animalAvatar}
-                  height="60"
-                  width="60"
-                  alt="60x60"
-                />
-              </Col>
+               <Image id="trash"
+                    src="/trash-01.png"
+                    height="25"
+                    width="25"
+                    alt="20x20"
+                  />
+              </Col> 
           </Row>
         </Accordion.Toggle>
         <Accordion.Collapse eventKey="0">
