@@ -6,7 +6,7 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 
 import Popup from "./popup/Popup";
-import CustomDropdown from "./dropdown/CustomDropdown";
+//import CustomDropdown from "./dropdown/CustomDropdown";
 
 export default function CreateMessage({ childId }) {
   const [formData, setFormData] = useState({
@@ -72,7 +72,7 @@ export default function CreateMessage({ childId }) {
 
   useEffect(() => {
     axios.get(`/api/profiles/child/${userId}`).then((response) => {
-      console.log("child profile ", response.data.childs[0]);
+      //console.log("child profile ", response.data.childs[0]);
       const profile = response.data.childs[0];
       setUserProfile(profile);
     });
@@ -88,8 +88,8 @@ export default function CreateMessage({ childId }) {
   }, [childId]);
 
   const validateForm = () => {
-    console.log("child_id_to ", formData.child_id_to);
-    console.log("formData.text.length ", formData.text.length);
+    //console.log("child_id_to ", formData.child_id_to);
+    //console.log("formData.text.length ", formData.text.length);
     if (
       !formData.child_id_to ||
       formData.child_id_to === "Pick a contact" ||
@@ -106,10 +106,11 @@ export default function CreateMessage({ childId }) {
 
   const submitHandler = (event) => {
     event.preventDefault();
+    console.log("submit form", formData);
 
     if (!validateForm()) {
       setShowPopup(true);
-      console.log("inside validation form if ");
+      //console.log("inside validation form if ");
     } else {
       sendMessage(formData);
     }
@@ -161,11 +162,15 @@ export default function CreateMessage({ childId }) {
     } else setShowPopup(true);
   };
 
-  //useEffect(() => console.log(showPopup), [showPopup]);
-
-  const getAnimalSelected = (animalId) => {
+  const chooseAnimal = (animalId) => {
+    console.log("chooseAnimal func ", animalId);
     setFormData({ ...formData, animal_id: animalId });
   };
+
+  // The function below is for the CustomDropdown component - just keeping it as a reference, we won't be using it
+  // const getAnimalSelected = (animalId) => {
+  //   setFormData({ ...formData, animal_id: animalId });
+  // };
 
   return (
     <>
@@ -222,31 +227,27 @@ export default function CreateMessage({ childId }) {
               Delivery Animal:
             </Form.Label>
             <Col sm={10}>
-              <CustomDropdown
+              {/* <CustomDropdown
                 title="Select an animal"
                 items={animals}
                 getAnimalSelected={getAnimalSelected}
-              />
-              {/* <Form.Control
-                as="select"
-                value={formData.animal_id}
-                onChange={(event) =>
-                  setFormData({
-                    ...formData,
-                    animal_id: event.target.value,
-                  })
-                }
-              >
-                <option value="1">Zebra</option>
-                <option value="2">Llama</option>
-                <option value="3">Owl</option>
-                <option value="4">Dove</option>
-                <option value="5">Shark</option>
-                <option value="6">Octopus</option>
-                <option value="7">Phoenix</option>
-                <option value="8">Unicorn</option>
-                <option value="9">Dragon</option>
-              </Form.Control> */}
+              /> */}
+              <ul>
+                {animals.map((animal) => (
+                  <li key={animal.id} style={{ display: "inline" }}>
+                    <button
+                      type="button"
+                      onClick={() => chooseAnimal(animal.id)}
+                    >
+                      <img
+                        src={animal.src}
+                        style={{ width: "50px", height: "auto" }}
+                      />
+                      <p>{animal.name}</p>
+                    </button>
+                  </li>
+                ))}
+              </ul>
             </Col>
           </Form.Group>
           <Form.Group></Form.Group>
