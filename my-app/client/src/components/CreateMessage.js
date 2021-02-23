@@ -11,7 +11,7 @@ import CustomDropdown from "./dropdown/CustomDropdown";
 export default function CreateMessage({ childId }) {
   const [formData, setFormData] = useState({
     child_id_to: "",
-    animal_id: "1",
+    animal_id: "",
     text: "",
   });
 
@@ -93,7 +93,8 @@ export default function CreateMessage({ childId }) {
     if (
       !formData.child_id_to ||
       formData.child_id_to === "Pick a contact" ||
-      !formData.text
+      !formData.text ||
+      !formData.animal_id
     ) {
       console.log("form validation FALSE");
       return false;
