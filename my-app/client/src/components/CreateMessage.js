@@ -9,8 +9,6 @@ import Popup from "./popup/Popup";
 export default function CreateMessage({ childId }) {
 //!on submit will need to call multiple functions.  one needs to call on the badges to update thec count of messaged a child has.
 
-console.log("CREATE MESSAGE", childId)
-
   const [formData, setFormData] = useState({
     child_id_to: "",
     animal_id: "1",
@@ -37,6 +35,7 @@ console.log("CREATE MESSAGE", childId)
       setUserProfile(profile);
     });
   }, []);
+  
 
 
   const validateForm = () => {
@@ -58,7 +57,6 @@ console.log("CREATE MESSAGE", childId)
 
     if (!validateForm()) {
       setShowPopup(true);
-      console.log("inside validation form if ");
     } else {
       sendMessage(formData);
     }
@@ -80,19 +78,17 @@ console.log("CREATE MESSAGE", childId)
       })
       .catch(function (error) {
         console.log(error);
-      });
-  };
+      })
+    };
 
-  //! Routes in children file
+
   const getRandomPenPal = () => {
     axios
       .get(`/api/children/${userId}`)
       .then(function (response) {
-        // console.log("array childs ", response.data.childs);
-        // console.log("length ", response.data.childs.length);
         const length = response.data.childs.length;
         const randomId = Math.floor(Math.random() * length);
-        // console.log("randomId ", randomId);
+
         setFormData({
           ...formData,
           child_id_to: response.data.childs[randomId].id,
@@ -101,34 +97,8 @@ console.log("CREATE MESSAGE", childId)
       .catch(function (error) {
         console.log(error);
       });
-  };
-
-  const addBadgeToChildProfile = (
-    userId,
-    messageArray,
-    childAlreadyHasBadges
-  ) => {
-    childAlreadyHasBadges.map((badge) => {
-      const badgeId = badge.id;
-      //! look at last elemnt in the array and if the state has 1 item add 2
-      //! 
-      if (messageArray.length === 3) {
-        axios
-          .post(`/api/badges/child/${userId}/child_badges`, { badgeId: 3 })
-          .then((response) => {});
-      }
-    });
-    // check how many messages a child has sent
-    // if (messageArray.length === 2) {
-    //   axios.post(`/api/badges/child/${userId}/child_badges`, {badgeId: 2}).then((response) => {
-    //   })
-    // }
-    // if (messageArray.length === 1) {
-    //   axios.post(`/api/badges/child/${userId}/child_badges`, {badgeId: 1}).then((response) => {
-    //   })
-    // } 
-  };
-
+   };
+  
   const togglePopup = () => {
     console.log("inside togglePopup func");
     if (showPopup === true) {

@@ -5,8 +5,6 @@ import { preventOverflow } from "@popperjs/core";
 import CreateMessage from "../CreateMessage";
 
 export default function Outbox({ childId }) {
-  //this is null on refresh. why?
-  console.log("OUTBOX DHILD ID", childId)
   const [userId, setUserId] = useState(window.localStorage.getItem("childId"));
   // const [messages, setMessages] = useState([]);
 

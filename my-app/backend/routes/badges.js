@@ -23,7 +23,6 @@ module.exports = (db) => {
 
   router.post("/child/:id/child_badges", (req, res) => {
 
-    
     const childId = Math.floor(req.params.id);
     const badgeId = Math.floor(req.body.badgeId);
     console.log("child ID SENT TO DB", req.params.id)

@@ -8,7 +8,6 @@ import Badges from "./badges/Badges";
 import { preventOverflow } from "@popperjs/core";
 
 export default function Inbox({ childId }) {
-  console.log("INBOX CHILDID", childId)
   const [messages, setMessages] = useState([]);
 
   const [userId, setUserId] = useState(window.localStorage.getItem("childId"));
