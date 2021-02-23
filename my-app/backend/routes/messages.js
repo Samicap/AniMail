@@ -138,7 +138,7 @@ module.exports = (db) => {
       });
   });
 
-  router.delete("/:messageId/children/:childId", (req, res) => {
+  router.delete("/:messageId", (req, res) => {
     console.log("req.params", req.params);
     db.query(`DELETE FROM messages WHERE id = $1`, [req.params.messageId])
       .then((data) => {

@@ -27,6 +27,13 @@ export default function MessageListItem(props) {
     </Popover>
   );
 
+  //! deletes messages from db, but doesn't remove the message from the page without manually refreshing the page.
+  const deleteMessage = (messageId) => {
+    axios.delete(`/api/messages/${messageId}`).then(response => {
+      console.log("DELETE MESSAGE ", response)
+    })
+  } 
+
   return (
     <Accordion>
       <Card>
@@ -53,18 +60,22 @@ export default function MessageListItem(props) {
                 </Row>
               </Col>
               <Col>
-               <Image id="trash"
-                    src="/trash-01.png"
-                    height="25"
-                    width="25"
-                    alt="25*25"
-                  />
+               
               </Col> 
           </Row>
         </Accordion.Toggle>
         <Accordion.Collapse eventKey="0">
           <Card.Body>{props.message}</Card.Body>
         </Accordion.Collapse>
+   
+          <Image id="trash"
+                      src="/trash-01.png"
+                      height="25"
+                      width="25"
+                      alt="25*25"
+                      onClick={()=> deleteMessage(props.id)}
+                    />
+        
       </Card>
     </Accordion>
   );
