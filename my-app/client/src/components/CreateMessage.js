@@ -6,6 +6,7 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 
 import Popup from "./popup/Popup";
+import CustomDropdown from "./dropdown/CustomDropdown";
 
 export default function CreateMessage({ childId }) {
   const [formData, setFormData] = useState({
@@ -13,6 +14,54 @@ export default function CreateMessage({ childId }) {
     animal_id: "1",
     text: "",
   });
+
+  const animals = [
+    {
+      id: 1,
+      src: "zebra.png",
+      name: "Zebra",
+    },
+    {
+      id: 2,
+      src: "llama.png",
+      name: "Llama",
+    },
+    {
+      id: 3,
+      src: "owl.png",
+      name: "Owl",
+    },
+    {
+      id: 4,
+      src: "dove.png",
+      name: "Dove",
+    },
+    {
+      id: 5,
+      src: "shark.png",
+      name: "Shark",
+    },
+    {
+      id: 6,
+      src: "octopus.png",
+      name: "Octopus",
+    },
+    {
+      id: 7,
+      src: "phoenix.png",
+      name: "Phoenix",
+    },
+    {
+      id: 8,
+      src: "unicorn.png",
+      name: "Unicorn",
+    },
+    {
+      id: 9,
+      src: "dragon.png",
+      name: "Dragon",
+    },
+  ];
 
   let history = useHistory();
 
@@ -115,6 +164,9 @@ export default function CreateMessage({ childId }) {
 
   return (
     <>
+      <h1>CustomDropdown</h1>
+      <CustomDropdown title="Select animal" items={animals} />
+      <img src="owl.png" style={{ width: "50px", height: "auto" }} />
       <h1>Compose A New Message</h1>
       {userProfile && (
         <p>
@@ -190,6 +242,7 @@ export default function CreateMessage({ childId }) {
               </Form.Control>
             </Col>
           </Form.Group>
+          <Form.Group></Form.Group>
           <Form.Group as={Row} controlId="createMessage.ControlTextarea">
             <Form.Label column sm={2}>
               Your Message:
