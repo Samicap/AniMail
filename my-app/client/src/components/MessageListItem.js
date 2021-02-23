@@ -57,7 +57,7 @@ export default function MessageListItem(props) {
                     src="/trash-01.png"
                     height="25"
                     width="25"
-                    alt="20x20"
+                    alt="25*25"
                   />
               </Col> 
           </Row>
