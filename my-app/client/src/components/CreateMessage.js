@@ -160,13 +160,14 @@ export default function CreateMessage({ childId }) {
     } else setShowPopup(true);
   };
 
-  useEffect(() => console.log(showPopup), [showPopup]);
+  //useEffect(() => console.log(showPopup), [showPopup]);
+
+  const getAnimalSelected = (animalId) => {
+    setFormData({ ...formData, animal_id: animalId });
+  };
 
   return (
     <>
-      <h1>CustomDropdown</h1>
-      <CustomDropdown title="Select animal" items={animals} />
-      <img src="owl.png" style={{ width: "50px", height: "auto" }} />
       <h1>Compose A New Message</h1>
       {userProfile && (
         <p>
@@ -220,7 +221,12 @@ export default function CreateMessage({ childId }) {
               Delivery Animal:
             </Form.Label>
             <Col sm={10}>
-              <Form.Control
+              <CustomDropdown
+                title="Select an animal"
+                items={animals}
+                getAnimalSelected={getAnimalSelected}
+              />
+              {/* <Form.Control
                 as="select"
                 value={formData.animal_id}
                 onChange={(event) =>
@@ -239,7 +245,7 @@ export default function CreateMessage({ childId }) {
                 <option value="7">Phoenix</option>
                 <option value="8">Unicorn</option>
                 <option value="9">Dragon</option>
-              </Form.Control>
+              </Form.Control> */}
             </Col>
           </Form.Group>
           <Form.Group></Form.Group>
