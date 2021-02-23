@@ -23,33 +23,35 @@ module.exports = (db) => {
 
   router.post("/child/:id/child_badges", (req, res) => {
 
-    console.log("BADGE ID SENT TO DB", req)
-    // console.log("IS BADGE ID IN THE RE>BODY", req.body)
+    
+    const childId = Math.floor(req.params.id);
+    const badgeId = Math.floor(req.body.badgeId);
+    console.log("child ID SENT TO DB", req.params.id)
+    console.log("badge ID SENT TO DB", req.body.badgeId)
 
-    // const childId = req.params["childId"];
+
     // //! need to send a back id to DB so it know which one to add to child DB
-    // const badgeId = req.body["badge"]
 
-    // if (!childId) {
-    //   res.status(401).send("The messageId is empty!");
-    //   return;
-    // }
-    // return db
-    //   .query(
-    //     `
-    //     INSERT INTO childs_badges (badge_id, child_id)
-    //     VALUES ($1, $2)
-    //     RETURNING *;
-    //   `,
-    //     [badgeId, childId]
-    //   )
-    //   .then((data) => {
-    //     const message = data;
-    //     res.json({ message });
-    //   })
-    //   .catch((err) => {
-    //     res.status(500).json({ error: err.message });
-    //   });
+    if (!childId) {
+      res.status(401).send("The messageId is empty!");
+      return;
+    }
+    return db
+      .query(
+        `
+        INSERT INTO childs_badges (badge_id, child_id)
+        VALUES ($1, $2)
+        RETURNING *;
+      `,
+        [badgeId, childId]
+      )
+      .then((data) => {
+        const message = data;
+        res.json({ message });
+      })
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
+      });
   });
 
 

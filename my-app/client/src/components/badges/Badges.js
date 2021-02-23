@@ -3,11 +3,10 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 export default function Badge({ childId }) {
-  console.log("BROKEN BABANA CHILD", childId);
   //*child id is just a number
   //*childMessages is an array of objects
   const [childProfileBadges, setChildProfileBadges] = useState([]);
-  const [howManyMessagesSent, setHowManyMessagesSent] = useState(0);
+  const [howManyMessagesSent, setHowManyMessagesSent] = useState([]);
 
   const [userId, setUserId] = useState(window.localStorage.getItem("childId"));
 
@@ -31,13 +30,16 @@ export default function Badge({ childId }) {
   }, [userId]);
 
   useEffect(() => {
-    axios.get(`/api/messages/child/sentby/${userId}`).then((response) => {
-      // returns an object of arrays of message objects (containing message and animal info)
-      const messagesSent = response.data.message;
-      setHowManyMessagesSent(messagesSent);
-    });
+      axios.get(`/api/messages/child/sentby/${userId}`).then((response) => {
+        // returns an object of arrays of message objects (containing message and animal info)
+        const messagesSent = response.data.message;
+        setHowManyMessagesSent(messagesSent);
+        // if (howManyMessagesSent) {
+        //   addBadgeToChildProfile(`${userId}`, howManyMessagesSent)
+        // }
+      });
   }, [userId]);
-  // console.log("HOW MANY MESSAGES SENT", howManyMessagesSent.length)
+  console.log("HOW MANY MESSAG\\ES SENT", howManyMessagesSent)
   //! i want to fetch all badges a child has
 
   const allChildsBadges =
@@ -48,45 +50,34 @@ export default function Badge({ childId }) {
       );
     });
   //! i want to add badges to a child
-  // useEffect(() => {
-  //   axios.post(`/child/${userId}/child_badges`).then((response) => {
-  //     // returns an object of arrays of message objects (containing message and animal info)
-  //     const badgesData = response.data.childs[0];
-  //     setChildProfileBadges(badgesData);
-  //   });
-  // }, [userId]);
+  useEffect(() => {
+    if (howManyMessagesSent) {
+      addBadgeToChildProfile(`${userId}`, howManyMessagesSent)
+    }
+  }, [userId]);
 
-  // const addBadgeToChildProfile = (messageArray, ) => {
-  //   // check how many messages a child has sent.
+  const addBadgeToChildProfile = (userId, messageArray) => {
+    // check how many messages a child has sent
+    if (messageArray.length === 1) {
+      axios.post(`/api/badges/child/${userId}/child_badges`, {badgeId: 1}).then((response) => {
+      })
+    }
+    if (messageArray.length === 2) {
+      axios.post(`/api/badges/child/${userId}/child_badges`, {badgeId: 2}).then((response) => {
+      })
+    }
+    if (messageArray.length === 3) {
+      axios.post(`/api/badges/child/${userId}/child_badges`, {badgeId: 3}).then((response) => {
+      })
+    }
+  }
 
-  //   if (howManyMessagesSent.length = 1) {
-  //     badgeArray.push("Apple")
-  //     return badgeArray
-  //     //shoudl this be an axio.put call to add a badge to the childs_badge?
-
-  //   // if a child has sent 5 messages display badge # 1
-  //   // if a child has sent 10 messages add badge # 2 to thier profile
-  //   // if a child has sent 15 messages add badge #3 to their profile.  this should be held in childs DB as child_badges
-  //   }
-  // }
-  //! code logic the probs doesnt go here
-  //! have code in create messages that adds +=1 to badges array in childs DB
-
-  // if (userId) {
-  //   if (userId.messages.length < 5) {
-  //     return badges.id === 1
-  //   }
-  //   if (userId.messages.length < 10) {
-  //     return badges.id === 1 & 2
-  //   }
-  // }
 
   //! this useEffect is run everythime the component mounts.Meaning it runs the axios call again to update the childProfile. By leaving the [] empty in the end of the useEffect we are telling it to only run once when the component mounts. this is what we want because the childId and profile stay the same on this page as they are the logged in user and this is their inbox.  If we put the childProfile in the [childProfile] then the useEffect would call the axios request everytime the state change
 
   return (
     <div>
       {allChildsBadges}
-      {/* {addBadgeToChildProfile(howManyMessagesSent)} */}
     </div>
   );
 }
