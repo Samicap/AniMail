@@ -11,18 +11,14 @@ import "./styles/Netflix.scss";
 import "./components/progressBar/progressBar.css";
 import "./styles/about.css";
 
-import CreateMessage from "./components/CreateMessage";
-
 import { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-// import { localStorage } from "reactjs-localstorage";
 
 import LoginForm from "./components/LoginForm";
 import Inbox from "./components/Inbox";
 import Outbox from "./components/outbox/OutBox";
 import Netflix from "./components/Netflix";
 import Layout from "./components/Layout";
-import Placeholder from "./components/Placeholder";
 import NavBar from "./components/NavBar";
 import About from "./components/About";
 
@@ -58,6 +54,7 @@ function App() {
                 </>
               )}
             />
+            <>
             <Route
               path="/netflix"
               render={() => (
@@ -80,7 +77,7 @@ function App() {
               path="/message/sent"
               render={() => <Inbox childId={state.selectedChildId} />}
             />
-            //! Double route?
+            </>
           </Switch>
         </Layout>
       </Router>

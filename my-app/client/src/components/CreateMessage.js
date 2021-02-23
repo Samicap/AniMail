@@ -4,32 +4,25 @@ import { Form, Button, Row, Col, Dropdown } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-
-export default function CreateMessage({ childId }) {
-//!on submit will need to call multiple functions.  one needs to call on the badges to update thec count of messaged a child has.
 import Popup from "./popup/Popup";
 
 export default function CreateMessage({ childId }) {
+//!on submit will need to call multiple functions.  one needs to call on the badges to update thec count of messaged a child has.
+
+console.log("CREATE MESSAGE", childId)
+
   const [formData, setFormData] = useState({
     child_id_to: "",
     animal_id: "1",
     text: "",
   });
-
-  let history = useHistory();
-
+  
   const [messageData, setMessageData] = useState(null);
   const [userProfile, setUserProfile] = useState(null);
   const [userId, setUserId] = useState(window.localStorage.getItem("childId"));
   const [showPopup, setShowPopup] = useState(false);
-
-  useEffect(() => {
-    axios.get(`/api/profiles/child/${userId}`).then((response) => {
-      console.log("child profile ", response.data.childs[0]);
-      const profile = response.data.childs[0];
-      setUserProfile(profile);
-    });
-  }, []);
+  
+  let history = useHistory();
 
   useEffect(() => {
     if (childId) {
@@ -38,11 +31,15 @@ export default function CreateMessage({ childId }) {
     } else {
       setUserId(window.localStorage.getItem("childId"));
     }
-  }, [childId]);
+    axios.get(`/api/profiles/child/${userId}`).then((response) => {
+      // console.log("child profile ", response.data.childs[0]);
+      const profile = response.data.childs[0];
+      setUserProfile(profile);
+    });
+  }, []);
+
 
   const validateForm = () => {
-    console.log("child_id_to ", formData.child_id_to);
-    console.log("formData.text.length ", formData.text.length);
     if (
       !formData.child_id_to ||
       formData.child_id_to === "Pick a contact" ||
@@ -58,8 +55,6 @@ export default function CreateMessage({ childId }) {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    //! calls funciton to add Badge to DB
-    sendMessage(formData);
 
     if (!validateForm()) {
       setShowPopup(true);
@@ -131,7 +126,7 @@ export default function CreateMessage({ childId }) {
     // if (messageArray.length === 1) {
     //   axios.post(`/api/badges/child/${userId}/child_badges`, {badgeId: 1}).then((response) => {
     //   })
-    } //! there is a missing } somewhere in this code
+    // } 
   };
 
   const togglePopup = () => {

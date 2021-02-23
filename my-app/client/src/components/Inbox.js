@@ -8,6 +8,7 @@ import Badges from "./badges/Badges";
 import { preventOverflow } from "@popperjs/core";
 
 export default function Inbox({ childId }) {
+  console.log("INBOX CHILDID", childId)
   const [messages, setMessages] = useState([]);
 
   const [userId, setUserId] = useState(window.localStorage.getItem("childId"));
@@ -51,7 +52,9 @@ export default function Inbox({ childId }) {
   return (
     <div>
       <p>INBOX</p>
-      <Link to="/outbox">Create A New Message!</Link>
+      <Link to="/outbox">
+        <button>Create A New Message!</button>
+      </Link>
       {messages.length && (
         <>
           <IncomingMessageList
