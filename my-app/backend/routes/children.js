@@ -18,10 +18,14 @@ module.exports = (db) => {
     const penpalId = Math.floor(req.params.id);
     db.query(
       `
-        SELECT child_id_from FROM messages
+        SELECT 
+        messages.child_id_from as child_id_from,
+        childs.username as sender_name
+        FROM messages
+        LEFT JOIN childs on child_id_from = childs.id
         WHERE child_id_to = $1
-        GROUP BY child_id_from
-        HAVING MIN(child_id_from) = MAX(child_id_from);
+        GROUP BY messages.child_id_from, childs.username
+        HAVING MIN(childs.username) = MAX(childs.username);
       `, [penpalId])
       .then((data) => {
         // console.log("data", data.rows);
