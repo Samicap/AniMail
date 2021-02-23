@@ -5,10 +5,11 @@ import { preventOverflow } from "@popperjs/core";
 import CreateMessage from "../CreateMessage";
 
 export default function Outbox({ childId }) {
-  console.log("InBOX DHILD ID", childId)
+  console.log("OUTBOX DHILD ID", childId)
 
   const [messages, setMessages] = useState([]);
 
+  //! why is this useEffect here?  What is it doing? Same with State Above
 
   useEffect(() => {
     axios.get(`/api/messages/children/${childId}`).then((response) => {
@@ -21,7 +22,6 @@ export default function Outbox({ childId }) {
 
   return (
     <div>
-      <p>Outbox</p>
       <CreateMessage childId={childId} />
     </div>
   );

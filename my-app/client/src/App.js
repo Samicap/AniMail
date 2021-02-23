@@ -41,13 +41,8 @@ function App() {
 
   const handleOnSelectChild = (childId) => {
     setState({ ...state, selectedChildId: childId });
-    // console.log("UUUGABOOGA", state.selectedChildId)
-    // localStorage.setItem('selectedChildId', childId)
   };
 
-  // useEffect(() => {
-  //   console.log(state);
-  // }, [state]);
   return (
     <div className="App">
       <Router>

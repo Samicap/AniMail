@@ -32,12 +32,6 @@ export default function CreateMessage({ childId }) {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    //! character counter attempt. doesnt work atm
-    // if (formData.text){
-    //   console.log("ARE WE HEEREE")
-    //   window.alert("Can't send an empty message!!!")
-    // }
-    //console.log(formData);
     //! calls funciton to add Badge to DB
     sendMessage(formData);
   };
@@ -79,6 +73,32 @@ export default function CreateMessage({ childId }) {
       .catch(function (error) {
         console.log(error);
       });
+  };
+
+  const addBadgeToChildProfile = (
+    userId,
+    messageArray,
+    childAlreadyHasBadges
+  ) => {
+    childAlreadyHasBadges.map((badge) => {
+      const badgeId = badge.id;
+      //! look at last elemnt in the array and if the state has 1 item add 2
+      //! 
+      if (messageArray.length === 3) {
+        axios
+          .post(`/api/badges/child/${userId}/child_badges`, { badgeId: 3 })
+          .then((response) => {});
+      }
+    });
+    // check how many messages a child has sent
+    // if (messageArray.length === 2) {
+    //   axios.post(`/api/badges/child/${userId}/child_badges`, {badgeId: 2}).then((response) => {
+    //   })
+    // }
+    // if (messageArray.length === 1) {
+    //   axios.post(`/api/badges/child/${userId}/child_badges`, {badgeId: 1}).then((response) => {
+    //   })
+    // }
   };
 
   // useEffect(() => console.log(messageData), [messageData]);
