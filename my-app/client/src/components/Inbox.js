@@ -12,6 +12,7 @@ export default function Inbox({ childId }) {
 
   const [userId, setUserId] = useState(window.localStorage.getItem("childId"));
 
+
   useEffect(() => {
     if (childId) {
       setUserId(childId);
@@ -19,12 +20,12 @@ export default function Inbox({ childId }) {
     } else {
       setUserId(window.localStorage.getItem("childId"));
     }
-  }, [childId]);
-
-  useEffect(() => {
-    axios.get(`/api/messages/children/${userId}`).then((response) => {
-      setMessages(response.data["messages"]);
-    });
+    if (userId) {
+      axios.get(`/api/messages/children/${userId}`).then((response) => {
+        console.log("INBOX ERROR", response)
+        setMessages(response.data["messages"]);
+      });
+    }
   }, [userId]);
 
   // useEffect(() => {
@@ -60,7 +61,7 @@ export default function Inbox({ childId }) {
             setIsMessageReceived={setIsMessageReceived}
             messages={messages}
           />
-          <MessageList messages={messages} />
+          <MessageList messages={messages} childId={userId} />
         </>
       )}
       <Child childId={userId} />

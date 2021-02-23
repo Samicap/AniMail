@@ -1,6 +1,55 @@
+import axios from "axios";
 import MessageListItem from "./MessageListItem";
+import { useState, useEffect } from "react";
 
-export default function MessageList({ messages }) {
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Input from 'react';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import Dropdown from 'react-bootstrap/Dropdown'
+
+
+export default function MessageList({ messages, childId }) {
+
+  const [userId, setUserId] = useState(window.localStorage.getItem("childId"));
+  const [filterSender, setFilterSender] = useState(null);
+  const [filteredList, setFilteredList] = useState(null);
+  const [listOfPenPals, setListOfPenPals] = useState([]);
+
+  console.log("MESSAGES >>> ", childId);
+
+  // const senderNames = messages.map(message => {
+  //   // console.log("MESSAGE SENDERS >>> ", message.sender_name)
+  // });
+
+  // const messagesFrom = messages.filter(message => {
+  //   console.log("BOOLEAN >>> ", message.sender_name === "Sam");
+  //   return message.sender_name === "Sam";
+  // });
+
+  // console.log("MSGS FROM >>> ", messagesFrom);
+  // setFilterSender(messagesFrom);
+
+
+  // inside use effct, fetch list of pen pals of this kid. set state
+  // usestate: listOfUsers.map((user => <option value={user.name}> {user.name} </option>})
+
+  useEffect(() => {
+    if (childId) {
+      setUserId(childId);
+      window.localStorage.setItem("childId", childId);
+    } else {
+      setUserId(window.localStorage.getItem("childId"));
+    }
+    axios.get(`/api/children/penpal/${userId}`).then((response) => {
+      // returns an object of arrays of message objects (containing message and animal info)
+      const penpalData = response.data;
+      // setChildProfile(childData);
+      console.log("PENPAL DATA >>>>> ", penpalData)
+    });
+  }, []);
+
+  
   function convertDate(d){
     const parts = d.split(" ");
     const months = {
@@ -18,8 +67,7 @@ export default function MessageList({ messages }) {
      Dec: "12"
     };
     return parts[3]+"-"+months[parts[1]]+"-"+parts[2];
-   };
-   
+  };
 
   const allMessages = messages && messages.map(message => {
     if (message && !message.is_received) {
@@ -40,16 +88,18 @@ export default function MessageList({ messages }) {
   )});
   
   return (
-    <section>
-      <h1>I am MessageList</h1>
-        <ul>
-          {allMessages}
-        </ul>
-    </section>
+    <> 
+      <section>
+          <ul>
+            {allMessages}
+          </ul>
+      </section>
+    </>
   )
 }
 
+
 /*
-! Location only has the location ID, and not the location name :(
-! Also receiving only the sender avatar_url, rather than the animal avatar_url
+TODO  : render all senders in dropdown
+TODO  : make the selection apply to only show filtered messages
 */
