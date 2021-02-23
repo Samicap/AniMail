@@ -8,6 +8,7 @@ import { useHistory } from "react-router-dom";
 import Popup from "./popup/Popup";
 //import CustomDropdown from "./dropdown/CustomDropdown";
 
+const styleAnimalSelected = {};
 export default function CreateMessage({ childId }) {
   const [formData, setFormData] = useState({
     child_id_to: "",
@@ -157,14 +158,22 @@ export default function CreateMessage({ childId }) {
 
   const togglePopup = () => {
     console.log("inside togglePopup func");
-    if (showPopup === true) {
-      setShowPopup(false);
-    } else setShowPopup(true);
+    // if (showPopup === true) {
+    //   setShowPopup(false);
+    // } else setShowPopup(true);
+    setShowPopup(!showPopup);
   };
 
   const chooseAnimal = (animalId) => {
     console.log("chooseAnimal func ", animalId);
     setFormData({ ...formData, animal_id: animalId });
+  };
+
+  const isItemInSelection = (animalId) => {
+    if (formData.animal_id === animalId) {
+      return true;
+    }
+    return false;
   };
 
   // The function below is for the CustomDropdown component - just keeping it as a reference, we won't be using it
@@ -238,6 +247,11 @@ export default function CreateMessage({ childId }) {
                     <button
                       type="button"
                       onClick={() => chooseAnimal(animal.id)}
+                      style={
+                        isItemInSelection(animal.id)
+                          ? { backgroundColor: "yellow" }
+                          : { backgroundColor: "white" }
+                      }
                     >
                       <img
                         src={animal.src}
