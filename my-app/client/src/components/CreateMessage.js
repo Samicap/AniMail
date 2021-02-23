@@ -3,10 +3,23 @@ import Bootstrap from "bootstrap";
 import { Form, Button, Row, Col, Dropdown } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 import Popup from "./popup/Popup";
 //import CustomDropdown from "./dropdown/CustomDropdown";
+
+const styles = {
+  cancelBtn: {
+    backgroundColor: "#f2f2f2",
+    border: "1px solic #f2f2f2",
+    color: "#333",
+    padding: "10px 20px",
+    textAlign: "center",
+    textDecoration: "none",
+    display: "inline-block",
+    fontSize: "16px",
+  },
+};
 
 const styleAnimalSelected = {};
 export default function CreateMessage({ childId }) {
@@ -158,9 +171,6 @@ export default function CreateMessage({ childId }) {
 
   const togglePopup = () => {
     console.log("inside togglePopup func");
-    // if (showPopup === true) {
-    //   setShowPopup(false);
-    // } else setShowPopup(true);
     setShowPopup(!showPopup);
   };
 
@@ -249,8 +259,8 @@ export default function CreateMessage({ childId }) {
                       onClick={() => chooseAnimal(animal.id)}
                       style={
                         isItemInSelection(animal.id)
-                          ? { backgroundColor: "yellow" }
-                          : { backgroundColor: "white" }
+                          ? { backgroundColor: "#ffdb4d" }
+                          : { backgroundColor: "#fff" }
                       }
                     >
                       <img
@@ -288,6 +298,14 @@ export default function CreateMessage({ childId }) {
         </Form>
       )}
       <h3>Character counter: {formData.text.length}</h3>
+
+      {/* path might need to change if inbox pth changes */}
+      <Link
+        to={{ pathname: `/inbox/children/${userId}` }}
+        style={styles.cancelBtn}
+      >
+        Cancel
+      </Link>
     </>
   );
 }
