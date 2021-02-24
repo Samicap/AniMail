@@ -26,7 +26,6 @@ export default function MessageList({ messages, childId }) {
     axios.get(`/api/children/penpal/${userId}`).then((response) => {
       const penpalData = response.data.penpals;
       setListOfPenPals(penpalData);
-      console.log("PENPAL DATA >>>>> ", penpalData)
     });
   }, []);
 

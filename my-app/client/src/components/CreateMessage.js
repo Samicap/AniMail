@@ -1,10 +1,8 @@
 import React from "react";
-import Bootstrap from "bootstrap";
 import { Form, Button, Row, Col, Dropdown } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useHistory, Link } from "react-router-dom";
-
 import Popup from "./popup/Popup";
 //import CustomDropdown from "./dropdown/CustomDropdown";
 
@@ -88,7 +86,6 @@ export default function CreateMessage({ childId }) {
 
   useEffect(() => {
     axios.get(`/api/profiles/child/${userId}`).then((response) => {
-      //console.log("child profile ", response.data.childs[0]);
       const profile = response.data.childs[0];
       setUserProfile(profile);
     });
@@ -111,8 +108,6 @@ export default function CreateMessage({ childId }) {
 
 
   const validateForm = () => {
-    //console.log("child_id_to ", formData.child_id_to);
-    //console.log("formData.text.length ", formData.text.length);
     if (
       !formData.child_id_to ||
       formData.child_id_to === "Pick a contact" ||
@@ -129,7 +124,6 @@ export default function CreateMessage({ childId }) {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    console.log("submit form", formData);
 
     if (!validateForm()) {
       setShowPopup(true);
@@ -176,12 +170,10 @@ export default function CreateMessage({ childId }) {
    };
   
   const togglePopup = () => {
-    console.log("inside togglePopup func");
     setShowPopup(!showPopup);
   };
 
   const chooseAnimal = (animalId) => {
-    console.log("chooseAnimal func ", animalId);
     setFormData({ ...formData, animal_id: animalId });
   };
 
