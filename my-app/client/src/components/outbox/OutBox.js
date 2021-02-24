@@ -15,7 +15,7 @@ export default function Outbox({ childId }) {
     } else {
       setUserId(window.localStorage.getItem("childId"));
     }
-  }, [userId])
+  }, [userId]);
 
   //! why is this useEffect here?  What is it doing? Same with State Above
 
@@ -26,11 +26,10 @@ export default function Outbox({ childId }) {
   //   });
   // }, [childId]);
 
-
-
   return (
-    <div>
-      <CreateMessage childId={userId} />
+    <div class="outbox">
+      <h1 class="welcome">Outbox</h1>
+      <CreateMessage childId={childId} />
     </div>
   );
 }

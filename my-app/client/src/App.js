@@ -10,6 +10,8 @@ import "./styles/NavBar.css";
 import "./styles/Netflix.scss";
 import "./components/progressBar/progressBar.css";
 import "./styles/about.css";
+import "./styles/outbox.css";
+import "./components/incomingMessages/incomingMessages.css";
 
 import { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -21,6 +23,7 @@ import Netflix from "./components/Netflix";
 import Layout from "./components/Layout";
 import NavBar from "./components/NavBar";
 import About from "./components/About";
+import Child from "./components/Child";
 
 function App() {
   const [state, setState] = useState({
@@ -42,7 +45,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <NavBar />
+        <NavBar childId={state.selectedChildId} />
         <Layout>
           <Switch>
             <Route
@@ -64,6 +67,7 @@ function App() {
                 />
               )}
             />
+            <Route path="/child" render={() => <Child></Child>} />
             <Route path="/about" render={() => <About></About>} />
             <Route
               path="/outbox"
