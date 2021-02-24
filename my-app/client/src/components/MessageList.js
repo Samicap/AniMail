@@ -2,7 +2,7 @@ import axios from "axios";
 import MessageListItem from "./MessageListItem";
 import { useState, useEffect } from "react";
 
-export default function MessageList({ messages, childId }) {
+export default function MessageList({ messages, childId, deleteMessage }) {
   const [userId, setUserId] = useState(window.localStorage.getItem("childId"));
   const [filteredSender, setFilteredSender] = useState(null);
   const [listOfPenPals, setListOfPenPals] = useState([]);
@@ -45,6 +45,7 @@ export default function MessageList({ messages, childId }) {
           animalAvatar={message.animal_avatar}
           message={message.message}
           senderAvatar={message.sender_avatar}
+          deleteMessage={deleteMessage}
         />
       );
     });
