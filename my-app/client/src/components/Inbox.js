@@ -46,17 +46,16 @@ export default function Inbox({ childId }) {
     //! look in backend terminal for console log!
   };
 
-  //! deletes messages from db, but doesn't remove the message from the page without manually refreshing the page.
   const deleteMessage = (messageId) => {
     axios.delete(`/api/messages/${messageId}`).then((response) => {
-      console.log("DELETE MESSAGE ", response.data.message);
+      //console.log("DELETE MESSAGE ", response.data.message);
       const responseMsg = response.data.message;
       if (responseMsg === "Message deleted successfuly!") {
-        console.log("all messages: ", messages);
+        //console.log("all messages: ", messages);
         const deleteMsg = messages.filter(
           (message) => message.message_id !== messageId
         );
-        console.log("deleted msg: ", deleteMsg);
+        //console.log("deleted msg: ", deleteMsg);
         setMessages(deleteMsg);
       }
     });
