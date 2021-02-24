@@ -200,6 +200,7 @@ export default function CreateMessage({ childId }) {
 
       {showPopup && (
         <Popup
+          class="formWarning"
           text="Please fill out all the fields in the form"
           closePopup={togglePopup}
         />
@@ -224,10 +225,10 @@ export default function CreateMessage({ childId }) {
             </Row>
 
             <Row class="rowAlign">
-              <Form.Label column sm={2}>
-                To:
-              </Form.Label>
-              <Col>
+              <div class="rowAlign">
+                <Form.Label column sm={2}>
+                  To:
+                </Form.Label>
                 <Form.Control
                   as="select"
                   value={formData.child_id_to}
@@ -244,13 +245,21 @@ export default function CreateMessage({ childId }) {
                   <option value="2">Sam, 8, Phoenix</option>
                   <option value="3">Thomas, 8, Toronto</option>
                 </Form.Control>
-              </Col>
+              </div>
             </Row>
-            <Row class="rowAlign">
-              <Button class="logButton" onClick={getRandomPenPal}>
+            <div class="rowAlign">
+              <Button
+                class="FindNew"
+                onClick={getRandomPenPal}
+                style={{
+                  color: "rgba(252, 176, 69, 1)",
+                  background: "rgba(81, 78, 166, 1)",
+                  fontWeight: "1000",
+                }}
+              >
                 Find a new pen pal!
-              </Button>{" "}
-            </Row>
+              </Button>
+            </div>
           </Form.Group>
           <Form.Group as={Row} controlId="selectAnimal.ControlSelect">
             <Form.Label column sm={2}>
@@ -300,14 +309,18 @@ export default function CreateMessage({ childId }) {
               />
             </Col>
           </Form.Group>
-          <h3>Character counter: {formData.text.length}</h3>
+          <h3 class="welcomeOutBox">Characters: {formData.text.length}</h3>
           {/* <Button variant="primary">Send Message</Button>{" "} */}
-          <input class="logButton" type="submit" value="Send Message" />
+          <input class="FindNew" type="submit" value="Send Message" />
         </Form>
       )}
 
       {/* path might need to change if inbox pth changes */}
-      <Link class="logButton" to={{ pathname: `/inbox/children/${userId}` }}>
+      <Link
+        class="FindNew"
+        to={{ pathname: `/inbox/children/${userId}` }}
+        style={{ textDecoration: "none", height: "auto", margin: "10px" }}
+      >
         Cancel
       </Link>
     </>

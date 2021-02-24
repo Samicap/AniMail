@@ -36,8 +36,8 @@ export default function Child({ childId }) {
       <div class="card">
         {childProfile && (
           <>
-            <img src={childProfile.child_avatar_url} />
-            <img class="card-img-top" src="/kids-avatar-011.png" />
+            <img src={childProfile.avatar_url} />
+            <img class="card-img-top" src={childProfile.child_avatar_url} />
             <p class="card-body">
               {childProfile.username}, {childProfile.age}
             </p>

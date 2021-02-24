@@ -10,7 +10,7 @@
     rgba(81, 78, 166, 1) 100%
   );
   background-blend-mode: overlay;
-
+  height: 100vh;
   padding-top: 10vh;
   padding-bottom: 20vh;
 }
@@ -18,4 +18,9 @@
 .container {
   display: flex;
   justify-content: space-between;
+}
+
+* {
+  font-family: "Bubblegum Sans", cursive;
+  font-weight: 1000;
 }
