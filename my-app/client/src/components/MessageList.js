@@ -60,7 +60,7 @@ export default function MessageList({ messages, childId }) {
           class="logButton"
           onChange={(e) => setFilteredSender(e.target.value)}
         >
-          <option> Choose Pen Pal </option>
+          <option> Filter Messages By PenPal</option>
           {allPenPals}
         </select>
 

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-
+import { Link } from "react-router-dom";
 import MessageList from "./MessageList";
 import IncomingMessageList from "./incomingMessages/IncomingMessageList";
 import Child from "./Child";
@@ -65,7 +65,7 @@ export default function Inbox({ childId }) {
           <MessageList messages={messages} />
 
           <div class="col">
-            <h2 class="welcome">Incoming Messages</h2>
+            <h4 class="welcome">Incoming Messages</h4>
             <IncomingMessageList
               setIsMessageReceived={setIsMessageReceived}
               messages={messages}

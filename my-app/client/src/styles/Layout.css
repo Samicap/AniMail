@@ -2,8 +2,7 @@
   display: flex;
   justify-content: center;
   flex-direction: row;
-  margin-bottom: auto;
-  background-image: url(http://st2.depositphotos.com/5532432/11309/v/450/depositphotos_113098242-Animal-Avatars-Flat-Vector-Icons-3.jpg);
+
   background: rgb(242, 92, 132);
   background: linear-gradient(
     90deg,
@@ -11,10 +10,9 @@
     rgba(81, 78, 166, 1) 100%
   );
   background-blend-mode: overlay;
-  height: 100vh;
-  width: 100%;
+
   padding-top: 10vh;
-  background-size: cover;
+  padding-bottom: 20vh;
 }
 
 .container {
