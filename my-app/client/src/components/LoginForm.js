@@ -36,41 +36,48 @@ export default function Login({ getUser }) {
   };
 
   return (
-    <section class="loginStyle">
-      <h1 class="welcome">Animail</h1>
-      <div>
-        <img class="loginLogo" src="owl.png"></img>
-        <img class="loginLogo" src="logo05.png"></img>
-        <img class="loginLogo" src="shark.png"></img>
+    <>
+      <div class="landingText">
+        <p>Welcome to Animail!</p>
+        <p> A fun pen pal app that uses animals to send messages!</p>
+        <p>Hedwig much?</p>
       </div>
+      <section class="loginStyle">
+        <h1 class="welcome">Animail</h1>
+        <div>
+          <img class="loginLogo" src="owl.png"></img>
+          <img class="logoAnimation" src="logo05.png"></img>
+          <img class="loginLogo" src="shark.png"></img>
+        </div>
 
-      <form class="loginForm" onSubmit={submitHandler}>
-        <label class="logLabel" htmlFor="name">
-          Email:
-        </label>
-        <input
-          class="logInput"
-          type="text"
-          name="email"
-          onChange={(event) =>
-            setLoginInfo({ ...loginInfo, email: event.target.value })
-          }
-          value={loginInfo.email}
-        />
-        <label class="logLabel" htmlFor="password">
-          Password:
-        </label>
-        <input
-          class="logInput"
-          type="password"
-          name="email"
-          onChange={(event) =>
-            setLoginInfo({ ...loginInfo, password: event.target.value })
-          }
-          value={loginInfo.password}
-        />
-        <input class="logButton" type="submit" value="Login" />
-      </form>
-    </section>
+        <form class="loginForm" onSubmit={submitHandler}>
+          <label class="logLabel" htmlFor="name">
+            Email:
+          </label>
+          <input
+            class="logInput"
+            type="text"
+            name="email"
+            onChange={(event) =>
+              setLoginInfo({ ...loginInfo, email: event.target.value })
+            }
+            value={loginInfo.email}
+          />
+          <label class="logLabel" htmlFor="password">
+            Password:
+          </label>
+          <input
+            class="logInput"
+            type="password"
+            name="email"
+            onChange={(event) =>
+              setLoginInfo({ ...loginInfo, password: event.target.value })
+            }
+            value={loginInfo.password}
+          />
+          <input class="logButton" type="submit" value="Login" />
+        </form>
+      </section>
+    </>
   );
 }

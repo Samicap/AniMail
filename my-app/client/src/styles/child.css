@@ -9,6 +9,13 @@
   padding: 1em;
 }
 
+.card-header {
+  box-shadow: 0px 15px 26px rgba(242, 92, 132, 1);
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
 .card {
   display: flex;
   flex-direction: column;
@@ -19,11 +26,13 @@
   margin: 0 auto;
   margin-bottom: auto;
   margin-top: 20px;
-  padding: 30px;
-  width: 300px;
+  padding: 20px;
+  width: 400px;
   padding-top: 25px;
   background-color: #f2b90c;
   box-shadow: 0px 15px 26px rgba(0, 0, 0, 0.5);
+  color: #514ea6;
+  font-weight: 750;
 }
 
 .card-img-top {

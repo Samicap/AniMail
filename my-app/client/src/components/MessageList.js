@@ -23,10 +23,10 @@ export default function MessageList({ messages }) {
     });
 
   return (
-    <section>
-      <h1 class="welcome">Opened Messages</h1>
-      <ul>{allMessages}</ul>
-    </section>
+    <div class="opened">
+      <h2 class="welcome">Opened Messages</h2>
+      <ul class="messagesStyle">{allMessages}</ul>
+    </div>
   );
 }
 

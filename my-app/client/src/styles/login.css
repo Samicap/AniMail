@@ -1,8 +1,9 @@
 .loginStyle {
   border: #f2b90c solid 3px;
-  margin: 0 auto;
   margin-bottom: auto;
   margin-top: 20px;
+  margin-left: 30px;
+  margin-right: auto;
   background-image: url(https://static.vecteezy.com/system/resources/previews/000/096/013/original/vector-cute-animal-avatars.jpg);
   background-blend-mode: screen;
   background-color: rgb(81, 78, 166);
@@ -18,6 +19,70 @@
   border-radius: 25px;
   padding: 2em;
   box-shadow: 0px 15px 26px rgba(0, 0, 0, 0.5);
+  transition: all 300ms ease;
+}
+
+.landingText {
+  margin-top: 10vh;
+  margin-right: 20px;
+  margin-left: auto;
+  margin-bottom: auto;
+  padding: 25px;
+  width: 500px;
+  color: rgba(252, 176, 69, 1);
+  font-weight: 1000;
+  text-shadow: 2px 2px 5px black;
+  font-size: 30px;
+  text-align: center;
+  opacity: 1;
+  animation: fadeIn ease 8s;
+  -webkit-animation: fadeIn ease 8s;
+  animation-delay: 0s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-ms-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .welcome {
@@ -31,6 +96,126 @@
   width: 100px;
   height: auto;
   padding: 1em;
+}
+
+.logoAnimation {
+  width: 100px;
+  height: auto;
+  padding: 1em;
+  position: relative;
+  animation-name: example;
+  animation-duration: 4s;
+  animation-delay: 4s;
+}
+@keyframes example {
+  0% {
+    left: 0px;
+    top: 0px;
+  }
+  25% {
+    left: 75px;
+    top: 0px;
+  }
+  50% {
+    left: -75px;
+    top: 0px;
+  }
+  75% {
+    left: 75px;
+    top: 0px;
+  }
+  100% {
+    left: 0px;
+    top: 0px;
+  }
+}
+
+.logoAnimation:active {
+  animation-name: bounce;
+  animation-duration: 4s;
+  animation-delay: 0.5s;
+}
+
+@keyframes bounce {
+  0% {
+    left: 0px;
+    top: 0px;
+  }
+  25% {
+    left: 75px;
+    top: 0px;
+  }
+  50% {
+    left: -75px;
+    top: 0px;
+  }
+  75% {
+    left: 75px;
+    top: 0px;
+  }
+  100% {
+    left: 0px;
+    top: 0px;
+  }
+}
+
+@-webkit-keyframes welcome {
+  15% {
+    -webkit-transform: translateY(5px);
+    transform: translateY(5px);
+  }
+  30% {
+    -webkit-transform: translateY(-5px);
+    transform: translateY(-5px);
+  }
+  50% {
+    -webkit-transform: translateY(3px);
+    transform: translateY(3px);
+  }
+  65% {
+    -webkit-transform: translateY(-3px);
+    transform: translateY(-3px);
+  }
+  80% {
+    -webkit-transform: translateY(2px);
+    transform: translateY(2px);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+@keyframes welcome {
+  15% {
+    -webkit-transform: translateY(5px);
+    transform: translateY(5px);
+  }
+  30% {
+    -webkit-transform: translateY(-5px);
+    transform: translateY(-5px);
+  }
+  50% {
+    -webkit-transform: translateY(3px);
+    transform: translateY(3px);
+  }
+  65% {
+    -webkit-transform: translateY(-3px);
+    transform: translateY(-3px);
+  }
+  80% {
+    -webkit-transform: translateY(2px);
+    transform: translateY(2px);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+.welcome:hover {
+  -webkit-animation: welcome 1s ease;
+  animation: welcome 1s ease;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
 }
 
 .loginForm {

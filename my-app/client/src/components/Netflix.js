@@ -18,7 +18,7 @@ export default function Netflix({ users, onSelectChild }) {
 
   return (
     <div class="wrapper">
-      <h1 class="netTitle"> Netflix Choose User Page </h1>
+      <h1 class="netTitle"> Choose Profile </h1>
       <ul class="netflix">
         {users.map((user) => {
           return (

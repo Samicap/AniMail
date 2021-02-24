@@ -1,12 +1,20 @@
 .messList {
-  border: solid #4bbfb4 5px;
-  border-radius: 2px;
-  width: 100%;
-  background-color: #f2b90c;
   opacity: 100%;
   color: #514ea6;
   font-weight: 750;
   padding: 1em;
-  margin-top: 3.5em;
-  box-shadow: 0px 15px 26px rgba(0, 0, 0, 0.5);
+}
+
+.indMessage {
+  border: solid 5px #4bbfb4;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
+  background-color: #f2b90c;
+}
+
+.income {
+  padding: 10px;
+  font-weight: 1000;
+  text-transform: uppercase;
 }

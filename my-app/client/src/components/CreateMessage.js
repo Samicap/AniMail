@@ -6,24 +6,21 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 
 export default function CreateMessage({ childId }) {
-
   const [formData, setFormData] = useState({
     child_id_to: "",
     animal_id: "1",
     text: "",
   });
-  
+
   const [messageData, setMessageData] = useState(null);
-  const [ userId, setUserId] = useState(
-    window.localStorage.getItem('childId')
-  )
+  const [userId, setUserId] = useState(window.localStorage.getItem("childId"));
 
   useEffect(() => {
     if (childId) {
       setUserId(childId);
-      window.localStorage.setItem('childId', childId)
+      window.localStorage.setItem("childId", childId);
     } else {
-      setUserId(window.localStorage.getItem('childId'));
+      setUserId(window.localStorage.getItem("childId"));
     }
   }, [childId]);
 
@@ -82,8 +79,8 @@ export default function CreateMessage({ childId }) {
   // useEffect(() => console.log(messageData), [messageData]);
 
   return (
-    <Form onSubmit={submitHandler}>
-      <h1>Compose A New Message</h1>
+    <Form class="composeForm" onSubmit={submitHandler}>
+      <h3 class="welcome">Compose A New Message</h3>
       <Form.Group as={Row} controlId="formPlaintextFrom">
         <Form.Label column sm="2">
           From:
@@ -112,7 +109,7 @@ export default function CreateMessage({ childId }) {
                 })
               }
             >
-              <option placeholder="Pick a contact">Pick a contact</option>
+              <option placeholder="Pick a contact">Contacts</option>
               <option value="4">Ana, 8, Montreal</option>
               <option value="1">Naz, 8, Istanbul</option>
               <option value="2">Sam, 8, Phoenix</option>
@@ -161,7 +158,7 @@ export default function CreateMessage({ childId }) {
         <Col sm={10}>
           <Form.Control
             as="textarea"
-            rows={10}
+            rows={4}
             value={formData.text}
             onChange={(event) =>
               setFormData({
@@ -173,7 +170,7 @@ export default function CreateMessage({ childId }) {
         </Col>
       </Form.Group>
       {/* <Button variant="primary">Send Message</Button>{" "} */}
-      <input type="submit" value="Send Message" />
+      <input class="logButton" type="submit" value="Send Message" />
     </Form>
   );
 }

@@ -54,7 +54,7 @@ export default function Inbox({ childId }) {
     <div class="container">
       <div class="row">
         <div class="col">
-          <h1 class="welcome">INBOX</h1>
+          <h2 class="welcome">INBOX</h2>
 
           <div class="col">
             <Child childId={userId} />
@@ -69,8 +69,9 @@ export default function Inbox({ childId }) {
       {messages.length && (
         <>
           <MessageList messages={messages} />
+
           <div class="col">
-            <h1 class="welcome">Incoming Messages</h1>
+            <h2 class="welcome">Incoming Messages</h2>
             <IncomingMessageList
               setIsMessageReceived={setIsMessageReceived}
               messages={messages}

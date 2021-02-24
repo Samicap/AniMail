@@ -10,6 +10,7 @@ import "./styles/NavBar.css";
 import "./styles/Netflix.scss";
 import "./components/progressBar/progressBar.css";
 import "./styles/about.css";
+import "./styles/outbox.css";
 import "./components/incomingMessages/incomingMessages.css";
 
 import CreateMessage from "./components/CreateMessage";
@@ -26,6 +27,7 @@ import Layout from "./components/Layout";
 import Placeholder from "./components/Placeholder";
 import NavBar from "./components/NavBar";
 import About from "./components/About";
+import Child from "./components/Child";
 
 function App() {
   const [state, setState] = useState({
@@ -52,7 +54,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <NavBar />
+        <NavBar childId={state.selectedChildId} />
         <Layout>
           <Switch>
             <Route
@@ -73,6 +75,7 @@ function App() {
                 />
               )}
             />
+            <Route path="/child" render={() => <Child></Child>} />
             <Route path="/about" render={() => <About></About>} />
             <Route
               path="/outbox"
