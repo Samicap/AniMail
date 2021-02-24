@@ -1,10 +1,8 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import MessageList from "./MessageList";
 import IncomingMessageList from "./incomingMessages/IncomingMessageList";
 import Child from "./Child";
-import Badges from "./badges/Badges";
 
 export default function Inbox({ childId }) {
   const [messages, setMessages] = useState([]);
@@ -72,7 +70,6 @@ export default function Inbox({ childId }) {
           </div>
 
           <div class="col"></div>
-          <Badges userId={userId} />
         </div>
       </div>
       {messages.length && (
