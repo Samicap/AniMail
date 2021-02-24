@@ -1,15 +1,13 @@
 import axios from "axios";
-// import { localStorage } from "reactjs-localstorage";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import MessageList from "./MessageList";
 import IncomingMessageList from "./incomingMessages/IncomingMessageList";
 import Child from "./Child";
-import { preventOverflow } from "@popperjs/core";
+import Badges from "./badges/Badges";
 
 export default function Inbox({ childId }) {
   const [messages, setMessages] = useState([]);
-
   const [userId, setUserId] = useState(window.localStorage.getItem("childId"));
 
   useEffect(() => {
@@ -63,6 +61,7 @@ export default function Inbox({ childId }) {
           </>
         )}
         <Child childId={userId} />
+        <Badges userId={userId} />
       </div>
     </>
   );

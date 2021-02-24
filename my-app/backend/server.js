@@ -44,6 +44,7 @@ const widgetsRoutes = require("./routes/widgets");
 const messagesRoutes = require("./routes/messages");
 const profilesRoutes = require("./routes/profiles");
 const childrenRoutes = require("./routes/children");
+const badgesRoutes = require("./routes/badges");
 //! children Route and routes/children.js do nearly the same thing, but profiles routes fetches specific data to populate the child profile in the inbox that has location name.
 
 // Mount all resource routes
@@ -56,6 +57,7 @@ app.use("/api/widgets", widgetsRoutes(db));
 app.use("/api/messages", messagesRoutes(db));
 app.use("/api/profiles", profilesRoutes(db));
 app.use("/api/children", childrenRoutes(db));
+app.use("/api/badges", badgesRoutes(db));
 //! /api/children is nearly a duplicate of /api/profiles but data fetches is less specific
 // Note: mount other resources here, using the same pattern above
 
