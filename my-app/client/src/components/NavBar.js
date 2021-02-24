@@ -31,11 +31,7 @@ export default function NavBar({ users, onSelectChild }) {
               Profile
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/about">
-              About
-            </a>
-          </li>
+
           <li class="nav-item">
             <a
               class="nav-link active"

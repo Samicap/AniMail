@@ -65,7 +65,7 @@ export default function Inbox({ childId }) {
     <div class="container">
       <div class="row">
         <div class="col">
-          <h2 class="welcome">INBOX</h2>
+          <h1 class="welcome">INBOX</h1>
 
           <div class="col">
             <Child childId={userId} />
