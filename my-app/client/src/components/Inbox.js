@@ -5,7 +5,6 @@ import MessageList from "./MessageList";
 import IncomingMessageList from "./incomingMessages/IncomingMessageList";
 import Child from "./Child";
 import Badges from "./badges/Badges";
-import { preventOverflow } from "@popperjs/core";
 
 export default function Inbox({ childId }) {
   const [messages, setMessages] = useState([]);
