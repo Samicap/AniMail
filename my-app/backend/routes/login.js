@@ -3,15 +3,13 @@ const router = express();
 
 module.exports = (db) => {
   router.post("/", (req, res) => {
-    //console.log("req", req.body);
     const email = req.body.email;
     const password = req.body.password;
-    //console.log("email ", email, "--- password ", password);
+
     if (email === "" || password === "") {
       res.status(401).send("Email or password is empty");
       return;
     }
-    // WHERE email = $1;`, [email]
     return db
       .query(
         `SELECT parents.id as parents_id,
@@ -32,8 +30,6 @@ module.exports = (db) => {
         [email]
       )
       .then((data) => {
-        //console.log("data", data.rows[0].parents_password);
-        //console.log(data.rows[0].parents_password == password);
         const parent_password = data.rows[0].parents_password;
         if (parent_password == password) {
           const parent = data.rows;

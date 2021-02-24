@@ -1,10 +1,6 @@
 const express = require("express");
 const router = express.Router();
 
-// make a route to pull up all messages
-//helper funtion to format into [{}]
-//chekc all queries that they are in the right format for the front to receive them
-
 module.exports = (db) => {
   router.get("/children/:id", (req, res) => {
     db.query(
@@ -124,12 +120,14 @@ module.exports = (db) => {
         res.status(500).json({ error: err.message });
       });
   });
-//!=====================
+
   router.get("/child/sentby/:childId", (req, res) => {
-    const childId = Math.floor(req.params.childId)
-    db.query(`SELECT messages.message FROM messages WHERE child_id_from = $1;`, [childId])
+    const childId = Math.floor(req.params.childId);
+    db.query(
+      `SELECT messages.message FROM messages WHERE child_id_from = $1;`,
+      [childId]
+    )
       .then((data) => {
-        // console.log("SENDBY CHILD RESPNSE", data)
         const message = data.rows;
         res.json({ message });
       })
@@ -137,12 +135,10 @@ module.exports = (db) => {
         res.status(500).json({ error: err.message });
       });
   });
-  //!============================
 
   router.get("/:messageId/children/:childId", (req, res) => {
     db.query(`SELECT * FROM messages WHERE id = $1;`, [req.params.messageId])
       .then((data) => {
-        // console.log("data", data.rows);
         const message = data.rows;
         res.json({ message });
       })
@@ -152,7 +148,6 @@ module.exports = (db) => {
   });
 
   router.delete("/:messageId", (req, res) => {
-    console.log("req.params", req.params);
     db.query(`DELETE FROM messages WHERE id = $1`, [req.params.messageId])
       .then((data) => {
         res.status(200).json({

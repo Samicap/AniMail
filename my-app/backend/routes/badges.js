@@ -11,7 +11,9 @@ module.exports = (db) => {
       LEFT JOIN childs_badges ON
       childs_badges.badge_id = badges.id
       WHERE child_id = $1;
-      `, [childId])
+      `,
+      [childId]
+    )
       .then((data) => {
         const badges = data.rows;
         res.json({ badges });
@@ -22,15 +24,8 @@ module.exports = (db) => {
   });
 
   router.put("/child/:id/child_badges", (req, res) => {
-
-    
     const childId = Math.floor(req.params.id);
     const badgeId = Math.floor(req.body.badgeId);
-    console.log("child ID SENT TO DB", req.params.id)
-    console.log("badge ID SENT TO DB", req.body.badgeId)
-
-
-    // //! need to send a back id to DB so it know which one to add to child DB
 
     if (!childId) {
       res.status(401).send("The messageId is empty!");
@@ -53,7 +48,6 @@ module.exports = (db) => {
         res.status(500).json({ error: err.message });
       });
   });
-
 
   return router;
 };
