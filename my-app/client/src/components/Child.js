@@ -2,21 +2,21 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-export default function Child({ childId }) {
+export default function Child({ userId }) {
   //*child id is just a number
   //*childMessages is an array of objects
   const [childProfile, setChildProfile] = useState(null);
 
-  const [userId, setUserId] = useState(window.localStorage.getItem("childId"));
+  // const [userId, setUserId] = useState(window.localStorage.getItem("childId"));
 
-  useEffect(() => {
-    if (childId) {
-      setUserId(childId);
-      window.localStorage.setItem("childId", childId);
-    } else {
-      setUserId(window.localStorage.getItem("childId"));
-    }
-  }, [childId]);
+  // useEffect(() => {
+  //   if (childId) {
+  //     setUserId(childId);
+  //     window.localStorage.setItem("childId", childId);
+  //   } else {
+  //     setUserId(window.localStorage.getItem("childId"));
+  //   }
+  // }, [childId]);
 
   useEffect(() => {
     if (userId) {

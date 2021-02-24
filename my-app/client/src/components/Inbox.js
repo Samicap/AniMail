@@ -62,7 +62,7 @@ export default function Inbox({ childId }) {
           <MessageList messages={messages} childId={userId} />
         </>
       )}
-      <Child childId={userId} />
+      <Child userId={userId} />
       <Badges userId={userId} />
     </div>
   );
