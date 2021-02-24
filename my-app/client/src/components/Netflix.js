@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-// import { localStorage } from "reactjs-localstorage";
 import { Link } from "react-router-dom";
 
 export default function Netflix({ users, onSelectChild }) {
@@ -10,11 +9,6 @@ export default function Netflix({ users, onSelectChild }) {
     onSelectChild(childId);
   };
 
-  // useEffect(() => {
-  //   console.log(selectedChild);
-  // }, [selectedChild]);
-
-  console.log("users", users);
 
   return (
     <div class="wrapper">

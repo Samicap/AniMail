@@ -1,9 +1,36 @@
+import axios from "axios";
 import MessageListItem from "./MessageListItem";
+import { useState, useEffect } from "react";
 
-export default function MessageList({ messages }) {
+export default function MessageList({ messages, childId }) {
+  const [userId, setUserId] = useState(window.localStorage.getItem("childId"));
+  const [filteredSender, setFilteredSender] = useState(null);
+  const [listOfPenPals, setListOfPenPals] = useState([]);
+
+  const filteredMessages = messages.filter((message) => {
+    if (!filteredSender) {
+      return message;
+    }
+    return message.sender_name === filteredSender;
+  });
+
+  useEffect(() => {
+    if (childId) {
+      setUserId(childId);
+      window.localStorage.setItem("childId", childId);
+    } else {
+      setUserId(window.localStorage.getItem("childId"));
+    }
+    axios.get(`/api/children/penpal/${userId}`).then((response) => {
+      const penpalData = response.data.penpals;
+      setListOfPenPals(penpalData);
+      console.log("PENPAL DATA >>>>> ", penpalData);
+    });
+  }, []);
+
   const allMessages =
-    messages &&
-    messages.map((message) => {
+    filteredMessages &&
+    filteredMessages.map((message) => {
       if (message && !message.is_received) {
         return null;
       }
@@ -14,7 +41,7 @@ export default function MessageList({ messages }) {
           senderName={message.sender_name}
           senderAge={message.sender_age}
           senderLocation={message.sender_location_name}
-          dateReceived={message.datetime_receiving}
+          dateReceived={new Date(message.datetime_receiving).toLocaleString()}
           animalAvatar={message.animal_avatar}
           message={message.message}
           senderAvatar={message.sender_avatar}
@@ -22,15 +49,19 @@ export default function MessageList({ messages }) {
       );
     });
 
+  const allPenPals = listOfPenPals.map((penpal) => {
+    return <option value={penpal.sender_name}> {penpal.sender_name}</option>;
+  });
+
   return (
-    <div class="opened">
-      <h2 class="welcome">Opened Messages</h2>
-      <ul class="messagesStyle">{allMessages}</ul>
-    </div>
+    <>
+      <select onChange={(e) => setFilteredSender(e.target.value)}>
+        <option> All Pen Pals </option>
+        {allPenPals}
+      </select>
+      <section>
+        <ul>{allMessages}</ul>
+      </section>
+    </>
   );
 }
-
-/*
-! Location only has the location ID, and not the location name :(
-! Also receiving only the sender avatar_url, rather than the animal avatar_url
-*/

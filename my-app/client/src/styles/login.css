@@ -22,6 +22,11 @@
   transition: all 300ms ease;
 }
 
+.maple {
+  background: rgb(81, 78, 166);
+  background-blend-mode: overlay;
+}
+
 .landingText {
   margin-top: 10vh;
   margin-right: 20px;

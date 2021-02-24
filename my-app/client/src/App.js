@@ -13,18 +13,14 @@ import "./styles/about.css";
 import "./styles/outbox.css";
 import "./components/incomingMessages/incomingMessages.css";
 
-import CreateMessage from "./components/CreateMessage";
-
 import { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-// import { localStorage } from "reactjs-localstorage";
 
 import LoginForm from "./components/LoginForm";
 import Inbox from "./components/Inbox";
 import Outbox from "./components/outbox/OutBox";
 import Netflix from "./components/Netflix";
 import Layout from "./components/Layout";
-import Placeholder from "./components/Placeholder";
 import NavBar from "./components/NavBar";
 import About from "./components/About";
 import Child from "./components/Child";
@@ -44,13 +40,8 @@ function App() {
 
   const handleOnSelectChild = (childId) => {
     setState({ ...state, selectedChildId: childId });
-    // console.log("UUUGABOOGA", state.selectedChildId)
-    // localStorage.setItem('selectedChildId', childId)
   };
 
-  // useEffect(() => {
-  //   console.log(state);
-  // }, [state]);
   return (
     <div className="App">
       <Router>
@@ -66,6 +57,7 @@ function App() {
                 </>
               )}
             />
+            <>
             <Route
               path="/netflix"
               render={() => (
@@ -89,7 +81,7 @@ function App() {
               path="/message/sent"
               render={() => <Inbox childId={state.selectedChildId} />}
             />
-            //! Double route?
+            </>
           </Switch>
         </Layout>
       </Router>

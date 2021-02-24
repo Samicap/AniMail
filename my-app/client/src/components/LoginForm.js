@@ -21,7 +21,6 @@ export default function Login({ getUser }) {
         password: loginInfo.password,
       })
       .then(function (response) {
-        console.log(response.data.parent);
         const data = response.data.parent;
 
         getUser(data);
@@ -39,11 +38,12 @@ export default function Login({ getUser }) {
     <>
       <div class="landingText">
         <p>Welcome to Animail!</p>
-        <p> A fun pen pal app that uses animals to send messages!</p>
-        <p>Hedwig much?</p>
+        <img class="maple" src="MapleMascot.png"></img>
+        <p> A fun pen pal app that uses animals to send messages!</p>{" "}
       </div>
       <section class="loginStyle">
         <h1 class="welcome">Animail</h1>
+        <img scr="MapleMascot.png"></img>
         <div>
           <img class="loginLogo" src="owl.png"></img>
           <img class="logoAnimation" src="logo05.png"></img>
