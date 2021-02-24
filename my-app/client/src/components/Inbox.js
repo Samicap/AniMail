@@ -1,10 +1,10 @@
 import axios from "axios";
-// import { localStorage } from "reactjs-localstorage";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import MessageList from "./MessageList";
 import IncomingMessageList from "./incomingMessages/IncomingMessageList";
 import Child from "./Child";
+import Badges from "./badges/Badges";
 import { preventOverflow } from "@popperjs/core";
 
 export default function Inbox({ childId }) {
@@ -52,7 +52,9 @@ export default function Inbox({ childId }) {
   return (
     <div>
       <p>INBOX</p>
-      <Link to="/outbox">Create A New Message!</Link>
+      <Link to="/outbox">
+        <button>Create A New Message!</button>
+      </Link>
       {messages.length && (
         <>
           <IncomingMessageList
@@ -63,6 +65,7 @@ export default function Inbox({ childId }) {
         </>
       )}
       <Child childId={userId} />
+      <Badges userId={userId} />
     </div>
   );
 }

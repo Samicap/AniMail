@@ -23,6 +23,8 @@ const styles = {
 
 const styleAnimalSelected = {};
 export default function CreateMessage({ childId }) {
+//!on submit will need to call multiple functions.  one needs to call on the badges to update thec count of messaged a child has.
+
   const [formData, setFormData] = useState({
     child_id_to: "",
     animal_id: "",
@@ -99,7 +101,14 @@ export default function CreateMessage({ childId }) {
     } else {
       setUserId(window.localStorage.getItem("childId"));
     }
-  }, [childId]);
+    axios.get(`/api/profiles/child/${userId}`).then((response) => {
+      // console.log("child profile ", response.data.childs[0]);
+      const profile = response.data.childs[0];
+      setUserProfile(profile);
+    });
+  }, []);
+  
+
 
   const validateForm = () => {
     //console.log("child_id_to ", formData.child_id_to);
@@ -124,7 +133,6 @@ export default function CreateMessage({ childId }) {
 
     if (!validateForm()) {
       setShowPopup(true);
-      //console.log("inside validation form if ");
     } else {
       sendMessage(formData);
     }
@@ -146,19 +154,17 @@ export default function CreateMessage({ childId }) {
       })
       .catch(function (error) {
         console.log(error);
-      });
-  };
+      })
+    };
 
-  //! Routes in children file
+
   const getRandomPenPal = () => {
     axios
       .get(`/api/children/${userId}`)
       .then(function (response) {
-        // console.log("array childs ", response.data.childs);
-        // console.log("length ", response.data.childs.length);
         const length = response.data.childs.length;
         const randomId = Math.floor(Math.random() * length);
-        // console.log("randomId ", randomId);
+
         setFormData({
           ...formData,
           child_id_to: response.data.childs[randomId].id,
@@ -167,8 +173,8 @@ export default function CreateMessage({ childId }) {
       .catch(function (error) {
         console.log(error);
       });
-  };
-
+   };
+  
   const togglePopup = () => {
     console.log("inside togglePopup func");
     setShowPopup(!showPopup);
