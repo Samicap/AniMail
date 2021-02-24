@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export default function Child({ childId }) {
   //*child id is just a number
@@ -41,6 +42,9 @@ export default function Child({ childId }) {
               {childProfile.username}, {childProfile.age}
             </p>
             <p class="card-body">{childProfile.location}</p>
+            <Link class="NewMess" to="/outbox">
+              Create A New Message!
+            </Link>
           </>
         )}
       </div>{" "}

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+
 import MessageList from "./MessageList";
 import IncomingMessageList from "./incomingMessages/IncomingMessageList";
 import Child from "./Child";
@@ -55,11 +55,9 @@ export default function Inbox({ childId }) {
           <div class="col">
             <Child childId={userId} />
           </div>
-          <div class="col">
-            <Link class="NewMess" to="/outbox">
-              Create A New Message!
-            </Link>
-          </div>
+
+          <div class="col"></div>
+          <Badges userId={userId} />
         </div>
       </div>
       {messages.length && (
@@ -72,9 +70,6 @@ export default function Inbox({ childId }) {
               setIsMessageReceived={setIsMessageReceived}
               messages={messages}
             />
-
-            <Child childId={userId} />
-            <Badges userId={userId} />
           </div>
         </>
       )}

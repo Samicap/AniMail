@@ -39,8 +39,6 @@ app.use(express.static("public"));
 // Note: Feel free to replace the example routes below with your own
 const loginRoutes = require("./routes/login");
 const parentsRoutes = require("./routes/parents");
-const usersRoutes = require("./routes/users");
-const widgetsRoutes = require("./routes/widgets");
 const messagesRoutes = require("./routes/messages");
 const profilesRoutes = require("./routes/profiles");
 const childrenRoutes = require("./routes/children");
@@ -52,8 +50,6 @@ const badgesRoutes = require("./routes/badges");
 //! This server.js allows the front end to connect to the backend DB query routes
 app.use("/api/login", loginRoutes(db));
 app.use("/api/profiles/parents", parentsRoutes(db));
-app.use("/api/users", usersRoutes(db));
-app.use("/api/widgets", widgetsRoutes(db));
 app.use("/api/messages", messagesRoutes(db));
 app.use("/api/profiles", profilesRoutes(db));
 app.use("/api/children", childrenRoutes(db));

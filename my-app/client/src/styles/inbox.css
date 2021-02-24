@@ -26,6 +26,16 @@
   text-transform: uppercase;
   text-decoration: none;
   border: solid rgba(81, 78, 166, 1) 5px;
+
   padding: 25px;
   margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.NewMess:hover {
+  border: 6px solid rgba(81, 78, 166, 1);
+  text-decoration: none;
+  color: rgba(81, 78, 166, 1);
 }

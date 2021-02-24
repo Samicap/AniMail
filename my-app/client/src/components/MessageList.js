@@ -55,11 +55,15 @@ export default function MessageList({ messages, childId }) {
 
   return (
     <>
-      <select onChange={(e) => setFilteredSender(e.target.value)}>
-        <option> All Pen Pals </option>
-        {allPenPals}
-      </select>
       <section>
+        <select
+          class="logButton"
+          onChange={(e) => setFilteredSender(e.target.value)}
+        >
+          <option> Choose Pen Pal </option>
+          {allPenPals}
+        </select>
+
         <ul>{allMessages}</ul>
       </section>
     </>
