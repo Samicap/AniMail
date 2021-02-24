@@ -3,24 +3,96 @@ import Bootstrap from "bootstrap";
 import { Form, Button, Row, Col, Dropdown } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
-import Popup from "./popup/Popup";
+import { useHistory, Link } from "react-router-dom";
 
+import Popup from "./popup/Popup";
+//import CustomDropdown from "./dropdown/CustomDropdown";
+
+const styles = {
+  cancelBtn: {
+    backgroundColor: "#f2f2f2",
+    border: "1px solic #f2f2f2",
+    color: "#333",
+    padding: "10px 20px",
+    textAlign: "center",
+    textDecoration: "none",
+    display: "inline-block",
+    fontSize: "16px",
+  },
+};
+
+const styleAnimalSelected = {};
 export default function CreateMessage({ childId }) {
 //!on submit will need to call multiple functions.  one needs to call on the badges to update thec count of messaged a child has.
 
   const [formData, setFormData] = useState({
     child_id_to: "",
-    animal_id: "1",
+    animal_id: "",
     text: "",
   });
-  
+
+  const animals = [
+    {
+      id: 1,
+      src: "zebra.png",
+      name: "Zebra",
+    },
+    {
+      id: 2,
+      src: "llama.png",
+      name: "Llama",
+    },
+    {
+      id: 3,
+      src: "owl.png",
+      name: "Owl",
+    },
+    {
+      id: 4,
+      src: "dove.png",
+      name: "Dove",
+    },
+    {
+      id: 5,
+      src: "shark.png",
+      name: "Shark",
+    },
+    {
+      id: 6,
+      src: "octopus.png",
+      name: "Octopus",
+    },
+    {
+      id: 7,
+      src: "phoenix.png",
+      name: "Phoenix",
+    },
+    {
+      id: 8,
+      src: "unicorn.png",
+      name: "Unicorn",
+    },
+    {
+      id: 9,
+      src: "dragon.png",
+      name: "Dragon",
+    },
+  ];
+
+  let history = useHistory();
+
   const [messageData, setMessageData] = useState(null);
   const [userProfile, setUserProfile] = useState(null);
   const [userId, setUserId] = useState(window.localStorage.getItem("childId"));
   const [showPopup, setShowPopup] = useState(false);
-  
-  let history = useHistory();
+
+  useEffect(() => {
+    axios.get(`/api/profiles/child/${userId}`).then((response) => {
+      //console.log("child profile ", response.data.childs[0]);
+      const profile = response.data.childs[0];
+      setUserProfile(profile);
+    });
+  }, []);
 
   useEffect(() => {
     if (childId) {
@@ -39,10 +111,13 @@ export default function CreateMessage({ childId }) {
 
 
   const validateForm = () => {
+    //console.log("child_id_to ", formData.child_id_to);
+    //console.log("formData.text.length ", formData.text.length);
     if (
       !formData.child_id_to ||
       formData.child_id_to === "Pick a contact" ||
-      !formData.text
+      !formData.text ||
+      !formData.animal_id
     ) {
       console.log("form validation FALSE");
       return false;
@@ -54,6 +129,7 @@ export default function CreateMessage({ childId }) {
 
   const submitHandler = (event) => {
     event.preventDefault();
+    console.log("submit form", formData);
 
     if (!validateForm()) {
       setShowPopup(true);
@@ -101,11 +177,25 @@ export default function CreateMessage({ childId }) {
   
   const togglePopup = () => {
     console.log("inside togglePopup func");
-    if (showPopup === true) {
-      setShowPopup(false);
-    } else setShowPopup(true);
+    setShowPopup(!showPopup);
   };
 
+  const chooseAnimal = (animalId) => {
+    console.log("chooseAnimal func ", animalId);
+    setFormData({ ...formData, animal_id: animalId });
+  };
+
+  const isItemInSelection = (animalId) => {
+    if (formData.animal_id === animalId) {
+      return true;
+    }
+    return false;
+  };
+
+  // The function below is for the CustomDropdown component - just keeping it as a reference, we won't be using it
+  // const getAnimalSelected = (animalId) => {
+  //   setFormData({ ...formData, animal_id: animalId });
+  // };
 
   return (
     <>
@@ -162,28 +252,35 @@ export default function CreateMessage({ childId }) {
               Delivery Animal:
             </Form.Label>
             <Col sm={10}>
-              <Form.Control
-                as="select"
-                value={formData.animal_id}
-                onChange={(event) =>
-                  setFormData({
-                    ...formData,
-                    animal_id: event.target.value,
-                  })
-                }
-              >
-                <option value="1">Zebra</option>
-                <option value="2">Llama</option>
-                <option value="3">Owl</option>
-                <option value="4">Dove</option>
-                <option value="5">Shark</option>
-                <option value="6">Octopus</option>
-                <option value="7">Phoenix</option>
-                <option value="8">Unicorn</option>
-                <option value="9">Dragon</option>
-              </Form.Control>
+              {/* <CustomDropdown
+                title="Select an animal"
+                items={animals}
+                getAnimalSelected={getAnimalSelected}
+              /> */}
+              <ul>
+                {animals.map((animal) => (
+                  <li key={animal.id} style={{ display: "inline" }}>
+                    <button
+                      type="button"
+                      onClick={() => chooseAnimal(animal.id)}
+                      style={
+                        isItemInSelection(animal.id)
+                          ? { backgroundColor: "#ffdb4d" }
+                          : { backgroundColor: "#fff" }
+                      }
+                    >
+                      <img
+                        src={animal.src}
+                        style={{ width: "50px", height: "auto" }}
+                      />
+                      <p>{animal.name}</p>
+                    </button>
+                  </li>
+                ))}
+              </ul>
             </Col>
           </Form.Group>
+          <Form.Group></Form.Group>
           <Form.Group as={Row} controlId="createMessage.ControlTextarea">
             <Form.Label column sm={2}>
               Your Message:
@@ -207,6 +304,14 @@ export default function CreateMessage({ childId }) {
         </Form>
       )}
       <h3>Character counter: {formData.text.length}</h3>
+
+      {/* path might need to change if inbox pth changes */}
+      <Link
+        to={{ pathname: `/inbox/children/${userId}` }}
+        style={styles.cancelBtn}
+      >
+        Cancel
+      </Link>
     </>
   );
 }
