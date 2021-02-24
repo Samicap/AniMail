@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-//! these are anon functions that we call in server.js!
 
 module.exports = (db) => {
   router.get("/:id", (req, res) => {

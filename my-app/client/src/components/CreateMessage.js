@@ -1,30 +1,12 @@
 import React from "react";
-import Bootstrap from "bootstrap";
-import { Form, Button, Row, Col, Dropdown } from "react-bootstrap";
+import { Form, Button, Row, Col } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useHistory, Link } from "react-router-dom";
 
 import Popup from "./popup/Popup";
-//import CustomDropdown from "./dropdown/CustomDropdown";
 
-const styles = {
-  cancelBtn: {
-    backgroundColor: "#f2f2f2",
-    border: "1px solic #f2f2f2",
-    color: "#333",
-    padding: "10px 20px",
-    textAlign: "center",
-    textDecoration: "none",
-    display: "inline-block",
-    fontSize: "16px",
-  },
-};
-
-const styleAnimalSelected = {};
 export default function CreateMessage({ childId }) {
-  //!on submit will need to call multiple functions.  one needs to call on the badges to update thec count of messaged a child has.
-
   const [formData, setFormData] = useState({
     child_id_to: "",
     animal_id: "",
@@ -88,7 +70,6 @@ export default function CreateMessage({ childId }) {
 
   useEffect(() => {
     axios.get(`/api/profiles/child/${userId}`).then((response) => {
-      //console.log("child profile ", response.data.childs[0]);
       const profile = response.data.childs[0];
       setUserProfile(profile);
     });
@@ -102,32 +83,26 @@ export default function CreateMessage({ childId }) {
       setUserId(window.localStorage.getItem("childId"));
     }
     axios.get(`/api/profiles/child/${userId}`).then((response) => {
-      // console.log("child profile ", response.data.childs[0]);
       const profile = response.data.childs[0];
       setUserProfile(profile);
     });
   }, []);
 
   const validateForm = () => {
-    //console.log("child_id_to ", formData.child_id_to);
-    //console.log("formData.text.length ", formData.text.length);
     if (
       !formData.child_id_to ||
       formData.child_id_to === "Pick a contact" ||
       !formData.text ||
       !formData.animal_id
     ) {
-      console.log("form validation FALSE");
       return false;
     } else {
-      console.log("form validation TRUE");
       return true;
     }
   };
 
   const submitHandler = (event) => {
     event.preventDefault();
-    console.log("submit form", formData);
 
     if (!validateForm()) {
       setShowPopup(true);
@@ -136,7 +111,6 @@ export default function CreateMessage({ childId }) {
     }
   };
 
-  // :id needs to be changed after we have the login form
   const sendMessage = (formData) => {
     axios
       .post(`/api/messages/children/${userId}`, {
@@ -173,12 +147,10 @@ export default function CreateMessage({ childId }) {
   };
 
   const togglePopup = () => {
-    console.log("inside togglePopup func");
     setShowPopup(!showPopup);
   };
 
   const chooseAnimal = (animalId) => {
-    console.log("chooseAnimal func ", animalId);
     setFormData({ ...formData, animal_id: animalId });
   };
 
@@ -188,11 +160,6 @@ export default function CreateMessage({ childId }) {
     }
     return false;
   };
-
-  // The function below is for the CustomDropdown component - just keeping it as a reference, we won't be using it
-  // const getAnimalSelected = (animalId) => {
-  //   setFormData({ ...formData, animal_id: animalId });
-  // };
 
   return (
     <>
@@ -265,12 +232,6 @@ export default function CreateMessage({ childId }) {
             <Form.Label column sm={2}>
               Delivery Animal:
             </Form.Label>
-
-            {/* <CustomDropdown
-                title="Select an animal"
-                items={animals}
-                getAnimalSelected={getAnimalSelected}
-              /> */}
           </Form.Group>
           <div class="aniContain">
             <ul class="selectAnimal">
@@ -318,12 +279,10 @@ export default function CreateMessage({ childId }) {
             </Col>
           </Form.Group>
           <h3 class="welcomeOutBox">Characters: {formData.text.length}</h3>
-          {/* <Button variant="primary">Send Message</Button>{" "} */}
           <input class="FindNew" type="submit" value="Send Message" />
         </Form>
       )}
 
-      {/* path might need to change if inbox pth changes */}
       <Link
         class="FindNew"
         to={{ pathname: `/inbox/children/${userId}` }}

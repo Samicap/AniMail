@@ -10,9 +10,13 @@ export default function MessageList({ messages, childId, deleteMessage }) {
   const filteredMessages = messages.filter((message) => {
     if (!filteredSender) {
       return message;
+    } else if (filteredSender === "Filter Messages By PenPal") {
+      setFilteredSender(null);
     }
     return message.sender_name === filteredSender;
   });
+
+  useEffect(() => console.log(filteredSender), [filteredSender]);
 
   useEffect(() => {
     if (childId) {

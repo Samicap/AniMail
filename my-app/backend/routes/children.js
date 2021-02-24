@@ -5,7 +5,6 @@ module.exports = (db) => {
   router.get("/:id", (req, res) => {
     db.query(`SELECT * FROM childs WHERE id != $1`, [req.params.id])
       .then((data) => {
-        // console.log("data", data.rows);
         const childs = data.rows;
         res.json({ childs });
       })
@@ -26,9 +25,10 @@ module.exports = (db) => {
         WHERE child_id_to = $1
         GROUP BY messages.child_id_from, childs.username
         HAVING MIN(childs.username) = MAX(childs.username);
-      `, [penpalId])
+      `,
+      [penpalId]
+    )
       .then((data) => {
-        // console.log("data", data.rows);
         const penpals = data.rows;
         res.json({ penpals });
       })
