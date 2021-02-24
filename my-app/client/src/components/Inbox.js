@@ -46,6 +46,21 @@ export default function Inbox({ childId }) {
     //! look in backend terminal for console log!
   };
 
+  const deleteMessage = (messageId) => {
+    axios.delete(`/api/messages/${messageId}`).then((response) => {
+      //console.log("DELETE MESSAGE ", response.data.message);
+      const responseMsg = response.data.message;
+      if (responseMsg === "Message deleted successfuly!") {
+        //console.log("all messages: ", messages);
+        const deleteMsg = messages.filter(
+          (message) => message.message_id !== messageId
+        );
+        //console.log("deleted msg: ", deleteMsg);
+        setMessages(deleteMsg);
+      }
+    });
+  };
+
   return (
     <div class="container">
       <div class="row">
@@ -62,7 +77,7 @@ export default function Inbox({ childId }) {
       </div>
       {messages.length && (
         <>
-          <MessageList messages={messages} />
+          <MessageList messages={messages} deleteMessage={deleteMessage} />
 
           <div class="col">
             <h4 class="welcome">Incoming Messages</h4>

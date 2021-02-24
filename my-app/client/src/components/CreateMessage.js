@@ -280,6 +280,14 @@ export default function CreateMessage({ childId }) {
                     class="delivery"
                     type="button"
                     onClick={() => chooseAnimal(animal.id)}
+                    style={
+                      isItemInSelection(animal.id)
+                        ? {
+                            color: "rgba(242, 92, 132, 1)",
+                            borderColor: "  rgba(242, 92, 132, 1)",
+                          }
+                        : { color: "rgba(252, 176, 69, 1)" }
+                    }
                   >
                     <img
                       src={animal.src}

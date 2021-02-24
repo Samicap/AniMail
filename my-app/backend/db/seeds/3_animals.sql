@@ -1,5 +1,5 @@
 INSERT INTO animals (name, speed, avatar_url) VALUES ('Zebra', 0.9, '/zebra.png');
-INSERT INTO animals (name, speed, avatar_url) VALUES ('Llama', 0.2, '/llama.png');
+INSERT INTO animals (name, speed, avatar_url) VALUES ('Llama', 0.5, '/llama.png');
 INSERT INTO animals (name, speed, avatar_url) VALUES ('Owl', 0.8, '/owl.png');
 INSERT INTO animals (name, speed, avatar_url) VALUES ('Dove', 0.55, '/dove.png');
 INSERT INTO animals (name, speed, avatar_url) VALUES ('Shark', 1, '/shark.png');
