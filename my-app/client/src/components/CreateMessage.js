@@ -21,7 +21,7 @@ const styles = {
 
 const styleAnimalSelected = {};
 export default function CreateMessage({ childId }) {
-//!on submit will need to call multiple functions.  one needs to call on the badges to update thec count of messaged a child has.
+  //!on submit will need to call multiple functions.  one needs to call on the badges to update thec count of messaged a child has.
 
   const [formData, setFormData] = useState({
     child_id_to: "",
@@ -104,8 +104,6 @@ export default function CreateMessage({ childId }) {
       setUserProfile(profile);
     });
   }, []);
-  
-
 
   const validateForm = () => {
     if (
@@ -148,9 +146,8 @@ export default function CreateMessage({ childId }) {
       })
       .catch(function (error) {
         console.log(error);
-      })
-    };
-
+      });
+  };
 
   const getRandomPenPal = () => {
     axios
@@ -167,8 +164,8 @@ export default function CreateMessage({ childId }) {
       .catch(function (error) {
         console.log(error);
       });
-   };
-  
+  };
+
   const togglePopup = () => {
     setShowPopup(!showPopup);
   };

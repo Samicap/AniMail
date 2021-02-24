@@ -1,0 +1,32 @@
+.outbox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: solid #4bbfb4 5px;
+  border-radius: 5px;
+  margin: 0 auto;
+  margin-bottom: auto;
+  margin-top: 20px;
+  padding: 30px;
+  width: 50%;
+  height: auto;
+
+  background-color: #f2b90c;
+  box-shadow: 0px 15px 26px rgba(0, 0, 0, 0.5);
+}
+
+.composeForm {
+  width: 100%;
+  padding: 20px;
+}
+
+.col-form-label {
+  color: rgb(81, 78, 166);
+  height: auto;
+  font-weight: 700;
+}
+
+.form-control {
+  border: 2px solid #4bbfb4;
+}

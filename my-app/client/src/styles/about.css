@@ -1,16 +1,17 @@
 .about {
-  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0vqRNgVsvYO24CnJuuzW5Zk4DeOHwU71BrQ&usqp=CAU);
+  background-image: url(https://st4.depositphotos.com/1057964/38070/v/950/depositphotos_380709104-stock-illustration-zoo-animals-traditional-outline-icons.jpg);
   background-size: auto;
+  background-repeat: no-repeat;
   background-color: rgb(81, 78, 166);
   background-blend-mode: overlay;
   width: 30em;
   height: auto;
-  color: rgb(4, 245, 173);
+  color: rgba(252, 176, 69, 1);
   padding: 30px;
-  border: 4px solid yellow;
+  border: 4px solid rgba(252, 176, 69, 1);
   border-radius: 25px;
   font-weight: 750;
-  margin-bottom: 5%;
+  margin-bottom: 15%;
   background-position: center;
   text-shadow: 2px 2px 5px black;
 }

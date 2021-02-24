@@ -7,10 +7,12 @@ export default function ProgressBar(props) {
   const [value, setValue] = useState(0);
 
   useEffect(() => {
-      const isProgressBarFull = window.localStorage.getItem(`isProgressBarFull__${messageId}`);
-      if (isProgressBarFull) {
-        setValue(100)
-      }
+    const isProgressBarFull = window.localStorage.getItem(
+      `isProgressBarFull__${messageId}`
+    );
+    if (isProgressBarFull) {
+      setValue(100);
+    }
   }, []);
   //! newValue is value becacuse the setState is making that the new state.
 
@@ -29,14 +31,16 @@ export default function ProgressBar(props) {
   }, []);
 
   return (
-    <div>
+    <div class="progBar">
       {value < 100 && <progress value={value} max="100" />}
       {value >= 100 && (
-        <button onClick={() => setIsMessageReceived(messageId)}>
+        <button
+          class="logButton"
+          onClick={() => setIsMessageReceived(messageId)}
+        >
           Open MAIL
         </button>
       )}
     </div>
   );
 }
-

@@ -22,10 +22,9 @@ export default function Outbox({ childId }) {
   //   });
   // }, [childId]);
 
-
-
   return (
-    <div>
+    <div class="outbox">
+      <h1 class="welcome">Outbox</h1>
       <CreateMessage childId={childId} />
     </div>
   );

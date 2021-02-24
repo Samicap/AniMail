@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+
 import MessageList from "./MessageList";
 import IncomingMessageList from "./incomingMessages/IncomingMessageList";
 import Child from "./Child";
@@ -9,7 +9,6 @@ import Badges from "./badges/Badges";
 export default function Inbox({ childId }) {
   const [messages, setMessages] = useState([]);
   const [userId, setUserId] = useState(window.localStorage.getItem("childId"));
-
 
   useEffect(() => {
     if (childId) {
@@ -48,18 +47,30 @@ export default function Inbox({ childId }) {
   };
 
   return (
-    <div>
-      <p>INBOX</p>
-      <Link to="/outbox">
-        <button>Create A New Message!</button>
-      </Link>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h2 class="welcome">INBOX</h2>
+
+          <div class="col">
+            <Child childId={userId} />
+          </div>
+
+          <div class="col"></div>
+          <Badges userId={userId} />
+        </div>
+      </div>
       {messages.length && (
         <>
-          <IncomingMessageList
-            setIsMessageReceived={setIsMessageReceived}
-            messages={messages}
-          />
-          <MessageList messages={messages} childId={userId} />
+          <MessageList messages={messages} />
+
+          <div class="col">
+            <h2 class="welcome">Incoming Messages</h2>
+            <IncomingMessageList
+              setIsMessageReceived={setIsMessageReceived}
+              messages={messages}
+            />
+          </div>
         </>
       )}
       <Child userId={userId} />

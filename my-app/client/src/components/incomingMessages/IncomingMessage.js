@@ -10,8 +10,8 @@ export default function IncomingMessage({
   //! expecting this to be an object {animal}
 
   return (
-    <div>
-      <h1>I am an Incoming MEssage</h1>
+    <div class="indMessage">
+      <h5 class="income">Incoming Message</h5>
       <img src={avatar} height="60" width="60" alt="60*60" />
       <ProgressBar
         messageId={messageId}

@@ -1,0 +1,20 @@
+.opened {
+  width: 1000px;
+}
+
+.messageCard {
+  padding: 25px;
+  margin: 25px;
+}
+
+.card {
+  padding: 25px;
+}
+
+.messagesStyle {
+  border: 5px solid blue;
+}
+
+.collapseBody {
+  color: teal;
+}
