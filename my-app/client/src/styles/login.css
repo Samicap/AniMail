@@ -258,6 +258,7 @@
   transition: all 300ms ease;
   font-weight: 1000;
   text-transform: uppercase;
+  width: 200px;
 }
 
 .logButton:hover {

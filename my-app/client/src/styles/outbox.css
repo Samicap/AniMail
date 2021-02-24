@@ -9,11 +9,47 @@
   margin-bottom: auto;
   margin-top: 20px;
   padding: 30px;
-  width: 50%;
+  width: auto;
   height: auto;
 
   background-color: #f2b90c;
   box-shadow: 0px 15px 26px rgba(0, 0, 0, 0.5);
+}
+
+.selectAnimal {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+}
+
+.aniContain {
+  margin: 10px;
+  margin-bottom: 30px;
+}
+
+.delivery {
+  margin: 2px;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  border: solid 5px rgba(81, 78, 166, 1);
+  padding: 10px;
+  color: rgba(252, 176, 69, 1);
+  background: linear-gradient(
+    90deg,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(81, 78, 166, 1) 100%
+  );
+  box-shadow: 0px 15px 26px rgba(242, 92, 132, 1);
+  transition: all 300ms ease;
+  font-weight: 1000;
+  text-transform: uppercase;
+}
+
+.rowAlign {
+  display: flex;
+  justify-content: center;
+  margin: 5px;
 }
 
 .composeForm {
@@ -29,4 +65,11 @@
 
 .form-control {
   border: 2px solid #4bbfb4;
+}
+
+.welcomeOutBox {
+  font-weight: 1000;
+  text-shadow: 2px 2px 5px rgba(242, 92, 132, 1);
+  text-transform: uppercase;
+  color: #514ea6;
 }
