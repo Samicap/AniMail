@@ -38,7 +38,6 @@ export default function Login({ getUser }) {
     <>
       <div class="landingText">
         <p>Welcome to Animail!</p>
-        <img class="maple" src="MapleMascot.png"></img>
         <p> A fun pen pal app that uses animals to send messages!</p>{" "}
       </div>
       <section class="loginStyle">

@@ -3,14 +3,19 @@
   color: #514ea6;
   font-weight: 750;
   padding: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .indMessage {
   border: solid 5px #4bbfb4;
   border-radius: 5px;
   padding: 5px;
-  margin: 5px;
+  margin: 10px;
   background-color: #f2b90c;
+  width: 200px;
 }
 
 .income {

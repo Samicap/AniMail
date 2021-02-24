@@ -31,11 +31,7 @@ export default function NavBar({ users, onSelectChild }) {
               Profile
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/about">
-              About
-            </a>
-          </li>
+
           <li class="nav-item">
             <a
               class="nav-link active"
@@ -52,8 +48,10 @@ export default function NavBar({ users, onSelectChild }) {
           </li>
         </ul>
         <Navbar.Collapse className="justify-content-end">
-          <Navbar.Text>
-            Signed in as: 'User' <a href="#logout">Logout</a>
+          <Navbar.Text className="nav-item">
+            <a class="nav-item" href="/">
+              Logout
+            </a>
           </Navbar.Text>
         </Navbar.Collapse>
       </Navbar>

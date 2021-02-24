@@ -196,29 +196,39 @@ export default function CreateMessage({ childId }) {
 
   return (
     <>
-      <h1>Compose A New Message</h1>
-      {userProfile && (
-        <p>
-          FROM: {userProfile.username}, {userProfile.age},{" "}
-          {userProfile.location}
-        </p>
-      )}
+      <h2 class="welcomeOutBox">Compose A New Message</h2>
 
       {showPopup && (
         <Popup
+          class="formWarning"
           text="Please fill out all the fields in the form"
           closePopup={togglePopup}
         />
       )}
-
       {!showPopup && (
         <Form onSubmit={submitHandler}>
           <Form.Group as={Row} controlId="selectPenPal.ControlSelect">
             <Row>
               <Form.Label column sm={2}>
-                To:
+                FROM:
               </Form.Label>
-              <Col>
+              <Form.Group>
+                <Col>
+                  {userProfile && (
+                    <p class="welcomeOutBox">
+                      {userProfile.username}, {userProfile.age},{" "}
+                      {userProfile.location}
+                    </p>
+                  )}{" "}
+                </Col>
+              </Form.Group>
+            </Row>
+
+            <Row class="rowAlign">
+              <div class="rowAlign">
+                <Form.Label column sm={2}>
+                  To:
+                </Form.Label>
                 <Form.Control
                   as="select"
                   value={formData.child_id_to}
@@ -235,49 +245,60 @@ export default function CreateMessage({ childId }) {
                   <option value="2">Sam, 8, Phoenix</option>
                   <option value="3">Thomas, 8, Toronto</option>
                 </Form.Control>
-              </Col>
-              <Col> or </Col>
-              <Col>
-                <Button variant="primary" onClick={getRandomPenPal}>
-                  Find a new pen pal!
-                </Button>{" "}
-              </Col>
+              </div>
             </Row>
+            <div class="rowAlign">
+              <Button
+                class="FindNew"
+                onClick={getRandomPenPal}
+                style={{
+                  color: "rgba(252, 176, 69, 1)",
+                  background: "rgba(81, 78, 166, 1)",
+                  fontWeight: "1000",
+                }}
+              >
+                Find a new pen pal!
+              </Button>
+            </div>
           </Form.Group>
           <Form.Group as={Row} controlId="selectAnimal.ControlSelect">
             <Form.Label column sm={2}>
               Delivery Animal:
             </Form.Label>
-            <Col sm={10}>
-              {/* <CustomDropdown
+
+            {/* <CustomDropdown
                 title="Select an animal"
                 items={animals}
                 getAnimalSelected={getAnimalSelected}
               /> */}
-              <ul>
-                {animals.map((animal) => (
-                  <li key={animal.id} style={{ display: "inline" }}>
-                    <button
-                      type="button"
-                      onClick={() => chooseAnimal(animal.id)}
-                      style={
-                        isItemInSelection(animal.id)
-                          ? { backgroundColor: "#ffdb4d" }
-                          : { backgroundColor: "#fff" }
-                      }
-                    >
-                      <img
-                        src={animal.src}
-                        style={{ width: "50px", height: "auto" }}
-                      />
-                      <p>{animal.name}</p>
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </Col>
           </Form.Group>
-          <Form.Group></Form.Group>
+          <div class="aniContain">
+            <ul class="selectAnimal">
+              {animals.map((animal) => (
+                <li key={animal.id} style={{ display: "inline" }}>
+                  <button
+                    class="delivery"
+                    type="button"
+                    onClick={() => chooseAnimal(animal.id)}
+                    style={
+                      isItemInSelection(animal.id)
+                        ? {
+                            color: "rgba(242, 92, 132, 1)",
+                            borderColor: "  rgba(242, 92, 132, 1)",
+                          }
+                        : { color: "rgba(252, 176, 69, 1)" }
+                    }
+                  >
+                    <img
+                      src={animal.src}
+                      style={{ width: "50px", height: "auto" }}
+                    />
+                    <p>{animal.name}</p>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
           <Form.Group as={Row} controlId="createMessage.ControlTextarea">
             <Form.Label column sm={2}>
               Your Message:
@@ -285,7 +306,7 @@ export default function CreateMessage({ childId }) {
             <Col sm={10}>
               <Form.Control
                 as="textarea"
-                rows={10}
+                rows={4}
                 value={formData.text}
                 onChange={(event) =>
                   setFormData({
@@ -296,16 +317,17 @@ export default function CreateMessage({ childId }) {
               />
             </Col>
           </Form.Group>
+          <h3 class="welcomeOutBox">Characters: {formData.text.length}</h3>
           {/* <Button variant="primary">Send Message</Button>{" "} */}
-          <input type="submit" value="Send Message" />
+          <input class="FindNew" type="submit" value="Send Message" />
         </Form>
       )}
-      <h3>Character counter: {formData.text.length}</h3>
 
       {/* path might need to change if inbox pth changes */}
       <Link
+        class="FindNew"
         to={{ pathname: `/inbox/children/${userId}` }}
-        style={styles.cancelBtn}
+        style={{ textDecoration: "none", height: "auto", margin: "10px" }}
       >
         Cancel
       </Link>
