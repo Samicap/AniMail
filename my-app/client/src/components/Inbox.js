@@ -9,7 +9,6 @@ import { preventOverflow } from "@popperjs/core";
 
 export default function Inbox({ childId }) {
   const [messages, setMessages] = useState([]);
-
   const [userId, setUserId] = useState(window.localStorage.getItem("childId"));
 
 
