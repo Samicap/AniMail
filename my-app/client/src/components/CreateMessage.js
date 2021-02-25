@@ -205,7 +205,7 @@ export default function CreateMessage({ childId }) {
                 >
                   <option placeholder="Pick a contact">Pick a contact</option>
                   <option value="4">Ana, 8, Montreal</option>
-                  <option value="1">Naz, 8, Istanbul</option>
+                  <option value="1">Egenaz, 8, Istanbul</option>
                   <option value="2">Sam, 8, Phoenix</option>
                   <option value="3">Thomas, 8, Toronto</option>
                 </Form.Control>

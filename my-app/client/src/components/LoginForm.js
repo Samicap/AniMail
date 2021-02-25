@@ -10,7 +10,6 @@ export default function Login({ getUser }) {
 
   const submitHandler = (event) => {
     event.preventDefault();
-
     login(loginInfo);
   };
 

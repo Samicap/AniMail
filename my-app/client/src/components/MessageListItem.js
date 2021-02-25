@@ -8,12 +8,24 @@ export default function MessageListItem(props) {
   const popover = (
     <Popover id="popover-basic">
       <Popover.Title as="h3">
-        <Image src={props.senderAvatar} height="60" width="60" />
-        {/* {props.senderName}, {props.senderAge}, {props.senderLocation} */}
+        <Col>
+            <Image src={props.senderAvatar} height="60" width="60" />
+          <Row>
+            {props.senderName}, {props.senderAge}, {props.senderLocation}
+          </Row>
+        </Col>
       </Popover.Title>
       <Popover.Content>
-        {/* BADGES */}
-        {props.senderName}, {props.senderAge}, {props.senderLocation}
+        <Col>
+          <Image 
+            id="badge"
+            src="/badge-01.png"
+            height="25"
+            width="25"
+            alt="25x25"
+          />
+        </Col>
+        {/* {props.senderName}, {props.senderAge}, {props.senderLocation} */}
       </Popover.Content>
     </Popover>
   );
