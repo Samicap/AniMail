@@ -1,4 +1,3 @@
-# Final-Project
-An app that connects people through their ideas to projects
+# Animail
+The fun pen pal app where users send messages via their favourite animals!
 
-# asiudfkjnjkasdhfkasefkjasdkjbsdkjnjksdnfjksnd jkfn
