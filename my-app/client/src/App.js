@@ -58,29 +58,29 @@ function App() {
               )}
             />
             <>
-            <Route
-              path="/netflix"
-              render={() => (
-                <Netflix
-                  users={state.currentUser}
-                  onSelectChild={handleOnSelectChild}
-                />
-              )}
-            />
-            <Route path="/child" render={() => <Child></Child>} />
-            <Route path="/about" render={() => <About></About>} />
-            <Route
-              path="/outbox"
-              render={() => <Outbox childId={state.selectedChildId} />}
-            />
-            <Route
-              path="/inbox/children/:id"
-              render={() => <Inbox childId={state.selectedChildId} />}
-            />
-            <Route
-              path="/message/sent"
-              render={() => <Inbox childId={state.selectedChildId} />}
-            />
+              <Route
+                path="/netflix"
+                render={() => (
+                  <Netflix
+                    users={state.currentUser}
+                    onSelectChild={handleOnSelectChild}
+                  />
+                )}
+              />
+              <Route path="/child" render={() => <Child></Child>} />
+              <Route path="/about" render={() => <About></About>} />
+              <Route
+                path="/outbox"
+                render={() => <Outbox childId={state.selectedChildId} />}
+              />
+              <Route
+                path="/inbox/children/:id"
+                render={() => <Inbox childId={state.selectedChildId} />}
+              />
+              <Route
+                path="/message/sent"
+                render={() => <Inbox childId={state.selectedChildId} />}
+              />
             </>
           </Switch>
         </Layout>

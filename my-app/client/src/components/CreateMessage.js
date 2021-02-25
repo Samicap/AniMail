@@ -175,21 +175,18 @@ export default function CreateMessage({ childId }) {
       {!showPopup && (
         <Form onSubmit={submitHandler}>
           <Form.Group as={Row} controlId="selectPenPal.ControlSelect">
-            <Row>
-              <Form.Label column sm={2}>
-                FROM:
-              </Form.Label>
-              <Form.Group>
-                <Col>
-                  {userProfile && (
-                    <p class="welcomeOutBox">
-                      {userProfile.username}, {userProfile.age},{" "}
-                      {userProfile.location}
-                    </p>
-                  )}{" "}
-                </Col>
-              </Form.Group>
-            </Row>
+            <Form.Label column sm={2}>
+              FROM:
+            </Form.Label>
+
+            <Col sm={10}>
+              {userProfile && (
+                <p class="welcomeOutBox">
+                  {userProfile.username}, {userProfile.age},{" "}
+                  {userProfile.location}
+                </p>
+              )}{" "}
+            </Col>
 
             <Row class="rowAlign">
               <div class="rowAlign">
@@ -267,7 +264,7 @@ export default function CreateMessage({ childId }) {
             <Col sm={10}>
               <Form.Control
                 as="textarea"
-                rows={4}
+                rows={2}
                 value={formData.text}
                 onChange={(event) =>
                   setFormData({

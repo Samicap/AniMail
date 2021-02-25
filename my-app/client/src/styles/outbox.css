@@ -9,9 +9,9 @@
   margin-bottom: auto;
   margin-top: -20px;
   padding: 50px;
-  width: auto;
-  height: auto;
-
+  width: 65vw;
+  height: 90vh;
+  font-size: 20px;
   background-color: #f2b90c;
   box-shadow: 0px 15px 26px rgba(0, 0, 0, 0.5);
 }
@@ -32,7 +32,16 @@
   border-radius: 25px;
 }
 .form-control {
-  width: 100%;
+  width: 50em;
+  border-radius: 25px;
+  background: linear-gradient(
+    90deg,
+    rgba(242, 92, 132, 1) 0%,
+    rgba(81, 78, 166, 1) 100%
+  );
+  color: rgba(252, 176, 69, 1);
+  box-shadow: 0px 0px 15px #4bbfb4;
+  font-weight: 750;
 }
 
 .popup_open {
