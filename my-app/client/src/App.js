@@ -8,6 +8,7 @@ import Inbox from "./components/Inbox";
 import Outbox from "./components/outbox/OutBox";
 import Netflix from "./components/Netflix";
 import Layout from "./components/Layout";
+import Homepage from "./components/HomePage";
 import NavBar from "./components/NavBar";
 import About from "./components/About";
 import Child from "./components/Child";
@@ -47,44 +48,66 @@ function App() {
     <div className="App">
       <Router>
         <NavBar childId={state.selectedChildId} />
-        <Layout>
-          <Switch>
-            <Route
-              exact
-              path="/"
-              render={() => (
-                <>
+
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <>
+                <Homepage>
                   <LoginForm getUser={getUser} />
-                </>
-              )}
-            />
-            <>
-              <Route
-                path="/netflix"
-                render={() => (
+                </Homepage>
+              </>
+            )}
+          />
+          <>
+            <Route
+              path="/netflix"
+              render={() => (
+                <Homepage>
                   <Netflix
                     users={state.currentUser}
                     onSelectChild={handleOnSelectChild}
                   />
-                )}
-              />
-              <Route path="/child" render={() => <Child></Child>} />
-              <Route path="/about" render={() => <About></About>} />
-              <Route
-                path="/outbox"
-                render={() => <Outbox childId={state.selectedChildId} />}
-              />
-              <Route
-                path="/inbox/children/:id"
-                render={() => <Inbox childId={state.selectedChildId} />}
-              />
-              <Route
-                path="/message/sent"
-                render={() => <Inbox childId={state.selectedChildId} />}
-              />
-            </>
-          </Switch>
-        </Layout>
+                </Homepage>
+              )}
+            />
+            <Route
+              path="/child"
+              render={() => (
+                <Layout>
+                  <Child></Child>
+                </Layout>
+              )}
+            />
+            <Route path="/about" render={() => <About></About>} />
+            <Route
+              path="/outbox"
+              render={() => (
+                <Layout>
+                  <Outbox childId={state.selectedChildId} />
+                </Layout>
+              )}
+            />
+            <Route
+              path="/inbox/children/:id"
+              render={() => (
+                <Layout>
+                  <Inbox childId={state.selectedChildId} />{" "}
+                </Layout>
+              )}
+            />
+            <Route
+              path="/message/sent"
+              render={() => (
+                <Layout>
+                  <Inbox childId={state.selectedChildId} />
+                </Layout>
+              )}
+            />
+          </>
+        </Switch>
       </Router>
     </div>
   );
