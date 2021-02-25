@@ -2,7 +2,7 @@ import React from "react";
 import Bootstrap from "bootstrap";
 import { Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState} from "react";
 
 export default function NavBar({ users, onSelectChild }) {
   const [selectedChild, setSelectedChild] = useState(null);
@@ -27,8 +27,10 @@ export default function NavBar({ users, onSelectChild }) {
         </Navbar.Brand>
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/child">
-              Profile
+            <a class="nav-link active" aria-current="page" >
+              <Link to="/netfix" >
+                Profile
+              </Link>
             </a>
           </li>
 
