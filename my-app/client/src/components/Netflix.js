@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import { Link } from "react-router-dom";
 
 export default function Netflix({ users, onSelectChild }) {
@@ -8,7 +8,6 @@ export default function Netflix({ users, onSelectChild }) {
     setSelectedChild(childId);
     onSelectChild(childId);
   };
-
 
   return (
     <div class="wrapper">

@@ -1,4 +1,17 @@
 import React from "react";
+
+import { useState } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+import LoginForm from "./components/LoginForm";
+import Inbox from "./components/Inbox";
+import Outbox from "./components/outbox/OutBox";
+import Netflix from "./components/Netflix";
+import Layout from "./components/Layout";
+import NavBar from "./components/NavBar";
+import About from "./components/About";
+import Child from "./components/Child";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/App.css";
 import "./styles/child.css";
@@ -12,18 +25,6 @@ import "./components/progressBar/progressBar.css";
 import "./styles/about.css";
 import "./styles/outbox.css";
 import "./components/incomingMessages/incomingMessages.css";
-
-import { useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
-import LoginForm from "./components/LoginForm";
-import Inbox from "./components/Inbox";
-import Outbox from "./components/outbox/OutBox";
-import Netflix from "./components/Netflix";
-import Layout from "./components/Layout";
-import NavBar from "./components/NavBar";
-import About from "./components/About";
-import Child from "./components/Child";
 
 function App() {
   const [state, setState] = useState({
