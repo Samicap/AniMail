@@ -19,16 +19,16 @@ export default function NavBar({ users, onSelectChild }) {
           <img
             alt=""
             src="/logo05.png"
-            width="30"
-            height="30"
+            width="40"
+            height="40"
             className="d-inline-block align-top"
           />{" "}
           ANIMAIL
         </Navbar.Brand>
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/child">
-              Profile
+            <a class="nav-link active" aria-current="page" href="/netflix">
+              Profiles
             </a>
           </li>
 
