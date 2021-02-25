@@ -12,6 +12,6 @@ We are unique in that we let our users choose from different animals to carry th
   * Javascript
   * PostgreSQL
   * Bootstrap
-  * 
+
 # Getting Started
 Run npm install to get all dependencies
