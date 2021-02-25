@@ -1,19 +1,26 @@
-import { useState} from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 export default function Netflix({ users, onSelectChild }) {
   const [selectedChild, setSelectedChild] = useState(null);
-
+  const [childArray, setChildArray] = useState([]);
   const getSelectedChild = (childId) => {
     setSelectedChild(childId);
     onSelectChild(childId);
   };
-
+  useEffect(() => {
+    if (users) {
+      setChildArray(users);
+      window.localStorage.setItem("childArray", JSON.stringify(users));
+    } else {
+      setChildArray(JSON.parse(window.localStorage.getItem("childArray")));
+    }
+  }, []);
   return (
     <div class="wrapper">
-      <h1 class="netTitle"> Choose Profile </h1>
+      <h1 class="netTitle"> CHOOSE PROFILE </h1>
       <ul class="netflix">
-        {users.map((user) => {
+        {childArray.map((user) => {
           return (
             <div class="profile-wrap">
               <div class="profile">

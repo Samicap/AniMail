@@ -26,9 +26,10 @@
   text-transform: uppercase;
   text-decoration: none;
   border: solid rgba(81, 78, 166, 1) 5px;
-
+  font-size: 25px;
   padding: 25px;
   margin-top: 25px;
+  border-radius: 25px;
   display: flex;
   justify-content: center;
   align-items: center;

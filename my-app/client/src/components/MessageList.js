@@ -44,7 +44,9 @@ export default function MessageList({ messages, childId, deleteMessage }) {
           senderName={message.sender_name}
           senderAge={message.sender_age}
           senderLocation={message.sender_location_name}
-          dateReceived={new Date(message.datetime_receiving).toLocaleDateString()}
+          dateReceived={new Date(
+            message.datetime_receiving
+          ).toLocaleDateString()}
           animalAvatar={message.animal_avatar}
           message={message.message}
           senderAvatar={message.sender_avatar}
@@ -61,7 +63,7 @@ export default function MessageList({ messages, childId, deleteMessage }) {
     <>
       <section class="opMess">
         <select
-          class="logButton"
+          class="logButtonFilter"
           onChange={(e) => setFilteredSender(e.target.value)}
         >
           <option> Filter Messages By PenPal</option>

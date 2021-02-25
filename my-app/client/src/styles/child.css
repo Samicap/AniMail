@@ -7,13 +7,29 @@
   color: #514ea6;
   font-weight: 750;
   padding: 1em;
+  font-size: 25px;
 }
 
 .card-header {
   box-shadow: 0px 15px 26px rgba(242, 92, 132, 1);
-  border-radius: 5px;
+  border-radius: 25px;
   padding: 20px;
   margin-bottom: 20px;
+  background-color: #f2f2f2;
+}
+.accordion > .card > .card-header {
+  border-radius: 25px;
+  width: 500px;
+  padding: 35px;
+  font-size: 20px;
+}
+
+.card.bg-teal {
+  width: 600px;
+  margin-right: 40px;
+}
+
+.col {
 }
 
 .card {
@@ -22,7 +38,7 @@
   justify-content: center;
   align-items: center;
   border: solid #4bbfb4 5px;
-  border-radius: 5px;
+  border-radius: 25px;
   margin: 0 auto;
   margin-bottom: auto;
   margin-top: 20px;

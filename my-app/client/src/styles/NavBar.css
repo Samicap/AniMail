@@ -1,11 +1,10 @@
 .navbar-light .navbar-nav .nav-link.active {
   color: rgb(81, 78, 166);
-  font-weight: 750;
+  font-size: 30px;
 }
 
 .navbar-light .navbar-nav .nav-link.active:hover {
   color: #f2b90c;
-  font-weight: 750;
   text-shadow: 2px 2px 5px hotpink;
 }
 
@@ -13,6 +12,7 @@
   color: rgb(81, 78, 166);
   font-weight: 1000;
   margin-left: 1em;
+  font-size: 30px;
 }
 
 .navbar-light .navbar-brand:hover {

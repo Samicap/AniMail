@@ -11,8 +11,7 @@ export default function IncomingMessage({
 
   return (
     <div class="indMessage">
-      <h5 class="income">Incoming Message</h5>
-      <img src={avatar} height="60" width="60" alt="60*60" />
+      <img src={avatar} height="100" width="100" alt="100*100" />
       <ProgressBar
         messageId={messageId}
         speed={speed}

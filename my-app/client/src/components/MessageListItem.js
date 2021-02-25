@@ -9,7 +9,7 @@ export default function MessageListItem(props) {
     <Popover id="popover-basic">
       <Popover.Title as="h3">
         <Col>
-            <Image src={props.senderAvatar} height="60" width="60" />
+          <Image src={props.senderAvatar} height="60" width="60" />
           <Row>
             {props.senderName}, {props.senderAge}, {props.senderLocation}
           </Row>
@@ -17,7 +17,7 @@ export default function MessageListItem(props) {
       </Popover.Title>
       <Popover.Content>
         <Col>
-          <Image 
+          <Image
             id="badge"
             src="/badge-01.png"
             height="25"

@@ -1,3 +1,19 @@
+html {
+  height: 100vh;
+}
+
+body {
+  height: 100%;
+}
+
+#root {
+  height: inherit;
+}
+
+.App {
+  height: inherit;
+}
+
 .contain {
   display: flex;
   justify-content: center;
@@ -10,8 +26,26 @@
     rgba(81, 78, 166, 1) 100%
   );
   background-blend-mode: overlay;
+  height: auto;
+  padding-top: 12.5vh;
+  padding-bottom: 20vh;
+  margin-left: -250px;
+}
+
+.homeContain {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+
+  background: rgb(242, 92, 132);
+  background: linear-gradient(
+    90deg,
+    rgba(242, 92, 132, 1) 0%,
+    rgba(81, 78, 166, 1) 100%
+  );
+  background-blend-mode: overlay;
   height: 100vh;
-  padding-top: 10vh;
+  padding-top: 12.5vh;
   padding-bottom: 20vh;
 }
 
