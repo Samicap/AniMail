@@ -175,24 +175,19 @@ export default function CreateMessage({ childId }) {
       {!showPopup && (
         <Form onSubmit={submitHandler}>
           <Form.Group as={Row} controlId="selectPenPal.ControlSelect">
-            <Form.Label column sm={2}>
-              FROM:
-            </Form.Label>
-
-            <Col sm={10}>
+            <div class="rowAlign">
               {userProfile && (
                 <p class="welcomeOutBox">
-                  {userProfile.username}, {userProfile.age},{" "}
+                  From: {userProfile.username}, {userProfile.age},{" "}
                   {userProfile.location}
                 </p>
-              )}{" "}
-            </Col>
+              )}
+            </div>
 
-            <Row class="rowAlign">
-              <div class="rowAlign">
-                <Form.Label column sm={2}>
-                  To:
-                </Form.Label>
+            <Col sm={10}> </Col>
+
+            <div class="rowAlign">
+              <Col sm={10}>
                 <Form.Control
                   as="select"
                   value={formData.child_id_to}
@@ -209,8 +204,9 @@ export default function CreateMessage({ childId }) {
                   <option value="2">Sam, 8, Phoenix</option>
                   <option value="3">Thomas, 8, Toronto</option>
                 </Form.Control>
-              </div>
-            </Row>
+              </Col>
+            </div>
+
             <div class="rowAlign">
               <Button
                 class="FindNew"
@@ -219,6 +215,7 @@ export default function CreateMessage({ childId }) {
                   color: "rgba(252, 176, 69, 1)",
                   background: "rgba(81, 78, 166, 1)",
                   fontWeight: "1000",
+                  marginBottom: "-20",
                 }}
               >
                 Find a new pen pal!

@@ -38,7 +38,11 @@ export default function Login({ getUser }) {
     <>
       <div class="landingText">
         <p>Welcome to Animail!</p>
-        <p> A fun pen pal app that uses animals to send messages!</p>{" "}
+        <p>
+          {" "}
+          The fun pen pal app where users send messages via their favourite
+          animals!
+        </p>{" "}
       </div>
       <section class="loginStyle">
         <h1 class="welcome">Animail</h1>

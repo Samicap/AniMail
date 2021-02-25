@@ -7,6 +7,7 @@
   color: #514ea6;
   font-weight: 750;
   padding: 1em;
+  font-size: 25px;
 }
 
 .card-header {
@@ -22,7 +23,7 @@
   justify-content: center;
   align-items: center;
   border: solid #4bbfb4 5px;
-  border-radius: 5px;
+  border-radius: 25px;
   margin: 0 auto;
   margin-bottom: auto;
   margin-top: 20px;
