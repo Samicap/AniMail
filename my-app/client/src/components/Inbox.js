@@ -27,7 +27,6 @@ export default function Inbox({ childId }) {
 
   const setIsMessageReceived = (messageId) => {
     const messagesCopy = [...messages];
-    //! copy of current messages
     const currentDateTime = new Date();
     messagesCopy.forEach((message) => {
       if (message.message_id === messageId) {
@@ -41,19 +40,15 @@ export default function Inbox({ childId }) {
         time: currentDateTime,
       })
       .then((response) => {});
-    //! look in backend terminal for console log!
   };
 
   const deleteMessage = (messageId) => {
     axios.delete(`/api/messages/${messageId}`).then((response) => {
-      //console.log("DELETE MESSAGE ", response.data.message);
       const responseMsg = response.data.message;
       if (responseMsg === "Message deleted successfuly!") {
-        //console.log("all messages: ", messages);
         const deleteMsg = messages.filter(
           (message) => message.message_id !== messageId
         );
-        //console.log("deleted msg: ", deleteMsg);
         setMessages(deleteMsg);
       }
     });
@@ -64,18 +59,15 @@ export default function Inbox({ childId }) {
       <div class="row">
         <div class="col">
           <h1 class="welcome">INBOX</h1>
-
           <div class="col">
-            <Child childId={userId} />
+            <Child userId={userId} />
           </div>
-
           <div class="col"></div>
         </div>
       </div>
       {messages.length && (
         <>
           <MessageList messages={messages} deleteMessage={deleteMessage} />
-
           <div class="col">
             <h4 class="welcome">Incoming Messages</h4>
             <IncomingMessageList
