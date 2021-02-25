@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Badges from "./badges/Badges";
 
 export default function Child({ childId }) {
   //*child id is just a number
@@ -45,6 +46,7 @@ export default function Child({ childId }) {
               {childProfile.username}, {childProfile.age}
             </p>
             <p class="card-body">{childProfile.location}</p>
+            <Badges userId={userId} />
             <Link class="NewMess" to="/outbox">
               Create A New Message!
             </Link>
