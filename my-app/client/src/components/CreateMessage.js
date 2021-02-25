@@ -189,6 +189,7 @@ export default function CreateMessage({ childId }) {
             <div class="rowAlign">
               <Col sm={10}>
                 <Form.Control
+                  class="selectPen"
                   as="select"
                   value={formData.child_id_to}
                   onChange={(event) =>

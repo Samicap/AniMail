@@ -27,8 +27,9 @@ body {
   );
   background-blend-mode: overlay;
   height: auto;
-  padding-top: 10vh;
+  padding-top: 12.5vh;
   padding-bottom: 20vh;
+  margin-left: -250px;
 }
 
 .homeContain {

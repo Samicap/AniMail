@@ -76,18 +76,18 @@ function App() {
             <Route
               path="/child"
               render={() => (
-                <Layout>
+                <Homepage>
                   <Child></Child>
-                </Layout>
+                </Homepage>
               )}
             />
             <Route path="/about" render={() => <About></About>} />
             <Route
               path="/outbox"
               render={() => (
-                <Layout>
+                <Homepage>
                   <Outbox childId={state.selectedChildId} />
-                </Layout>
+                </Homepage>
               )}
             />
             <Route
@@ -101,9 +101,9 @@ function App() {
             <Route
               path="/message/sent"
               render={() => (
-                <Layout>
+                <Homepage>
                   <Inbox childId={state.selectedChildId} />
-                </Layout>
+                </Homepage>
               )}
             />
           </>

@@ -68,7 +68,7 @@ export default function Inbox({ childId }) {
       {messages.length && (
         <>
           <MessageList messages={messages} deleteMessage={deleteMessage} />
-          <div class="col">
+          <div class="col-message">
             <h4 class="welcome">Incoming Messages</h4>
             <IncomingMessageList
               setIsMessageReceived={setIsMessageReceived}

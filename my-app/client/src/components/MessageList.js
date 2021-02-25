@@ -63,7 +63,7 @@ export default function MessageList({ messages, childId, deleteMessage }) {
     <>
       <section class="opMess">
         <select
-          class="logButton"
+          class="logButtonFilter"
           onChange={(e) => setFilteredSender(e.target.value)}
         >
           <option> Filter Messages By PenPal</option>

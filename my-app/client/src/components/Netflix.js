@@ -1,4 +1,4 @@
-import { useState} from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Netflix({ users, onSelectChild }) {
@@ -11,7 +11,7 @@ export default function Netflix({ users, onSelectChild }) {
 
   return (
     <div class="wrapper">
-      <h1 class="netTitle"> Choose Profile </h1>
+      <h1 class="netTitle"> CHOOSE PROFILE </h1>
       <ul class="netflix">
         {users.map((user) => {
           return (

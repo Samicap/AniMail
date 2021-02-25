@@ -12,11 +12,16 @@
 .indMessage {
   border: solid 5px #4bbfb4;
   border-radius: 25px;
-  padding: 5px;
+  padding: 30px;
   margin: 10px;
   background-color: #f2b90c;
   box-shadow: 0px 15px 26px rgba(0, 0, 0, 0.5);
-  width: 200px;
+  width: 250px;
+}
+
+.col-message {
+  margin-left: 50px;
+  margin-top: 20px;
 }
 
 .income {
