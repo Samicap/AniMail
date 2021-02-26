@@ -13,6 +13,7 @@ ChooseProfile:
 !["ChooseProfile](https://github.com/Samicap/corgi/blob/main/my-app/client/public/Docs/Profile%20Page.png?raw=true)
 Inbox:
 !["Inbox"](https://github.com/Samicap/corgi/blob/main/my-app/client/public/Docs/Inbox.png?raw=true)
+!["ComposeMessage"](https://github.com/Samicap/AniMail/blob/main/my-app/client/public/Docs/OutboxAnimal!.png?raw=true)
 
 
 # Dependencies
